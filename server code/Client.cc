@@ -31,10 +31,11 @@ int main(int argc, char **argv)
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 
+    ec.login();
+
     pthread_create(&id, &attr, _recv_thread, static_cast<void *>(&ec));
     pthread_create(&id, &attr, _send_thread, static_cast<void *>(&ec));
 
-    ec.login();
 
     while (true)
     {
@@ -56,9 +57,17 @@ int main(int argc, char **argv)
         {
             ec.send(Message::TURN_END, 0);
         }
+        else if(m == "int")
+        {
+            ec.send(Message::GameEnum::NAME, 12);
+        }
+        else if(m == "float")
+        {
+            ec.send(Message::GameEnum::NAME, 12.5f);
+        }
         else
         {
-            ec.send(Message::GameEnum::NAME, m);
+            ec.send(Message::GameEnum::NAME, "hi");
         }
     }
     

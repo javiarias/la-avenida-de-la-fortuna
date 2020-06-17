@@ -25,6 +25,7 @@ public:
 	enum GameEnum { LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
 
     Message(){};
+    Message(const Message& m) : id(m.id), type(m.type), dest(m.dest), game_enum(m.game_enum), intMsg(m.intMsg), floatMsg(m.floatMsg), strMsg(m.strMsg){};
 
     Message(const uint32_t& id, const uint8_t& game_enum, const int& m):id(id), type(INT),intMsg(m), game_enum(game_enum), dest(0){};
     Message(const uint32_t& id, const uint8_t& game_enum, const float& m):id(id), type(FLOAT),floatMsg(m), game_enum(game_enum), dest(0){};
@@ -40,7 +41,7 @@ public:
 
     size_t getSize();
 
-    uint8_t type;
+    Type type;
     uint8_t game_enum;
 
     int intMsg = 0;

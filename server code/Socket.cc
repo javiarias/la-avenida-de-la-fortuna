@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "Message.h"
+#include "Serializable.h"
 #include "Socket.h"
 
 Socket::Socket(const char * address, const char * port)
@@ -30,42 +30,51 @@ Socket::Socket(const char * address, const char * port)
     sd = socket(res->ai_family, SOCK_DGRAM | SOCK_CLOEXEC, IPPROTO_UDP);
 }
 
-int Socket::recv(Message& obj, Socket*& sock)
+int Socket::recv(Serializable &obj, Socket * &sock)
 {
-	struct sockaddr sa;
-	socklen_t sa_len = sizeof(struct sockaddr);
+    struct sockaddr sa;
+    socklen_t sa_len = sizeof(struct sockaddr);
 
-	char buffer[MAX_MESSAGE_SIZE];
+    char buffer[MAX_MESSAGE_SIZE];
 
-	ssize_t bytes = ::recvfrom(sd, buffer, MAX_MESSAGE_SIZE, 0, &sa, &sa_len);
+    ssize_t bytes = ::recvfrom(sd, buffer, MAX_MESSAGE_SIZE, 0, &sa, &sa_len);
 
-	if (bytes <= 0)
-	{
-		return -1;
-	}
+    if ( bytes <= 0 )
+    {
+        return -1;
+    }
 
-	if (sock != 0)
-	{
-		sock = new Socket(&sa, sa_len);
-	}
+    if ( sock != 0 )
+    {
+        sock = new Socket(&sa, sa_len);
+    }
 
-	obj.from_bin(buffer);
+    obj.from_bin(buffer);
 
-	return 0;
+    return 0;
 }
 
-int Socket::send(Message& obj, const Socket& sock)
+int Socket::send(Serializable& obj, const Socket& sock)
 {
     try
     {
+        std::cout << "serialization start\n";
+
         obj.to_bin();
 
         char* dat = obj.data();
+
+        std::cout << "serialization finish\n";
+
+        std::cout << obj.size() << '\n';
+
         sendto(sd, dat, obj.size(), 0, &sock.sa, sock.sa_len);
+
+        std::cout << "sent\n";
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "send error: " << e.what() << '\n';
         return -1;
     }
     
@@ -107,8 +116,7 @@ std::ostream& operator<<(std::ostream& os, const Socket& s)
     char host[NI_MAXHOST];
     char serv[NI_MAXSERV];
 
-    getnameinfo((struct sockaddr *) &(s.sa), s.sa_len, host, NI_MAXHOST, serv,
-                NI_MAXSERV, NI_NUMERICHOST);
+    getnameinfo((struct sockaddr *) &(s.sa), s.sa_len, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST);
 
     os << host << ":" << serv;
 

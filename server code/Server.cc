@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
     Server es(argv[1], argv[2]);
 
-    //es.do_messages();
+    es.do_messages();
 
     sigemptyset(&waitset);
     sigaddset(&waitset, SIGQUIT);

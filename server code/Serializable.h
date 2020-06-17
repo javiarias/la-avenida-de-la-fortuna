@@ -2,6 +2,22 @@
 #define SERIALIZABLE_H_
 
 #include <stdlib.h>
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+/**
+ *  Este interfaz debe implementarlo aquellos objetos que se transmitan por red
+ *  Define una serialización sencilla para la transmisión:
+ *
+ *  +--------+
+ *  |        |  Esta es la representación binaria del objeto. Cada objeto
+ *  |        |  deberá implementar dos métodos:
+ *  |  data  |    - to_bin() para rellenar
+ *  |        |    - from_bin() para reconstruirse a partir de data.
+ *  |        |    - size es el tamaño total de la región data
+ *  +--------+
+ */
 class Serializable
 {
 public:

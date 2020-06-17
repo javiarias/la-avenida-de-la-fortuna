@@ -9,12 +9,14 @@
 #include <stdexcept>
 
 #include <ostream>
+#include <arpa/inet.h>
+#include <netinet/in.h>
 
 // -----------------------------------------------------------------------------
 // Definiciones adelantadas
 // -----------------------------------------------------------------------------
 class Socket;
-class Message;
+class Serializable;
 
 /**
  *  Esta función compara dos Socks, realizando la comparación de las structuras
@@ -76,24 +78,24 @@ public:
      *  Recibe un mensaje de aplicación
      *
      *    @param obj que recibirá los datos de la red. Se usará para la
-     *    reconstrucción del objeto mediante Message::from_bin del interfaz.
+     *    reconstrucción del objeto mediante Serializable::from_bin del interfaz.
      *
      *    @param sock que identificará al extremo que envía los datos si es
      *    distinto de 0 se creará un objeto Socket con la dirección y puerto.
      *
      *    @return 0 en caso de éxito o -1 si error (cerrar conexión)
      */
-	int recv(Message& obj, Socket*& sock);
+    int recv(Serializable &obj, Socket * &sock);
 
-	int recv(Message& obj) //Descarta los datos del otro extremo
-	{
-		Socket* s = 0;
+    int recv(Serializable &obj) //Descarta los datos del otro extremo
+    {
+        Socket * s = 0;
 
-		return recv(obj, s);
-	}
+        return recv(obj, s);
+    }
 
     /**
-     *  Envía un mensaje de aplicación definido por un objeto Message.
+     *  Envía un mensaje de aplicación definido por un objeto Serializable.
      *
      *    @param obj en el que se enviará por la red. La función lo serializará
      *
@@ -101,7 +103,7 @@ public:
      *
      *    @return 0 en caso de éxito o -1 si error
      */
-    int send(Message& obj, const Socket& sock);
+    int send(Serializable& obj, const Socket& sock);
 
     /**
      *  Enlaza el descriptor del socket a la dirección y puerto

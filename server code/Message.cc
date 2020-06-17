@@ -1,14 +1,17 @@
 #include "Message.h"
 
 size_t Message::getSize(){
-    if(type == STR || type == NAME) return STR_MESSAGE_SIZE;
-    else if(type == FLOAT || type == HANDSHAKE) return FLOAT_MESSAGE_SIZE;
+    if(type == STR || type == NAMES) return STR_MESSAGE_SIZE;
+    else if(type == FLOAT) return FLOAT_MESSAGE_SIZE;
     else return INT_MESSAGE_SIZE;
 }
 
 void Message::to_bin()
 {
     int MESSAGE_SIZE = getSize();
+
+	//std::cout << MESSAGE_SIZE << " message size\n";
+	//std::cout << type << " type\n";
 
     alloc_data(MESSAGE_SIZE);
 
@@ -29,10 +32,12 @@ void Message::to_bin()
     it += sizeof(uint8_t);
 
 
-    if(type == INT)
-    {
-        memcpy(it, &intMsg, sizeof(int));
-        it += sizeof(int);
+    if(type == STR || type == NAMES)
+    {		
+		char str_c[MAX_STR];
+        strcpy(str_c, strMsg.c_str());		
+        memcpy(it, str_c, MAX_STR * sizeof(char));
+        it += MAX_STR * sizeof(char);
     }
     else if(type == FLOAT)
     {
@@ -41,15 +46,10 @@ void Message::to_bin()
     }
     else
     {
-        char str_c[MAX_STR];
-        strcpy(str_c, strMsg.c_str());
-        memcpy(it, str_c, MAX_STR * sizeof(char));
-        it += MAX_STR * sizeof(char);
+        memcpy(it, &intMsg, sizeof(int));
+        it += sizeof(int);
     }
-
-    //para testear los valores iniciales
-    //std::cout << "to_bin(): " << type << " " << nick << " " << message << '\n';
-}
+} 
 
 int Message::from_bin(char * bobj)
 {
@@ -118,40 +118,61 @@ void Server::do_messages()
 {
     while (true)
     {
-        Message m;
+        Message msg;
         Socket* sock;
-        socket.recv(m, sock);
+        socket.recv(msg, sock);
+
+		Message m(msg);
 
 		std::cout << getPlayerByID(m.id);
 		std::cout << " sends: TYPE = " << m.type << " ENUM = " << m.game_enum << " CONTENT = " << m.intMsg << " " << m.floatMsg << " " << m.strMsg << '\n';
 
+		socket.send(m, *sock);
+
+		continue;
+		
 		if (!gameStarted)
 		{
 			switch (m.type)
 			{
 			case Message::LOGIN:
+				std::cout << "login attempt from\n";
+
 				clients.push_back(sock);
 				handshake(sock, m);
 				break;
 			case Message::LOGOUT:
+				std::cout << "logout!\n";
+				
 				logout(sock);
 				break;
 			case Message::HANDSHAKE:
+				std::cout << "verification required!\n";
+
 				verify(m, sock);
 				break;
 			case Message::NAMES:
-				for (Player p : players)
+				if(getPlayerByID(m.id) > 0)
 				{
-					if (p.id != m.id) {
-						Message msg = Message(p.id, getPlayerByID(m.id), Message::GameEnum::NAME, p.n);
-						send(msg);
+					std::cout << "name request received!\n";
+
+					for (Player p : players)
+					{
+						if (p.id != m.id) {
+							Message msg = Message(p.id, getPlayerByID(m.id), Message::GameEnum::NAME, p.n);
+							send(msg);
+						}
 					}
 				}
 				break;
 			case Message::READY:
-				send(m);
-				players[getPlayerByID(m.id)].ready = true;
-				tryStart();
+				if(getPlayerByID(m.id) > 0)
+				{
+					std::cout << "player ready!\n";
+					send(m);
+					players[getPlayerByID(m.id)].ready = true;
+					tryStart();
+				}
 				break;
 			}
 		}
@@ -223,6 +244,8 @@ int Server::encode(int msg)
 
 void Server::handshake(Socket* s, const Message& m)
 {
+	std::cout << "handshake protocol initiated\n";
+
 	int id = 0;
 
 	//generamos un ID único para cada jugador. Se suma 1 para dejar el 0 libre, que vale como "broadcast"
@@ -235,11 +258,21 @@ void Server::handshake(Socket* s, const Message& m)
 
 	unverified[s] = p;
 
-	Message msg = Message(0, 0, encode(id));
+	std::cout << "creating handshake message\n";
+
+	int encoded = encode(id);
+	
+	Message msg = Message(0, 0, encoded);
 	msg.type = Message::HANDSHAKE;
 	ids_in_use.push_back(id);
 
-	socket.send(msg, *s);
+	std::cout << "sending handshake message\n";
+	std::cout << *s << '\n';
+
+	//socket.send(msg, *s);
+
+	std::cout << "handshake message sent\n";
+	
 }
 
 void Server::verify(const Message& m, Socket* s)
@@ -373,6 +406,8 @@ void Server::logout(Socket* s)
 
 void Server::send(Message msg)
 {
+	//std::cout << "sending\n";
+
 	int player = msg.dest;
 	int id = msg.id;
 
@@ -389,6 +424,8 @@ void Server::send(Message msg)
 	}
 	else
 		socket.send(msg, *(players[player].s));
+
+	//std::cout << "all sent!\n";
 }
 
 
@@ -450,6 +487,9 @@ void Client::sendTo(const int& player, const uint8_t& game_enum, const float& m)
 void Client::sendTo(const int& player, const uint8_t& game_enum, const std::string& m)
 {
 	Message msg = Message(id, player, game_enum, m);
+
+	//std::cout << "message made\n";
+
 	send_queue.push(msg);
 }
 
@@ -461,7 +501,11 @@ void Client::send_thread()
 		{
 			Message msg = send_queue.front();	send_queue.pop();
 
+			//std::cout << "sending\n";
+
 			socket.send(msg, socket);
+
+			std::cout << "message sent!!!\n";
 		}
     }
 }
@@ -470,9 +514,13 @@ void Client::recv_thread()
 {
     while(true)
     {
+		std::cout << "looking for messages...\n";
+
         Message msg;
         
         socket.recv(msg);
+
+		std::cout << "message received!\n";
 
 		//casos especiales para los mensajes de handshake, verified (que "conecta" al jugador y ya le deja recibir todos los mensajes), failed (en caso de haber algún error de verificación, se reintenta)
 		if (msg.type == Message::HANDSHAKE)
@@ -517,13 +565,19 @@ void Client::recv_thread()
 
 void Client::handshake(const Message& m)
 {
+	std::cout << "replying to handshake\n";
+
 	//el handshake le da el id al jugador y reenvía un mensaje para verificar
 	id = decode(m.intMsg);
 
 	Message em(id, 0, encode(id));
 	em.type = Message::HANDSHAKE;
+	
+	std::cout << "id = " << id << '\n';
 
 	socket.send(em, socket);
+
+	std::cout << "reply sent\n";
 }
 
 int Client::decode(int msg)
