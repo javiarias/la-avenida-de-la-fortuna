@@ -43,10 +43,33 @@ int Socket::recv(Serializable &obj, Socket * &sock)
     {
         return -1;
     }
+    
+    char host[NI_MAXHOST];
+    char serv[NI_MAXSERV];
 
-    if ( sock != 0 )
+    getnameinfo((struct sockaddr *) &(sa), sa_len, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST);
+
+    std::cout << host << ":" << serv << '\n';
+
+    sock = new Socket(&sa, sa_len);
+
+    obj.from_bin(buffer);
+
+    return 0;
+}
+
+int Socket::recv(Serializable &obj)
+{
+    struct sockaddr sa;
+    socklen_t sa_len = sizeof(struct sockaddr);
+
+    char buffer[MAX_MESSAGE_SIZE];
+
+    ssize_t bytes = ::recvfrom(sd, buffer, MAX_MESSAGE_SIZE, 0, &sa, &sa_len);
+
+    if ( bytes <= 0 )
     {
-        sock = new Socket(&sa, sa_len);
+        return -1;
     }
 
     obj.from_bin(buffer);

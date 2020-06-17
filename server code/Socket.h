@@ -87,12 +87,7 @@ public:
      */
     int recv(Serializable &obj, Socket * &sock);
 
-    int recv(Serializable &obj) //Descarta los datos del otro extremo
-    {
-        Socket * s = 0;
-
-        return recv(obj, s);
-    }
+    int recv(Serializable &obj); //Descarta los datos del otro extremo
 
     /**
      *  Envía un mensaje de aplicación definido por un objeto Serializable.
