@@ -12,28 +12,30 @@
 class Message : public Serializable
 {
 public:
-    static const uint8_t MAX_STR = 200;
-    static const size_t BASE_SERV_SIZE = sizeof(uint32_t) + sizeof(int);
-    static const size_t BASE_SIZE = sizeof(uint8_t) * 2 + BASE_SERV_SIZE;
-    static const size_t INT_MESSAGE_SIZE = BASE_SIZE + sizeof(int);
-    static const size_t FLOAT_MESSAGE_SIZE = BASE_SIZE + sizeof(float);
-    static const size_t STR_MESSAGE_SIZE = BASE_SIZE + sizeof(char) * MAX_STR;
 
 	//tipos de mensaje INTERNOS. Los tres primeros son genéricos, el resto sirven para identificar mensajes específicos de servidor-cliente
-    enum Type { INT = 0, FLOAT = 1, STR = 2, LOGIN = 3, LOGOUT = 4, HANDSHAKE = 5, VERIFIED = 6, FAILED = 7, READY = 8, FULL = 9, NAMES = 10};
+    enum Type { INT, FLOAT, STR, LOGIN, LOGOUT, HANDSHAKE, VERIFIED, FAILED, READY, FULL, NAMES, ERROR};
 
-	enum GameEnum { LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
+	enum GameEnum { IGNORE, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
+
+
+    static const uint8_t MAX_STR = 200;
+    static const size_t BASE_SERV_SIZE = sizeof(uint) + sizeof(int);
+    static const size_t BASE_SIZE = sizeof(Type) + sizeof(GameEnum) + BASE_SERV_SIZE;
+    static const size_t INT_MESSAGE_SIZE = BASE_SIZE + sizeof(int);
+    static const size_t FLOAT_MESSAGE_SIZE = BASE_SIZE + sizeof(float);
+    static const size_t STR_MESSAGE_SIZE = BASE_SIZE + (sizeof(char) * MAX_STR);
 
     Message(){};
     Message(const Message& m) : id(m.id), type(m.type), dest(m.dest), game_enum(m.game_enum), intMsg(m.intMsg), floatMsg(m.floatMsg), strMsg(m.strMsg){};
 
-    Message(const uint32_t& id, const uint8_t& game_enum, const int& m):id(id), type(INT),intMsg(m), game_enum(game_enum), dest(0){};
-    Message(const uint32_t& id, const uint8_t& game_enum, const float& m):id(id), type(FLOAT),floatMsg(m), game_enum(game_enum), dest(0){};
-    Message(const uint32_t& id, const uint8_t& game_enum, const std::string& m):id(id), type(STR),strMsg(m), game_enum(game_enum), dest(0){};
+    Message(const uint& id, const GameEnum& game_enum, const int& m):id(id), type(INT),intMsg(m), game_enum(game_enum), dest(0){};
+    Message(const uint& id, const GameEnum& game_enum, const float& m):id(id), type(FLOAT),floatMsg(m), game_enum(game_enum), dest(0){};
+    Message(const uint& id, const GameEnum& game_enum, const std::string& m):id(id), type(STR),strMsg(m), game_enum(game_enum), dest(0){};
 
-    Message(const uint32_t& id, const int& dest, const uint8_t& game_enum, const int& m):id(id), type(INT),intMsg(m), game_enum(game_enum), dest(dest){};
-    Message(const uint32_t& id, const int& dest, const uint8_t& game_enum, const float& m):id(id), type(FLOAT),floatMsg(m), game_enum(game_enum), dest(dest){};
-    Message(const uint32_t& id, const int& dest, const uint8_t& game_enum, const std::string& m):id(id), type(STR),strMsg(m), game_enum(game_enum), dest(dest){};
+    Message(const uint& id, const uint& dest, const GameEnum& game_enum, const int& m):id(id), type(INT),intMsg(m), game_enum(game_enum), dest(dest){};
+    Message(const uint& id, const uint& dest, const GameEnum& game_enum, const float& m):id(id), type(FLOAT),floatMsg(m), game_enum(game_enum), dest(dest){};
+    Message(const uint& id, const uint& dest, const GameEnum& game_enum, const std::string& m):id(id), type(STR),strMsg(m), game_enum(game_enum), dest(dest){};
 
     void to_bin();
 
@@ -42,13 +44,13 @@ public:
     size_t getSize();
 
     Type type;
-    uint8_t game_enum;
+    GameEnum game_enum;
 
     int intMsg = 0;
     float floatMsg = 0;
     std::string strMsg = "";
 
-    uint32_t id;
+    uint id;
     int dest = 0;
 };
 
@@ -98,7 +100,7 @@ private:
 	int decode(int msg);
 	int encode(int msg);
 
-	std::map<Socket*, Player> unverified;
+	std::map<Socket, Player> unverified;
 	std::vector<Player> players;
 	std::vector<int> ids_in_use;
 
@@ -140,13 +142,13 @@ public:
 
 	void ready();
 
-	void send(const uint8_t& game_enum, const int& m);
-	void send(const uint8_t& game_enum, const float& m);
-	void send(const uint8_t& game_enum, const std::string& m);
+	void send(const Message::GameEnum& game_enum, const int& m);
+	void send(const Message::GameEnum& game_enum, const float& m);
+	void send(const Message::GameEnum& game_enum, const std::string& m);
 
-	void sendTo(const int& player, const uint8_t& game_enum, const int& m);
-	void sendTo(const int& player, const uint8_t& game_enum, const float& m);
-	void sendTo(const int& player, const uint8_t& game_enum, const std::string& m);
+	void sendTo(const int& player, const Message::GameEnum& game_enum, const int& m);
+	void sendTo(const int& player, const Message::GameEnum& game_enum, const float& m);
+	void sendTo(const int& player, const Message::GameEnum& game_enum, const std::string& m);
 
     /**
      *  envía mensajes en la queue

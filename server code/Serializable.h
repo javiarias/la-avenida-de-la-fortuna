@@ -23,6 +23,7 @@ class Serializable
 public:
 
     Serializable():_size(0), _data(0){};
+    //Serializable(const Serializable& s):_size(s._size), _data(s._data){};
 
     virtual ~Serializable()
     {

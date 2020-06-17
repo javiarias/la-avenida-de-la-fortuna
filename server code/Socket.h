@@ -30,6 +30,8 @@ bool operator== (const Socket &s1, const Socket &s2);
 //porque poner !(s1 == s2) quedaba muy feo
 bool operator!= (const Socket &s1, const Socket &s2);
 
+bool operator< (const Socket &s1, const Socket &s2);
+
 /**
  *  Imprime la dirección y puerto en número con el formato:"dirección_ip:puerto"
  */
@@ -113,6 +115,8 @@ public:
     friend bool operator== (const Socket &s1, const Socket &s2);
 
     friend bool operator!= (const Socket &s1, const Socket &s2);
+
+    friend bool operator< (const Socket &s1, const Socket &s2);
 
 protected:
 

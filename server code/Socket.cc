@@ -43,13 +43,6 @@ int Socket::recv(Serializable &obj, Socket * &sock)
     {
         return -1;
     }
-    
-    char host[NI_MAXHOST];
-    char serv[NI_MAXSERV];
-
-    getnameinfo((struct sockaddr *) &(sa), sa_len, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST);
-
-    std::cout << host << ":" << serv << '\n';
 
     sock = new Socket(&sa, sa_len);
 
@@ -81,19 +74,19 @@ int Socket::send(Serializable& obj, const Socket& sock)
 {
     try
     {
-        std::cout << "serialization start\n";
+        //std::cout << "serialization start\n";
 
         obj.to_bin();
 
         char* dat = obj.data();
 
-        std::cout << "serialization finish\n";
+        //std::cout << "serialization finish\n";
 
-        std::cout << obj.size() << '\n';
+        //std::cout << obj.size() << '\n';
 
         sendto(sd, dat, obj.size(), 0, &sock.sa, sock.sa_len);
 
-        std::cout << "sent\n";
+        //std::cout << "sent\n";
     }
     catch(const std::exception& e)
     {
@@ -144,5 +137,28 @@ std::ostream& operator<<(std::ostream& os, const Socket& s)
     os << host << ":" << serv;
 
     return os;
+};
+
+//implementado para ordenar los socket en maps. EL orden da igual
+bool operator< (const Socket &s1, const Socket &s2)
+{
+    char host[NI_MAXHOST];
+    char serv[NI_MAXSERV];
+    char host2[NI_MAXHOST];
+    char serv2[NI_MAXSERV];
+
+    getnameinfo((struct sockaddr *) &(s1.sa), s1.sa_len, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST);
+    getnameinfo((struct sockaddr *) &(s2.sa), s2.sa_len, host2, NI_MAXHOST, serv2, NI_MAXSERV, NI_NUMERICHOST);
+
+    int h;
+    int h2;
+    int se;
+    int se2;
+    sscanf(host, "%d", &h);
+    sscanf(host2, "%d", &h2);
+    sscanf(serv, "%d", &se);
+    sscanf(serv2, "%d", &se2);
+
+    return ((h < h2) || ((h >= h2) && (se < se2)));
 };
 
