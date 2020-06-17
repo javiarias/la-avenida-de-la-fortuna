@@ -94,14 +94,14 @@ private:
 	bool gameStarted = false;
 
 	//funciones muy sencillas, pero que verifican que el servidor sea el servidor, y el cliente el cliente
-	float decode(float msg);
-	float encode(float msg);
+	int decode(int msg);
+	int encode(int msg);
 
 	std::map<Socket*, Player> unverified;
 	std::vector<Player> players;
 	std::vector<int> ids_in_use;
 
-	void handshake(Socket* s);
+	void handshake(Socket* s, const Message& m);
 	void verify(const Message& m, Socket* s);
 	bool idExists(int id);
 	void logout(Socket* s);
@@ -159,7 +159,7 @@ public:
 
 private:
 
-	void handshake();
+	void handshake(const Message& m);
 
     /**
      * Socket para comunicar con el servidor
@@ -179,13 +179,12 @@ private:
 	static const uint8_t QUEUE_MAX = 50;
 
 	uint32_t id = 0;
-	uint32_t id = 0;
 
 	bool connected = false;
 
 	//funciones muy sencillas, pero que verifican que el servidor sea el servidor, y el cliente el cliente
-	float decode(float msg);
-	float encode(float msg);
+	int decode(int msg);
+	int encode(int msg);
 
 	std::queue<Message> send_queue;
 	std::queue<Message> recv_queue;

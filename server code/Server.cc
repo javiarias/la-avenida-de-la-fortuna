@@ -5,16 +5,16 @@
 
 #include "Serializable.h"
 #include "Socket.h"
-#include "Chat.h"
+#include "Message.h"
 
 int main(int argc, char **argv)
 {
     sigset_t waitset;
     int      sig;
 
-    ChatServer es(argv[1], argv[2]);
+    Server es(argv[1], argv[2]);
 
-    es.do_messages();
+    //es.do_messages();
 
     sigemptyset(&waitset);
     sigaddset(&waitset, SIGQUIT);
