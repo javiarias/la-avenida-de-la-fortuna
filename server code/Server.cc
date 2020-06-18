@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 
     Server es(argv[1], argv[2]);
 
+	//quizá habría que abrir un thread para el servidor
     es.do_messages();
 
     sigemptyset(&waitset);

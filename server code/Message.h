@@ -29,8 +29,11 @@ public:
     static const size_t STR_MESSAGE_SIZE = BASE_SIZE + (sizeof(char) * MAX_STR);
 
     Message(){};
+	//tenemos una constructora por copia, pero sólamente copia los valores de Message, no de Serializable, para evitar errores de "double free"
     Message(const Message& m) : id(m.id), type(m.type), dest(m.dest), game_enum(m.game_enum), intMsg(m.intMsg), floatMsg(m.floatMsg), strMsg(m.strMsg){};
 
+	//constructoras para los tres tipos básicos de mensaje: INT, FLOAT y STR, con o sin destinatario
+	//si se quiere especificar un TYPE distinto (sólamente necesario en mensajes de cliente-servidor), se puede acceder a la variable y cambiarlo manualmente
     Message(const uint& id, const GameEnum& game_enum, const int& m):id(id), type(INT),intMsg(m), game_enum(game_enum), dest(0){};
     Message(const uint& id, const GameEnum& game_enum, const float& m):id(id), type(FLOAT),floatMsg(m), game_enum(game_enum), dest(0){};
     Message(const uint& id, const GameEnum& game_enum, const std::string& m):id(id), type(STR),strMsg(m), game_enum(game_enum), dest(0){};
@@ -84,6 +87,7 @@ public:
 
 private:
 
+	//struct que define un jugador
 	struct Player {
 		Socket* s;
 		uint32_t id;
@@ -103,15 +107,9 @@ private:
      */
     Socket socket;
 
-	bool gameStarted = false;
-
 	//funciones muy sencillas, pero que verifican que el servidor sea el servidor, y el cliente el cliente
 	int decode(int msg);
 	int encode(int msg);
-
-	std::map<Socket, Player> unverified;
-	std::vector<Player> players;
-	std::vector<int> ids_in_use;
 
 	void handshake(Socket* s, const Message& m);
 	void verify(const Message& m, Socket* s);
@@ -121,9 +119,27 @@ private:
 	int getPlayerByID(int id);
 	void tryStart();
 
+
+	//bool para indicar si se ha empezado la partida
+	bool gameStarted = false;
+
+	//bool para indicar si se han ordenado los jugadores tras empezar la partida
 	bool ordered = false;
+
+	//int que determina el turno
 	int turn = 0;
+
+	//vector que sirve para ordenar los jugadores después de que lancen el dado
 	std::vector<std::pair<int, int>> firstRoll;
+
+	//lista de jugadores sin verificar
+	std::map<Socket, Player> unverified;
+
+	//lista de jugadores verificados, máximo 4
+	std::vector<Player> players;
+
+	//lista de ids que se están usando, para evitar repetir
+	std::vector<int> ids_in_use;
 };
 
 // -----------------------------------------------------------------------------
@@ -142,29 +158,23 @@ public:
      */
     Client(const char * s, const char * p, const char * n):socket(s, p),
         nick(n)
-        {
-            //hay que asegurarse de que los rand() siempre den algo distinto
-            //así que se inicializa srand() usando el tiempo como seed, con la mayor precisión posible (microsegundos)
-            struct timeval t1;
-            gettimeofday(&t1, NULL);
-            srand(t1.tv_usec * t1.tv_sec);
-        };
+        {};
 
     virtual ~Client() { logout(); };
 
+	//funciones para enviar mensajes de login, logout y ready (señal de comenzar la partida)
     void login();
-
     void logout();
-
 	void ready();
 
+	//funciones para enviar mensajes, con o sin destinatario (siendo este el id del jugador)
 	void send(const Message::GameEnum& game_enum, const int& m);
 	void send(const Message::GameEnum& game_enum, const float& m);
 	void send(const Message::GameEnum& game_enum, const std::string& m);
 
-	void sendTo(const int& player, const Message::GameEnum& game_enum, const int& m);
-	void sendTo(const int& player, const Message::GameEnum& game_enum, const float& m);
-	void sendTo(const int& player, const Message::GameEnum& game_enum, const std::string& m);
+	void sendTo(const uint& player, const Message::GameEnum& game_enum, const int& m);
+	void sendTo(const uint& player, const Message::GameEnum& game_enum, const float& m);
+	void sendTo(const uint& player, const Message::GameEnum& game_enum, const std::string& m);
 
     /**
      *  envía mensajes en la queue
@@ -190,21 +200,23 @@ private:
      */
     std::string nick;
 
+	//orden del jugador
 	int playerNum = 0;
-
-	static const uint8_t MAX_NICK = 10;
 
 	//por seguridad, hay un límite a las colas de mensajes
 	static const uint8_t QUEUE_MAX = 50;
 
-	uint32_t id = 0;
+	//id del jugador
+	uint id = 0;
 
+	//señaliza si el cliente está o no conectado
 	bool connected = false;
 
 	//funciones muy sencillas, pero que verifican que el servidor sea el servidor, y el cliente el cliente
 	int decode(int msg);
 	int encode(int msg);
 
+	//colas de envío y recibo de mensajes
 	std::queue<Message> send_queue;
 	std::queue<Message> recv_queue;
 };

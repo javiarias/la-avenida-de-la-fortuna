@@ -3,8 +3,11 @@
 
 #include <stdlib.h>
 
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------
+// IMPORTANTE
+// ----------
+// No se ha modificado nada del código de la práctica 2.2, parte 2.
+// -----------------------------------------------------------------
 
 /**
  *  Este interfaz debe implementarlo aquellos objetos que se transmitan por red
@@ -23,7 +26,6 @@ class Serializable
 public:
 
     Serializable():_size(0), _data(0){};
-    //Serializable(const Serializable& s):_size(s._size), _data(s._data){};
 
     virtual ~Serializable()
     {

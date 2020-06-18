@@ -3,6 +3,9 @@
 #include <string.h>
 #include "Message.h"
 
+
+//thread para recibir mensajes
+//extern "C" hace que se pueda compilar en C
 extern "C" void * _recv_thread(void *arg)
 {
     Client * server = static_cast<Client *>(arg);
@@ -12,6 +15,7 @@ extern "C" void * _recv_thread(void *arg)
     return 0;
 }
 
+//thread para enviar mensajes
 extern "C" void * _send_thread(void *arg)
 {
     Client * server = static_cast<Client *>(arg);
@@ -31,12 +35,15 @@ int main(int argc, char **argv)
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 
+	//como el send va con una cola, podemos hacer login antes de iniciar los threads
     ec.login();
 
+	//inicio de threads
     pthread_create(&id, &attr, _recv_thread, static_cast<void *>(&ec));
     pthread_create(&id, &attr, _send_thread, static_cast<void *>(&ec));
 
-
+	//esto es para testear por consola
+	//permite enviar distintos mensajes al servidor
     while (true)
     {
         std::string m;

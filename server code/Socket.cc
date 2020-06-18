@@ -139,7 +139,8 @@ std::ostream& operator<<(std::ostream& os, const Socket& s)
     return os;
 };
 
-//implementado para ordenar los socket en maps. EL orden da igual
+//implementado para ordenar los socket en maps. EL orden da igual, pero por si acaso se emplean tanto el host como el server.
+//estoy seguro de que no son int, pero castearlo a int permite al menos tener un valor que poder "comparar", aunque sean datos sin sentido
 bool operator< (const Socket &s1, const Socket &s2)
 {
     char host[NI_MAXHOST];

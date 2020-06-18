@@ -12,6 +12,14 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 
+// ----------------------------------------------------------------------------------------------------------------
+// IMPORTANTE
+// ----------
+// No se ha modificado nada del código de la práctica 2.2, parte 2. Sólamente se ha añadido un operador <
+// ----------------------------------------------------------------------------------------------------------------
+
+
+
 // -----------------------------------------------------------------------------
 // Definiciones adelantadas
 // -----------------------------------------------------------------------------
@@ -30,6 +38,7 @@ bool operator== (const Socket &s1, const Socket &s2);
 //porque poner !(s1 == s2) quedaba muy feo
 bool operator!= (const Socket &s1, const Socket &s2);
 
+//operador añadido para poder emplear los sockets en maps
 bool operator< (const Socket &s1, const Socket &s2);
 
 /**
