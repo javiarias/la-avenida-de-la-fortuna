@@ -8,6 +8,8 @@
 
 #include "Serializable.h"
 #include "Socket.h"
+#include <cstdlib>
+#include <sys/time.h>
 
 class Message : public Serializable
 {
@@ -16,7 +18,7 @@ public:
 	//tipos de mensaje INTERNOS. Los tres primeros son genéricos, el resto sirven para identificar mensajes específicos de servidor-cliente
     enum Type { INT, FLOAT, STR, LOGIN, LOGOUT, HANDSHAKE, VERIFIED, FAILED, READY, FULL, NAMES, ERROR};
 
-	enum GameEnum { IGNORE, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
+	enum GameEnum { IGNORE, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
 
 
     static const uint8_t MAX_STR = 200;
@@ -66,6 +68,12 @@ public:
     Server(const char * s, const char * p): socket(s, p)
     {
         socket.bind();
+
+        //hay que asegurarse de que los rand() siempre den algo distinto
+        //así que se inicializa srand() usando el tiempo como seed, con la mayor precisión posible (microsegundos)
+        struct timeval t1;
+        gettimeofday(&t1, NULL);
+        srand(t1.tv_usec * t1.tv_sec);
     };
 
     /**
@@ -81,6 +89,7 @@ private:
 		uint32_t id;
 		std::string n;
 		bool ready = false;
+		bool firstRoll = false;
 	};
 
 	/**
@@ -132,7 +141,14 @@ public:
      * @param n nick del usuario
      */
     Client(const char * s, const char * p, const char * n):socket(s, p),
-        nick(n){};
+        nick(n)
+        {
+            //hay que asegurarse de que los rand() siempre den algo distinto
+            //así que se inicializa srand() usando el tiempo como seed, con la mayor precisión posible (microsegundos)
+            struct timeval t1;
+            gettimeofday(&t1, NULL);
+            srand(t1.tv_usec * t1.tv_sec);
+        };
 
     virtual ~Client() { logout(); };
 

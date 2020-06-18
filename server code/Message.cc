@@ -157,8 +157,10 @@ void Server::do_messages()
 					for (Player p : players)
 					{
 						if (p.id != m.id) {
-							Message msg = Message(getPlayerByID(p.id), m.id, Message::GameEnum::NAME, p.n);
+							Message msg = Message(p.id, m.id, Message::GameEnum::NAME, p.n);
+							std::cout << "sending name: " << p.n << " " << p.id << "\n";
 							send(msg);
+							std::cout << "msg sent\n";
 						}
 					}
 				}
@@ -181,15 +183,29 @@ void Server::do_messages()
 				//si aún no se ha establecido el orden, se capturan solo los mensajes de tipo ROLL
 				if (m.game_enum == Message::GameEnum::ROLL) {
 
-					firstRoll[getPlayerByID(m.id) - 1] = std::make_pair(m.intMsg, getPlayerByID(m.id) - 1);
-					turn++;
+					int i = getPlayerByID(m.id);
 
-					std::cout << "roll received!\n";
+					//se recicla la variable ready para comprobar si ha tirado ya los dados
+					if(!(players[i - 1].firstRoll))
+					{
+						//std::cout << "roll received!: " << m.intMsg << " from player " << i << '\n';
+						players[i - 1].firstRoll = true;
+						firstRoll.push_back(std::make_pair(m.intMsg, i - 1));
+						turn++;
+						send(m);
+						//std::cout << "turn: " << turn << " size: " << players.size() << '\n';
+					}
+					else
+					{
+						//std::cout << "roll repeated!: " << m.intMsg << " from player " << i << " " << players[i-1].firstRoll << '\n';
+						//std::cout << "turn: " << turn << " size: " << players.size() << '\n';
+					}
+					
 
 
 					//una vez todos los jugadores han lanzado su dado, se establece el orden
-					if (turn == players.size()) {
-
+					if (turn >= players.size())
+					{
 						std::cout << "choosing order!\n";
 
 						turn = 0;
@@ -203,8 +219,10 @@ void Server::do_messages()
 
 						//se avisa a todos los jugadores del orden, incluyendo el jugador al cual nos referimos en el id del mensaje
 						for (int i = 0; i < firstRoll.size(); i++) {
+							//std::cout << "pog\n";
+
 							std::pair<int, int> p = firstRoll[i];
-							Message msg = Message(players[p.second].id, 0, Message::GameEnum::ORDER, i);
+							Message msg = Message(i, 0, Message::GameEnum::ORDER, players[p.second].n);
 
 							send(msg);
 
@@ -216,6 +234,7 @@ void Server::do_messages()
 
 						//se envía el primer mensaje de start a TODOS, con el número de jugador
 						Message msg = Message(0, Message::GameEnum::TURN_START, turn);
+						send(msg);
 					}
 				}
 			}
@@ -223,10 +242,16 @@ void Server::do_messages()
 			{
 				if (m.game_enum == Message::GameEnum::TURN_END)
 				{
-					std::cout << "turn ended!\n";
-					turn = (turn == (players.size() - 1)) ? 0 : turn++;
-					Message msg = Message(0, Message::GameEnum::TURN_START, turn);
-					send(msg);
+					std::cout << "received turn_end from: " << getPlayerByID(m.id) << " turn is: " << turn << '\n';
+					if(turn == (getPlayerByID(m.id) - 1))
+					{
+						turn = (turn >= (players.size() - 1)) ? 0 : turn + 1;
+						Message msg = Message(0, Message::GameEnum::TURN_START, turn);
+						send(msg);
+						std::cout << "turn ended! turn is now: " << turn << "\n";
+					}
+					else
+						std::cout << "message TURN_END from wrong player!\n";
 				}
 				//si no es un mensaje de que ha acabado el turno, se reenvía
 				else
@@ -251,35 +276,51 @@ void Server::handshake(Socket* s, const Message& m)
 {
 	std::cout << "handshake protocol initiated\n";
 
-	int id = 0;
+	//se comprueba si el nick empleado ya existe
+	bool test = false;
+	for(int i = 0; i < players.size(); i++){
+		test = test || (players[i].n == m.strMsg);
+	}
 
-	//generamos un ID único para cada jugador. Se suma 1 para dejar el 0 libre, que vale como "broadcast"
-	do { id = rand() % 100000 + 1; } while (idExists(id));
+	//si existe, se envía un mensaje de error
+	if(test)
+	{
+		Message msg = Message(0, Message::REPEATED_NAME, "nickname already in use");
+		msg.type = Message::ERROR;
+		socket.send(msg, *s);
+		clients.pop_back();
+	}
+	else
+	{
+		int id = 0;
 
-	Player p;
-	p.s = s;
-	p.id = id;
-	p.n = m.strMsg;
+		//generamos un ID único para cada jugador. Se suma 5 para dejar el 0 libre, que vale como "broadcast", y del 1 al 4 libres para emplearlos como orden de jugador
+		do { id = rand() % 100000 + 5; } while (idExists(id));
 
-	unverified[(*s)] = p;
+		Player p;
+		p.s = s;
+		p.id = id;
+		p.n = m.strMsg;
 
-	std::cout << "id generated: " << p.id << '\n';
+		unverified[(*s)] = p;
 
-	//std::cout << "creating handshake message\n";
+		std::cout << "id generated: " << p.id << '\n';
 
-	int encoded = encode(id);
-	std::cout << "handshake in: " << encoded << '\n';
-	
-	Message msg = Message(0, Message::IGNORE, encoded);
-	msg.type = Message::HANDSHAKE;
-	ids_in_use.push_back(id);
+		//std::cout << "creating handshake message\n";
 
-	//std::cout << "sending handshake message\n";
+		int encoded = encode(id);
+		std::cout << "handshake in: " << encoded << '\n';
+		
+		Message msg = Message(0, Message::IGNORE, encoded);
+		msg.type = Message::HANDSHAKE;
+		ids_in_use.push_back(id);
 
-	socket.send(msg, *s);
+		//std::cout << "sending handshake message\n";
 
-	//std::cout << "handshake message sent\n";
-	
+		socket.send(msg, *s);
+
+		//std::cout << "handshake message sent\n";
+	}
 }
 
 void Server::verify(const Message& m, Socket* s)
@@ -310,7 +351,7 @@ void Server::verify(const Message& m, Socket* s)
 			}
 		}
 		else {
-			msg = Message(0, Message::IGNORE, 0);
+			msg = Message(0, Message::IGNORE, "verification failed");
 			msg.type = Message::FAILED;
 
 			std::cout << "verification failed\n";
@@ -370,20 +411,23 @@ void Server::tryStart()
 
 	if (test)
 	{
-		std::cout << "\n----\nGAME START\n----\n";
+		std::cout << "\n----\nGAME START\n----\n\n";
 		Message m = Message(0, Message::GameEnum::GAME_START, 0);
-		send(m);
-		gameStarted = true;
 
 		//se limpian los arrays de clientes y ids si se ha empezado la partida, ya que no se necesita el resto
 		clients.erase(clients.begin(), clients.end());
 		ids_in_use.erase(ids_in_use.begin(), ids_in_use.end());
+
+		//std::cout << "cleaning arrays\n";
 
 		for (Player p : players) 
 		{
 			clients.push_back(p.s);
 			ids_in_use.push_back(p.id);
 		}
+		
+		send(m);
+		gameStarted = true;
 	}
 	else
 		std::cout << "game couldn't start\n";
@@ -439,21 +483,22 @@ void Server::send(Message msg)
 	int player = msg.dest;
 	int id = msg.id;
 
-	//esto se hace para que, cuando se reenvíen los mensajes, estos tengan de procedencia el orden del jugador en vez del id (el cual los clientes no puede interpretar)
-	msg.id = getPlayerByID(id);
-
 	if (player == 0)
 	{
 		for (Player p : players)
 		{
 			if (p.id != id)
+			{
+				std::cout << "sending message from: " << id << " to: " << p.id << " in addr: " << *(p.s) << "\n";
 				socket.send(msg, *(p.s));
+			}
 		}
 	}
 	else
-		socket.send(msg, *(players[player].s));
-
-	//std::cout << "all sent!\n";
+	{
+		std::cout << "sending message from: " << id << " to: " << player << " in addr: " << *(players[getPlayerByID(player) - 1].s) << "\n";
+		socket.send(msg, *(players[getPlayerByID(player) - 1].s));
+	}
 }
 
 
@@ -548,7 +593,8 @@ void Client::recv_thread()
         
         socket.recv(msg);
 
-		std::cout << "message received!\n";
+		std::cout << msg.id;
+		std::cout << " sends: TYPE = " << msg.type << " ENUM = " << msg.game_enum << " CONTENT = " << msg.intMsg << " " << msg.floatMsg << " " << msg.strMsg << '\n';
 
 		//casos especiales para los mensajes de handshake, verified (que "conecta" al jugador y ya le deja recibir todos los mensajes), failed (en caso de haber algún error de verificación, se reintenta)
 		if (msg.type == Message::HANDSHAKE)
@@ -568,7 +614,7 @@ void Client::recv_thread()
 		}
 		else if (msg.type == Message::FAILED)
 		{
-			//login();
+			login();
 		}
 		else if (msg.game_enum == Message::GameEnum::ORDER)
 		{
@@ -577,12 +623,10 @@ void Client::recv_thread()
 		}
 		
 		//solo queremos que el jugador "reciba" (o séase, que tenga acceso mediante la cola) mensajes si ha sido verificado (incluyendo el mensaje de verificación, que dice el número de jugador)
-		//pero si el juego ya tiene 4 jugadores, queremos avisar al jugador aunque no esté "connected"
-		else if (connected || msg.type == Message::FULL || msg.game_enum == Message::NAME)
-		{
-			std::cout << msg.id;
-			std::cout << " sends: TYPE = " << msg.type << " ENUM = " << msg.game_enum << " CONTENT = " << msg.intMsg << " " << msg.floatMsg << " " << msg.strMsg << '\n';
-			
+		//pero queremos avisar al jugador aunque no esté "connected" de algunos tipos de mensaje (errores, partida llena, o recibir los nombres de otros jugadores)
+		else if (connected || msg.type == Message::FULL || msg.game_enum == Message::NAME || msg.type == Message::ERROR)
+		{		
+			std::cout << "message received!\n";	
 			recv_queue.push(msg);
 
 			if (recv_queue.size() > QUEUE_MAX)
