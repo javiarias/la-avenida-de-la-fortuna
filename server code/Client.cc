@@ -53,6 +53,10 @@ int main(int argc, char **argv)
 
             ec.send(Message::ROLL, n);
         }
+        else if(m == "logout")
+        {
+            ec.logout();
+        }
         else if(m == "end")
         {
             ec.send(Message::TURN_END, 0);
@@ -67,7 +71,7 @@ int main(int argc, char **argv)
         }
         else
         {
-            ec.send(Message::GameEnum::NAME, "hi");
+            ec.send(Message::GameEnum::NAME, m);
         }
     }
     
