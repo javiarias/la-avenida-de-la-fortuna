@@ -1,177 +1,178 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://dices.png" type="Texture" id=2]
+[ext_resource path="res://Resources/dices.png" type="Texture" id=1]
+[ext_resource path="res://Resources/icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=3]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="Banco" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -0.5, 0, -0.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_Conexion_1" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -0.5, 0, 3.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_Conexion_3" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -0.5, 0, -4.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_Conexion_4" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 3.5, 0, -0.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_1" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 1.5, 0, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_2" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -2.5, 0, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_3" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -2.5, 0, -2.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_4" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 1.5, 0, -2.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Central_Conexion_2" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -4.5, 0, -0.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="2_1" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -6.5, 0, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="2_2" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -6.5, 0, -2.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="2_3" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -8.5, 0, -4.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="2_4" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -8.5, 0, 3.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="2_5" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -11.5, 0, 2.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="2_6" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -11.5, 0, -3.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Palo_2" type="Sprite3D" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -12.5, 0, -0.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="1_1" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, 1.5, 0, 5.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="1_2" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, -2.5, 0, 5.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="1_3" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, -4.5, 0, 7.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="1_4" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, 3.5, 0, 7.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="1_5" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, 2.5, 0, 10.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="1_6" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, -3.5, 0, 10.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Palo_1" type="Sprite3D" parent="."]
 transform = Transform( -0.0287178, 1.49973, -6.55551e-08, 0, -6.55671e-08, -1.5, -1.49973, -0.0287178, 1.25529e-09, -0.5, 0, 11.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="4_1" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 5.5, 0, -2.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="4_2" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 5.5, 0, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="4_3" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 7.5, 0, 3.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="4_4" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 7.5, 0, -4.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Peaje_3_4" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 5.5, 0, -6.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Peaje_2_3" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, -6.5, 0, -6.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Peaje_1_2" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, -6.5, 0, 5.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Peaje_1_4" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 5.5, 0, 5.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="4_5" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 10.5, 0, -3.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="4_6" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 10.5, 0, 2.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Palo_4" type="Sprite3D" parent="."]
 transform = Transform( -1.49998, -0.00822067, 3.59337e-10, 0, -6.55671e-08, -1.5, 0.00822067, -1.49998, 6.55661e-08, 11.5, 0, -0.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="3_1" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, -2.5, 0, -6.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="3_2" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, 1.5, 0, -6.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="3_3" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, 3.5, 0, -8.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="3_4" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, -4.5, 0, -8.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="3_5" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, -3.5, 0, -11.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="3_6" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, 2.5, 0, -11.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Palo_3" type="Sprite3D" parent="."]
 transform = Transform( -0.0159953, -1.49991, 6.55633e-08, 0, -6.55671e-08, -1.5, 1.49991, -0.0159953, 6.99178e-10, -0.5, 0, -12.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Dice" type="Sprite3D" parent="."]
 transform = Transform( 5, 0, 0, 0, -8.14603e-07, -5, 0, 5, -8.14603e-07, 0, 4.00952, 0 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 vframes = 2
 hframes = 3
 
@@ -182,14 +183,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI"]
-margin_right = 1015.0
-margin_bottom = 14.0
+[node name="Botones Default" type="VBoxContainer" parent="GUI"]
+margin_right = 259.0
+margin_bottom = 201.0
 
-[node name="Sample Text" type="Label" parent="GUI/MarginContainer"]
-margin_right = 1015.0
-margin_bottom = 14.0
-text = "AAAAAA"
+[node name="Button" type="Button" parent="GUI/Botones Default"]
+margin_right = 259.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 3 )
+text = "Tirar dado"
+
+[node name="Button2" type="Button" parent="GUI/Botones Default"]
+margin_top = 41.0
+margin_right = 259.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 3 )
+text = "Ver tablero"
+
+[node name="Button3" type="Button" parent="GUI/Botones Default"]
+margin_top = 82.0
+margin_right = 259.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 3 )
+text = "Gestionar Acciones"
+
+[node name="Button4" type="Button" parent="GUI/Botones Default"]
+margin_top = 123.0
+margin_right = 259.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 3 )
+text = "Gestionar tiendas"
+
+[node name="Button5" type="Button" parent="GUI/Botones Default"]
+margin_top = 164.0
+margin_right = 259.0
+margin_bottom = 201.0
+custom_fonts/font = ExtResource( 3 )
+text = "Otros"
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 20, 0 )
