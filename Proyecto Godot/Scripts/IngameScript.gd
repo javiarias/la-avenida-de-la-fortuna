@@ -5,8 +5,18 @@ extends Control
 # var b = "text"
 var diced
 var dice = 0
-var propierties = [] #Cada casilla es una propiedad
-var stocks = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
+
+var propiertiesP1 = [] #Cada casilla es una propiedad
+var propiertiesP2 = [] #Cada casilla es una propiedad
+var propiertiesP3 = [] #Cada casilla es una propiedad
+var propiertiesP4 = [] #Cada casilla es una propiedad
+var playerProperties = [propiertiesP1, propiertiesP2, propiertiesP3, propiertiesP4] #todas las propiedades
+
+var stocksP1 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
+var stocksP2 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
+var stocksP3 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
+var stocksP4 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
+var playerStocks = [stocksP1, stocksP2, stocksP3, stocksP4] #Cada casilla es un distrito, [Central,1,2,3,4]
 
 #Adyacencias
 var ady_Banco = ["Central_1", "Central_2", "Central_3", "Central_4"]
@@ -69,10 +79,6 @@ func _ready():
 #Dado
 func roll_dice():
 	pass
-
-func _on_DiceButton_pressed():
-	#if (variable de control == 0):
-		dice()
 
 func dice():
 	if diced:
@@ -139,7 +145,7 @@ func sell_Shop():
 	pass
 
 #Que tienda, que precio, a quien se hace la oferta
-#Buscar en el array de properties, y borrar
+#Buscar en el array de properties del jugador que toque, y borrar
 
 ############
 func buy_Shop():
@@ -147,7 +153,7 @@ func buy_Shop():
 
 #Que tienda, que precio, a quien se hace la oferta
 #Comprobar que tiene dineros
-#Añadir al array de properties
+#Añadir al array de properties del jugador que toque
 
 ############
 func change_Shop():
@@ -202,3 +208,7 @@ func options():
 
 
 
+
+
+func _on_Button_pressed():
+	pass # Replace with function body.

@@ -61,7 +61,7 @@ scene_to_load = "res://Scenes/Continue.tscn"
 margin_top = 210.0
 margin_right = 510.0
 margin_bottom = 270.0
-scene_to_load = "res://Scenes/Options.tscn"
+scene_to_load = ""
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
 margin_left = 514.0
@@ -87,4 +87,5 @@ text = "Version 1.0.0
 Boomer Studios"
 
 [node name="FadeIn" parent="." instance=ExtResource( 2 )]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
