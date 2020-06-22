@@ -7,6 +7,7 @@ func _ready():
 	for button in $Menu/CenterRow/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 
+#En vez de foreach, habra que meter otro botón para el exit?
 
 func _on_Button_pressed(scene_to_load):
 	$FadeIn.show()
