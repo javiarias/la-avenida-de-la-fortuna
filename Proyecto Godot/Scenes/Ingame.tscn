@@ -195,158 +195,208 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/GUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GUI"]
+margin_right = 1361.0
+margin_bottom = 345.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GUI/VBoxContainer"]
 margin_right = 1361.0
 margin_bottom = 242.0
 
-[node name="Botones Default" type="VBoxContainer" parent="Control/GUI/HBoxContainer"]
+[node name="Botones Default" type="VBoxContainer" parent="Control/GUI/VBoxContainer/HBoxContainer"]
 margin_right = 259.0
 margin_bottom = 242.0
 
-[node name="Tirar Dado" type="Button" parent="Control/GUI/HBoxContainer/Botones Default"]
+[node name="Tirar Dado" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Default"]
 margin_right = 259.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 3 )
 text = "Tirar dado"
 
-[node name="Ver Tablero" type="Button" parent="Control/GUI/HBoxContainer/Botones Default"]
+[node name="Ver Tablero" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Default"]
 margin_top = 41.0
 margin_right = 259.0
 margin_bottom = 78.0
 custom_fonts/font = ExtResource( 3 )
 text = "Ver tablero"
 
-[node name="Gestionar Acciones" type="Button" parent="Control/GUI/HBoxContainer/Botones Default"]
+[node name="Gestionar Acciones" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Default"]
 margin_top = 82.0
 margin_right = 259.0
 margin_bottom = 119.0
 custom_fonts/font = ExtResource( 3 )
 text = "Gestionar Acciones"
 
-[node name="Gestionar Tiendas" type="Button" parent="Control/GUI/HBoxContainer/Botones Default"]
+[node name="Gestionar Tiendas" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Default"]
 margin_top = 123.0
 margin_right = 259.0
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 3 )
 text = "Gestionar tiendas"
 
-[node name="Otros" type="Button" parent="Control/GUI/HBoxContainer/Botones Default"]
+[node name="Otros" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Default"]
 margin_top = 164.0
 margin_right = 259.0
 margin_bottom = 201.0
 custom_fonts/font = ExtResource( 3 )
 text = "Otros"
 
-[node name="Flecha >" type="TextureRect" parent="Control/GUI/HBoxContainer"]
+[node name="Flecha >" type="TextureRect" parent="Control/GUI/VBoxContainer/HBoxContainer"]
 margin_left = 263.0
-margin_top = 75.0
 margin_right = 326.0
-margin_bottom = 130.0
+margin_bottom = 242.0
 texture = ExtResource( 2 )
 
-[node name="Botones Gestionar Tiendas" type="VBoxContainer" parent="Control/GUI/HBoxContainer"]
+[node name="Botones Gestionar Tiendas" type="VBoxContainer" parent="Control/GUI/VBoxContainer/HBoxContainer"]
 margin_left = 330.0
 margin_right = 599.0
 margin_bottom = 242.0
 
-[node name="Subasta" type="Button" parent="Control/GUI/HBoxContainer/Botones Gestionar Tiendas"]
+[node name="Subasta" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas"]
 margin_right = 269.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 3 )
 text = "Subasta"
 
-[node name="Vender Tienda" type="Button" parent="Control/GUI/HBoxContainer/Botones Gestionar Tiendas"]
+[node name="Vender Tienda" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas"]
 margin_top = 41.0
 margin_right = 269.0
 margin_bottom = 78.0
 custom_fonts/font = ExtResource( 3 )
 text = "Vender Tienda"
 
-[node name="Comprar Tienda" type="Button" parent="Control/GUI/HBoxContainer/Botones Gestionar Tiendas"]
+[node name="Comprar Tienda" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas"]
 margin_top = 82.0
 margin_right = 269.0
 margin_bottom = 119.0
 custom_fonts/font = ExtResource( 3 )
 text = "Comprar Tienda"
 
-[node name="Intercambiar Tienda" type="Button" parent="Control/GUI/HBoxContainer/Botones Gestionar Tiendas"]
+[node name="Intercambiar Tienda" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas"]
 margin_top = 123.0
 margin_right = 269.0
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 3 )
 text = "Intercambiar tienda"
 
-[node name="\?" type="Button" parent="Control/GUI/HBoxContainer/Botones Gestionar Tiendas"]
+[node name="\?" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas"]
 margin_top = 164.0
 margin_right = 269.0
 margin_bottom = 201.0
 custom_fonts/font = ExtResource( 3 )
 text = "?"
 
-[node name="Flecha >2" type="TextureRect" parent="Control/GUI/HBoxContainer"]
+[node name="Flecha >2" type="TextureRect" parent="Control/GUI/VBoxContainer/HBoxContainer"]
 margin_left = 603.0
-margin_top = 75.0
 margin_right = 666.0
-margin_bottom = 130.0
+margin_bottom = 242.0
 texture = ExtResource( 2 )
 
-[node name="Botones Otros" type="VBoxContainer" parent="Control/GUI/HBoxContainer"]
+[node name="Botones Otros" type="VBoxContainer" parent="Control/GUI/VBoxContainer/HBoxContainer"]
 margin_left = 670.0
 margin_right = 976.0
 margin_bottom = 242.0
 
-[node name="Puntuación Individual" type="Button" parent="Control/GUI/HBoxContainer/Botones Otros"]
+[node name="Puntuación Individual" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros"]
 margin_right = 306.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 3 )
 text = "Puntuación individual"
 
-[node name="Puntuaciones Globales" type="Button" parent="Control/GUI/HBoxContainer/Botones Otros"]
+[node name="Puntuaciones Globales" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros"]
 margin_top = 41.0
 margin_right = 306.0
 margin_bottom = 78.0
 custom_fonts/font = ExtResource( 3 )
 text = "Puntuaciones globales"
 
-[node name="Condiciones de Victoria" type="Button" parent="Control/GUI/HBoxContainer/Botones Otros"]
+[node name="Condiciones de Victoria" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros"]
 margin_top = 82.0
 margin_right = 306.0
 margin_bottom = 119.0
 custom_fonts/font = ExtResource( 3 )
 text = "Condición de victoria"
 
-[node name="¿Opciones\?" type="Button" parent="Control/GUI/HBoxContainer/Botones Otros"]
+[node name="¿Opciones\?" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros"]
 margin_top = 123.0
 margin_right = 306.0
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 3 )
 text = "¿Opciones?"
 
-[node name="¿Out for Lunch\?" type="Button" parent="Control/GUI/HBoxContainer/Botones Otros"]
+[node name="¿Out for Lunch\?" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros"]
 margin_top = 164.0
 margin_right = 306.0
 margin_bottom = 201.0
 custom_fonts/font = ExtResource( 3 )
 text = "¿Out for lunch?"
 
-[node name="¿Quick Save\?" type="Button" parent="Control/GUI/HBoxContainer/Botones Otros"]
+[node name="¿Quick Save\?" type="Button" parent="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros"]
 margin_top = 205.0
 margin_right = 306.0
 margin_bottom = 242.0
 custom_fonts/font = ExtResource( 3 )
 text = "¿Quick Save?"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/GUI/VBoxContainer"]
+margin_top = 246.0
+margin_right = 1361.0
+margin_bottom = 345.0
+
+[node name="Label J1" type="Label" parent="Control/GUI/VBoxContainer/HBoxContainer2"]
+margin_right = 132.0
+margin_bottom = 99.0
+text = "J1. PPP
+
+Tiene mazo de pasta
+
+Y mazo de acciones
+"
+
+[node name="Label J2" type="Label" parent="Control/GUI/VBoxContainer/HBoxContainer2"]
+margin_left = 136.0
+margin_top = 8.0
+margin_right = 244.0
+margin_bottom = 90.0
+text = "J2. Aliento rancio
+
+Está to pobre
+
+Y huele mal"
+
+[node name="Label J3" type="Label" parent="Control/GUI/VBoxContainer/HBoxContainer2"]
+margin_left = 248.0
+margin_top = 8.0
+margin_right = 410.0
+margin_bottom = 90.0
+text = "J3. Ana la Feliz
+
+Te roba todos los dineros
+
+Y si no, te grita"
+
+[node name="Label J4" type="Label" parent="Control/GUI/VBoxContainer/HBoxContainer2"]
+margin_left = 414.0
+margin_top = 8.0
+margin_right = 542.0
+margin_bottom = 90.0
+text = "J4. Segundo Peinado
+
+JAJAJAJAJAJAJAJAJAJAJ
+
+JAJAJAJAJAJAJAJAJAJ"
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 20, 0 )
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Default/Gestionar Tiendas" to="Control" method="manage_stores"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Default/Otros" to="Control" method="others"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Gestionar Tiendas/Subasta" to="Control" method="auction"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Gestionar Tiendas/Vender Tienda" to="Control" method="sell_Shop"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Gestionar Tiendas/Comprar Tienda" to="Control" method="buy_Shop"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Gestionar Tiendas/Intercambiar Tienda" to="Control" method="change_Shop"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Otros/Puntuación Individual" to="Control" method="individual_Score"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Otros/Puntuaciones Globales" to="Control" method="global_Score"]
-[connection signal="pressed" from="Control/GUI/HBoxContainer/Botones Otros/Condiciones de Victoria" to="Control" method="win_Condition"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Tiendas" to="Control" method="manage_stores"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Otros" to="Control" method="others"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas/Subasta" to="Control" method="auction"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas/Vender Tienda" to="Control" method="sell_Shop"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas/Comprar Tienda" to="Control" method="buy_Shop"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Gestionar Tiendas/Intercambiar Tienda" to="Control" method="change_Shop"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Puntuación Individual" to="Control" method="individual_Score"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Puntuaciones Globales" to="Control" method="global_Score"]
+[connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Condiciones de Victoria" to="Control" method="win_Condition"]
