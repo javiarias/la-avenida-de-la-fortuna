@@ -1,4 +1,4 @@
-extends Control
+extends Spatial
 
 class Square:
 	var Name: String
@@ -18,18 +18,16 @@ class Player:
 	var Score: int
 	var properties = [] #Esto tendria que ser array solo de squares, pero asi vale
 	var stocks = [0,0,0,0,0]
+	
 
-class GameManager:
-	var Name: String
-	var Level: int
-	var Players: Player #Array
 
 
 #Variables
 # var a = 2
 # var b = "text"
-var diced
+var rolled = false
 var dice = 0
+var players = [] #Array
 
 #var propiertiesP1 = [] #Cada casilla es una propiedad
 #var propiertiesP2 = [] #Cada casilla es una propiedad
@@ -60,13 +58,13 @@ func roll_dice():
 	pass
 
 func dice():
-	if diced:
+	if rolled:
 		return
 		
 	dice = randi() % 6
 	$Dice.frame = dice
 	$DiceButton.disabled = true
-	diced = true
+	rolled = true
 	#tempElapsed = 0
 	#diceMovement = 0
 	

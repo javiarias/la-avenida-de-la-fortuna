@@ -5,6 +5,9 @@ export(Array, String) var adjacencies = []
 enum Type {BANK, BUILD, SUIT}
 export(Type) var type = Type.BUILD
 
+func getAdjacencies():
+	return adjacencies
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

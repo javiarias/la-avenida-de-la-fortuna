@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/dices.png" type="Texture" id=1]
 [ext_resource path="res://Resources/FlechaDerHover.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scripts/IngameScript.gd" type="Script" id=4]
 [ext_resource path="res://Resources/box.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/scripts/node.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/node.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/RigidBody.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
+
+[sub_resource type="CubeMesh" id=1]
 
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Banco" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, -0.5 )
@@ -17,11 +22,15 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_1", "Central_2", "Central_3", "Central_4" ]
 type = 0
 
+[node name="RigidBody" parent="Banco" instance=ExtResource( 7 )]
+
 [node name="Central_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 1.5, 0, 1.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "Central_Conexion_4", "Banco" ]
+
+[node name="RigidBody" parent="Central_1" instance=ExtResource( 7 )]
 
 [node name="Central_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -2.5, 0, 1.5 )
@@ -29,11 +38,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "Central_Conexion_2", "Banco" ]
 
+[node name="RigidBody" parent="Central_2" instance=ExtResource( 7 )]
+
 [node name="Central_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -2.5, 0, -2.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "Central_Conexion_3", "Banco" ]
+
+[node name="RigidBody" parent="Central_3" instance=ExtResource( 7 )]
 
 [node name="Central_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 1.5, 0, -2.5 )
@@ -41,11 +54,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "Central_Conexion_4", "Banco" ]
 
+[node name="RigidBody" parent="Central_4" instance=ExtResource( 7 )]
+
 [node name="Central_Conexion_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, 3.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "1_1", "1_2", "Central_1", "Central_2" ]
+
+[node name="RigidBody" parent="Central_Conexion_1" instance=ExtResource( 7 )]
 
 [node name="Central_Conexion_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -4.5, 0, -0.5 )
@@ -53,11 +70,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_1", "2_2", "Central_2", "Central_3" ]
 
+[node name="RigidBody" parent="Central_Conexion_2" instance=ExtResource( 7 )]
+
 [node name="Central_Conexion_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, -4.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_1", "3_2", "Central_3", "Central_4" ]
+
+[node name="RigidBody" parent="Central_Conexion_3" instance=ExtResource( 7 )]
 
 [node name="Central_Conexion_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 3.5, 0, -0.5 )
@@ -65,11 +86,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_1", "4_2", "Central_4", "Central_1" ]
 
+[node name="RigidBody" parent="Central_Conexion_4" instance=ExtResource( 7 )]
+
 [node name="1_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, 1.5, 0, 5.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "1_4" ]
+
+[node name="RigidBody" parent="1_1" instance=ExtResource( 7 )]
 
 [node name="1_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, -2.5, 0, 5.5 )
@@ -77,11 +102,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "1_3" ]
 
+[node name="RigidBody" parent="1_2" instance=ExtResource( 7 )]
+
 [node name="1_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, -4.5, 0, 7.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_2", "1_2", "1_6" ]
+
+[node name="RigidBody" parent="1_3" instance=ExtResource( 7 )]
 
 [node name="1_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, 3.5, 0, 7.5 )
@@ -89,11 +118,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_4", "1_1", "1_5" ]
 
+[node name="RigidBody" parent="1_4" instance=ExtResource( 7 )]
+
 [node name="1_5" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 2.5, 0, 10.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_1", "1_4" ]
+
+[node name="RigidBody" parent="1_5" instance=ExtResource( 7 )]
 
 [node name="1_6" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -3.5, 0, 10.5 )
@@ -101,11 +134,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_1", "1_3" ]
 
+[node name="RigidBody" parent="1_6" instance=ExtResource( 7 )]
+
 [node name="2_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, 1.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "2_4" ]
+
+[node name="RigidBody" parent="2_1" instance=ExtResource( 7 )]
 
 [node name="2_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, -2.5 )
@@ -113,11 +150,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "2_3" ]
 
+[node name="RigidBody" parent="2_2" instance=ExtResource( 7 )]
+
 [node name="2_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -8.5, 0, -4.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_2_3", "2_2", "2_6" ]
+
+[node name="RigidBody" parent="2_3" instance=ExtResource( 7 )]
 
 [node name="2_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -8.5, 0, 3.5 )
@@ -125,11 +166,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_2", "2_5", "2_1" ]
 
+[node name="RigidBody" parent="2_4" instance=ExtResource( 7 )]
+
 [node name="2_5" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -11.5, 0, 2.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_2", "2_4" ]
+
+[node name="RigidBody" parent="2_5" instance=ExtResource( 7 )]
 
 [node name="2_6" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -11.5, 0, -3.5 )
@@ -137,11 +182,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_3", "Palo_2" ]
 
+[node name="RigidBody" parent="2_6" instance=ExtResource( 7 )]
+
 [node name="3_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -2.5, 0, -6.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "3_4" ]
+
+[node name="RigidBody" parent="3_1" instance=ExtResource( 7 )]
 
 [node name="3_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 1.5, 0, -6.5 )
@@ -149,11 +198,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "3_3" ]
 
+[node name="RigidBody" parent="3_2" instance=ExtResource( 7 )]
+
 [node name="3_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 3.5, 0, -8.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_3_4", "3_2", "3_6" ]
+
+[node name="RigidBody" parent="3_3" instance=ExtResource( 7 )]
 
 [node name="3_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -4.5373, 0, -8.48135 )
@@ -161,11 +214,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_1", "3_5", "Peaje_2_3" ]
 
+[node name="RigidBody" parent="3_4" instance=ExtResource( 7 )]
+
 [node name="3_5" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -3.5, 0, -11.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_3", "3_4" ]
+
+[node name="RigidBody" parent="3_5" instance=ExtResource( 7 )]
 
 [node name="3_6" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 2.5, 0, -11.5 )
@@ -173,11 +230,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_3", "3_3" ]
 
+[node name="RigidBody" parent="3_6" instance=ExtResource( 7 )]
+
 [node name="4_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, -2.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_4", "4_4" ]
+
+[node name="RigidBody" parent="4_1" instance=ExtResource( 7 )]
 
 [node name="4_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, 1.5 )
@@ -185,11 +246,15 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_4", "4_3" ]
 
+[node name="RigidBody" parent="4_2" instance=ExtResource( 7 )]
+
 [node name="4_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 7.5, 0, 3.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_4", "4_2", "4_6" ]
+
+[node name="RigidBody" parent="4_3" instance=ExtResource( 7 )]
 
 [node name="4_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 7.5, 0, -4.5 )
@@ -197,17 +262,23 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_3_4", "4_1", "4_5" ]
 
+[node name="RigidBody" parent="4_4" instance=ExtResource( 7 )]
+
 [node name="4_5" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 10.5, 0, -3.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_4", "Palo_4" ]
 
+[node name="RigidBody" parent="4_5" instance=ExtResource( 7 )]
+
 [node name="4_6" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 10.5, 0, 2.5 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_4", "4_3" ]
+
+[node name="RigidBody" parent="4_6" instance=ExtResource( 7 )]
 
 [node name="Palo_1" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, 11.5 )
@@ -216,12 +287,16 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "1_6", "1_5" ]
 
+[node name="RigidBody" parent="Palo_1" instance=ExtResource( 7 )]
+
 [node name="Palo_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -12.5, 0, -0.5 )
 modulate = Color( 1, 0.278431, 0.952941, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_6", "2_5" ]
+
+[node name="RigidBody" parent="Palo_2" instance=ExtResource( 7 )]
 
 [node name="Palo_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, -12.5 )
@@ -230,12 +305,16 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_5", "3_6" ]
 
+[node name="RigidBody" parent="Palo_3" instance=ExtResource( 7 )]
+
 [node name="Palo_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 11.5, 0, -0.5 )
 modulate = Color( 1, 0.278431, 0.952941, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_5", "4_6" ]
+
+[node name="RigidBody" parent="Palo_4" instance=ExtResource( 7 )]
 
 [node name="Peaje_1_2" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, 5.5 )
@@ -244,12 +323,16 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "1_3", "2_4" ]
 
+[node name="RigidBody" parent="Peaje_1_2" instance=ExtResource( 7 )]
+
 [node name="Peaje_2_3" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, -6.5 )
 modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_3", "3_4" ]
+
+[node name="RigidBody" parent="Peaje_2_3" instance=ExtResource( 7 )]
 
 [node name="Peaje_3_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, -6.5 )
@@ -258,12 +341,16 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_3", "4_4" ]
 
+[node name="RigidBody" parent="Peaje_3_4" instance=ExtResource( 7 )]
+
 [node name="Peaje_1_4" type="Sprite3D" parent="."]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, 5.5 )
 modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_3", "1_4" ]
+
+[node name="RigidBody" parent="Peaje_1_4" instance=ExtResource( 7 )]
 
 [node name="Dice" type="Sprite3D" parent="."]
 transform = Transform( 5, 0, 0, 0, -8.14603e-07, -5, 0, 5, -8.14603e-07, 13.011, 4.01, 0 )
@@ -272,9 +359,9 @@ vframes = 2
 hframes = 3
 
 [node name="Control" type="Control" parent="."]
+visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -481,6 +568,15 @@ JAJAJAJAJAJAJAJAJAJ"
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 20, 0 )
+
+[node name="Player" type="Spatial" parent="."]
+transform = Transform( 2.2506, 0, 0, 0, 2.2506, 0, 0, 0, 2.2506, -0.5, 0.342852, -0.5 )
+script = ExtResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
+transform = Transform( 0.11363, 0, 0, 0, 0.11363, 0, 0, 0, 0.11363, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]
