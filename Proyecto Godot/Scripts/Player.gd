@@ -1,56 +1,74 @@
 extends Spatial
 
+var path = "../tiles/"
 var currentNode = "Banco"
-var moves = 10
-var roll = 10
+var moves = 0
+var roll = 0
 var myTurn = true
 var movement = []
+
+var canEndMovement = false
 
 var gameManager
 
 
 func cellClicked(name):
 	if moves > 0:
-		for cell in get_node("../" + currentNode).getAdjacencies() :
-			if cell == name :
-				moves -= 1
-				movement.append(currentNode)
-				
-				#print(name)
-				
-				currentNode = name
-				var cellPos = get_node("../" + currentNode).global_transform.origin
-				global_transform.origin = Vector3(cellPos.x, global_transform.origin.y, cellPos.z)
-				
-				if moves == 0:
-					pass#gameManager.canEndMovement()
-				
-				return
+		if movement.size() > 0 and name == movement.back():
+			reverse()
+		
+		else:
+			for cell in get_node(path + currentNode).getAdjacencies() :
+				if cell == name :
+					moves -= 1
+					if moves > 0:
+						get_node("../Dice").frame = moves - 1
+					else:
+						get_node("../Dice").visible = false
+						
+					movement.append(currentNode)
+					
+					currentNode = name
+					var cellPos = get_node(path + currentNode).global_transform.origin
+					global_transform.origin = Vector3(cellPos.x, global_transform.origin.y, cellPos.z)
+					
+					if moves == 0:
+						gameManager.canEndMovement()
+						canEndMovement = true
+					
+					return
 
 func newRoll(rolled):
 	moves = rolled
 	roll = rolled
 	movement.clear()
-	
+	canEndMovement = false
+
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == 2:
-			reverse()
-		
+	if not canEndMovement:
+		if event is InputEventMouseButton:
+			if event.pressed and event.button_index == 2:
+				reverse()
+
 
 func reverse():
 	if myTurn and moves < roll:		
-		var cellPos = get_node("../" + movement.back()).global_transform.origin
+		var cellPos = get_node(path + movement.back()).global_transform.origin
 		currentNode = movement.back()
 		movement.pop_back()
 		global_transform.origin = Vector3(cellPos.x, global_transform.origin.y, cellPos.z)
+		
+		if moves == 0:
+			get_node("../Dice").visible = true			
+			canEndMovement = false
+			
 		moves += 1
-		print(moves)
+		get_node("../Dice").frame = moves - 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	gameManager = get_node("..")
+	gameManager = get_tree().get_root().get_child(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

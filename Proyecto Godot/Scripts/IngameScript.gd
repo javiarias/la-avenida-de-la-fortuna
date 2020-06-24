@@ -23,11 +23,12 @@ class Player:
 
 
 #Variables
-# var a = 2
-# var b = "text"
 var rolled = false
 var dice = 0
-var players = [] #Array
+var players = ["Player1"] #Array
+var turn = 0
+
+var UIPath = "./TempUI/"
 
 #var propiertiesP1 = [] #Cada casilla es una propiedad
 #var propiertiesP2 = [] #Cada casilla es una propiedad
@@ -48,23 +49,27 @@ func _ready():
 #Enganchar botones con funciones
 
 # El update
-#func _process(delta):
-#	pass
+func _process(delta):
+	if not rolled and get_node(UIPath + "rollButton").visible == false:
+		get_node(UIPath + "rollButton").visible = true
+		get_node("Dice").rolling = true
 
 #Funciones adicionales
 
-#Dado
-func roll_dice():
+func moveEnded():
 	pass
 
-func dice():
+#Dado
+func roll_dice():
 	if rolled:
 		return
-		
-	dice = randi() % 6
-	$Dice.frame = dice
-	$DiceButton.disabled = true
+	
+	get_node("Dice").rolling = false
+	dice = randi() % 6 + 1
+	$Dice.frame = dice - 1
+	#$DiceButton.disabled = true
 	rolled = true
+	get_node(players[turn]).newRoll(dice)
 	#tempElapsed = 0
 	#diceMovement = 0
 	
@@ -76,12 +81,6 @@ func dice():
 #Al llegar a 0 movimientos restantes, pedir confirmacion
 #Si si, hacer un set, si no, reset a la posicion inicial
 #Al hacer Set, comprobar casilla, si está ocupada (pagar) o no (comprar)
-
-func move_Left():
-	pass
-
-func move_Right():
-	pass
 
 ############
 func look_board():
@@ -204,6 +203,9 @@ func buySquare_Board(player : Player, square : Square):
 	
 	#Algo mas?
 
+func canEndMovement():
+	get_node(UIPath + "moveButtons").visible = true
+	
 #???
 
 ############
@@ -229,3 +231,17 @@ func buySquare_Board(player : Player, square : Square):
 
 func _on_Button_pressed():
 	pass # Replace with function body.
+
+func rollButton_pressed():
+	roll_dice()
+	get_node(UIPath + "rollButton").visible = false
+
+
+func acceptMove_pressed():
+	moveEnded()
+	get_node(UIPath + "moveButtons").visible = false
+
+
+func cancelMove_pressed():
+	get_node("./" + players[turn]).reverse()
+	get_node(UIPath + "moveButtons").visible = false
