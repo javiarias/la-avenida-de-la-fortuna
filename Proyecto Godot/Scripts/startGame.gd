@@ -25,7 +25,17 @@ func pauseGame():
 func acceptMove_pressed():
 	get_node(UIPath + "moveButtons").visible = false
 	
-	#PlayerInfo.Position.Name = PlayerInfo.currentNode
+	#para que no se queden los dos en la misma casilla
+	var j = gameManager.getTurn()
+	for i in gameManager.players:
+		if (i != gameManager.players[j]):
+			if (get_node(i).currentNode == get_node(gameManager.players[j]).currentNode):
+				var pos = get_node(i).global_transform.origin
+				global_transform.origin = Vector3(pos.x - 1, global_transform.origin.y, pos.z)
+					
+				var pos2 = get_node(gameManager.players[j]).global_transform.origin
+				global_transform.origin = Vector3(pos2.x + 1, global_transform.origin.y, pos2.z)					
+					
 	gameManager.moveEnded()
 
 func cancelMove_pressed():
@@ -41,7 +51,8 @@ func buyFreeBuilding_pressed():
 	player.Cash = player.Cash - node.Price
 	node.free = false
 	node.Owner = player.Name
-	
+	node.get_child((1)).set_text(String(node.Value))
+	node.get_child((2)).visible = true
 	#Algo mas?
 	get_node(UIPath + "FreeBuildingButtons").visible = false
 	gameManager.endTurn()

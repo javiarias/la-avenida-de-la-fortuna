@@ -3,5 +3,4 @@
 [ext_resource path="res://Scenes/AUX_title_screen/fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 10
 font_data = ExtResource( 1 )

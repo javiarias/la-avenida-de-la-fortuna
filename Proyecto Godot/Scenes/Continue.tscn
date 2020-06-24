@@ -4,21 +4,23 @@
 [ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=3]
 
-
 [node name="Continue" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 336.0
-margin_top = 230.0
-margin_right = 688.0
-margin_bottom = 369.0
+margin_left = 464.0
+margin_top = 295.0
+margin_right = 816.0
+margin_bottom = 424.0
 custom_constants/separation = 50
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -33,7 +35,7 @@ text = "Continue Scene"
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 102.0
 margin_right = 352.0
-margin_bottom = 139.0
+margin_bottom = 129.0
 custom_fonts/font = ExtResource( 3 )
 text = "Back"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Resources/dices.png" type="Texture" id=1]
 [ext_resource path="res://Resources/FlechaDerHover.png" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://Resources/player3.tres" type="Material" id=21]
 [ext_resource path="res://Resources/player4.tres" type="Material" id=22]
 [ext_resource path="res://Scripts/startGame.gd" type="Script" id=23]
+[ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=24]
+[ext_resource path="res://Resources/building.obj" type="ArrayMesh" id=25]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -451,6 +453,30 @@ adjacencies = [ "Central_Conexion_1", "Central_Conexion_4", "Banco" ]
 
 [node name="RigidBody" parent="tiles/Central_1" instance=ExtResource( 7 )]
 
+[node name="Label3D" type="Spatial" parent="tiles/Central_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building32" type="MeshInstance" parent="tiles/Central_1"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="Central_2" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -2.5, 0, 1.5 )
 texture = ExtResource( 5 )
@@ -458,6 +484,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "Central_Conexion_2", "Banco" ]
 
 [node name="RigidBody" parent="tiles/Central_2" instance=ExtResource( 7 )]
+
+[node name="Label3D2" type="Spatial" parent="tiles/Central_2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building31" type="MeshInstance" parent="tiles/Central_2"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="Central_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -2.5, 0, -2.5 )
@@ -467,6 +517,30 @@ adjacencies = [ "Central_Conexion_2", "Central_Conexion_3", "Banco" ]
 
 [node name="RigidBody" parent="tiles/Central_3" instance=ExtResource( 7 )]
 
+[node name="Label3D3" type="Spatial" parent="tiles/Central_3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building30" type="MeshInstance" parent="tiles/Central_3"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="Central_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 1.5, 0, -2.5 )
 texture = ExtResource( 5 )
@@ -474,6 +548,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "Central_Conexion_4", "Banco" ]
 
 [node name="RigidBody" parent="tiles/Central_4" instance=ExtResource( 7 )]
+
+[node name="Label3D4" type="Spatial" parent="tiles/Central_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building29" type="MeshInstance" parent="tiles/Central_4"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="Central_Conexion_1" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, 3.5 )
@@ -483,6 +581,30 @@ adjacencies = [ "1_1", "1_2", "Central_1", "Central_2" ]
 
 [node name="RigidBody" parent="tiles/Central_Conexion_1" instance=ExtResource( 7 )]
 
+[node name="Label3D5" type="Spatial" parent="tiles/Central_Conexion_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building28" type="MeshInstance" parent="tiles/Central_Conexion_1"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="Central_Conexion_2" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -4.5, 0, -0.5 )
 texture = ExtResource( 5 )
@@ -490,6 +612,30 @@ script = ExtResource( 6 )
 adjacencies = [ "2_1", "2_2", "Central_2", "Central_3" ]
 
 [node name="RigidBody" parent="tiles/Central_Conexion_2" instance=ExtResource( 7 )]
+
+[node name="Label3D6" type="Spatial" parent="tiles/Central_Conexion_2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building27" type="MeshInstance" parent="tiles/Central_Conexion_2"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="Central_Conexion_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, -4.5 )
@@ -499,6 +645,30 @@ adjacencies = [ "3_1", "3_2", "Central_3", "Central_4" ]
 
 [node name="RigidBody" parent="tiles/Central_Conexion_3" instance=ExtResource( 7 )]
 
+[node name="Label3D7" type="Spatial" parent="tiles/Central_Conexion_3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building26" type="MeshInstance" parent="tiles/Central_Conexion_3"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="Central_Conexion_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 3.5, 0, -0.5 )
 texture = ExtResource( 5 )
@@ -506,6 +676,30 @@ script = ExtResource( 6 )
 adjacencies = [ "4_1", "4_2", "Central_4", "Central_1" ]
 
 [node name="RigidBody" parent="tiles/Central_Conexion_4" instance=ExtResource( 7 )]
+
+[node name="Label3D8" type="Spatial" parent="tiles/Central_Conexion_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building25" type="MeshInstance" parent="tiles/Central_Conexion_4"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="1_1" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, 1.5, 0, 5.5 )
@@ -515,6 +709,30 @@ adjacencies = [ "Central_Conexion_1", "1_4" ]
 
 [node name="RigidBody" parent="tiles/1_1" instance=ExtResource( 7 )]
 
+[node name="Label3D9" type="Spatial" parent="tiles/1_1"]
+transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building24" type="MeshInstance" parent="tiles/1_1"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="1_2" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, -2.5, 0, 5.5 )
 texture = ExtResource( 5 )
@@ -522,6 +740,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "1_3" ]
 
 [node name="RigidBody" parent="tiles/1_2" instance=ExtResource( 7 )]
+
+[node name="Label3D10" type="Spatial" parent="tiles/1_2"]
+transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building23" type="MeshInstance" parent="tiles/1_2"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="1_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, -4.5, 0, 7.5 )
@@ -531,6 +773,30 @@ adjacencies = [ "Peaje_1_2", "1_2", "1_6" ]
 
 [node name="RigidBody" parent="tiles/1_3" instance=ExtResource( 7 )]
 
+[node name="Label3D11" type="Spatial" parent="tiles/1_3"]
+transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building22" type="MeshInstance" parent="tiles/1_3"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="1_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08, 3.5, 0, 7.5 )
 texture = ExtResource( 5 )
@@ -538,6 +804,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_4", "1_1", "1_5" ]
 
 [node name="RigidBody" parent="tiles/1_4" instance=ExtResource( 7 )]
+
+[node name="Label3D12" type="Spatial" parent="tiles/1_4"]
+transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building21" type="MeshInstance" parent="tiles/1_4"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="1_5" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 2.5, 0, 10.5 )
@@ -547,6 +837,30 @@ adjacencies = [ "Palo_1", "1_4" ]
 
 [node name="RigidBody" parent="tiles/1_5" instance=ExtResource( 7 )]
 
+[node name="Label3D13" type="Spatial" parent="tiles/1_5"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25839e-07, 0, -3.25839e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building20" type="MeshInstance" parent="tiles/1_5"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="1_6" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -3.5, 0, 10.5 )
 texture = ExtResource( 5 )
@@ -554,6 +868,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Palo_1", "1_3" ]
 
 [node name="RigidBody" parent="tiles/1_6" instance=ExtResource( 7 )]
+
+[node name="Label3D14" type="Spatial" parent="tiles/1_6"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25839e-07, 0, -3.25839e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building19" type="MeshInstance" parent="tiles/1_6"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="2_1" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, 1.5 )
@@ -563,6 +901,30 @@ adjacencies = [ "Central_Conexion_2", "2_4" ]
 
 [node name="RigidBody" parent="tiles/2_1" instance=ExtResource( 7 )]
 
+[node name="Label3D15" type="Spatial" parent="tiles/2_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building18" type="MeshInstance" parent="tiles/2_1"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="2_2" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, -2.5 )
 texture = ExtResource( 5 )
@@ -570,6 +932,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "2_3" ]
 
 [node name="RigidBody" parent="tiles/2_2" instance=ExtResource( 7 )]
+
+[node name="Label3D16" type="Spatial" parent="tiles/2_2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building17" type="MeshInstance" parent="tiles/2_2"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="2_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -8.5, 0, -4.5 )
@@ -579,6 +965,30 @@ adjacencies = [ "Peaje_2_3", "2_2", "2_6" ]
 
 [node name="RigidBody" parent="tiles/2_3" instance=ExtResource( 7 )]
 
+[node name="Label3D17" type="Spatial" parent="tiles/2_3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building16" type="MeshInstance" parent="tiles/2_3"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="2_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -8.5, 0, 3.5 )
 texture = ExtResource( 5 )
@@ -586,6 +996,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_2", "2_5", "2_1" ]
 
 [node name="RigidBody" parent="tiles/2_4" instance=ExtResource( 7 )]
+
+[node name="Label3D18" type="Spatial" parent="tiles/2_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building15" type="MeshInstance" parent="tiles/2_4"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="2_5" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -11.5, 0, 2.5 )
@@ -595,6 +1029,30 @@ adjacencies = [ "Palo_2", "2_4" ]
 
 [node name="RigidBody" parent="tiles/2_5" instance=ExtResource( 7 )]
 
+[node name="Label3D19" type="Spatial" parent="tiles/2_5"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building14" type="MeshInstance" parent="tiles/2_5"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="2_6" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -11.5, 0, -3.5 )
 texture = ExtResource( 5 )
@@ -602,6 +1060,30 @@ script = ExtResource( 6 )
 adjacencies = [ "2_3", "Palo_2" ]
 
 [node name="RigidBody" parent="tiles/2_6" instance=ExtResource( 7 )]
+
+[node name="Label3D20" type="Spatial" parent="tiles/2_6"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building13" type="MeshInstance" parent="tiles/2_6"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="3_1" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -2.5, 0, -6.5 )
@@ -611,6 +1093,30 @@ adjacencies = [ "Central_Conexion_3", "3_4" ]
 
 [node name="RigidBody" parent="tiles/3_1" instance=ExtResource( 7 )]
 
+[node name="Label3D21" type="Spatial" parent="tiles/3_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building12" type="MeshInstance" parent="tiles/3_1"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="3_2" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 1.5, 0, -6.5 )
 texture = ExtResource( 5 )
@@ -618,6 +1124,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "3_3" ]
 
 [node name="RigidBody" parent="tiles/3_2" instance=ExtResource( 7 )]
+
+[node name="Label3D22" type="Spatial" parent="tiles/3_2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building11" type="MeshInstance" parent="tiles/3_2"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="3_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 3.5, 0, -8.5 )
@@ -627,6 +1157,30 @@ adjacencies = [ "Peaje_3_4", "3_2", "3_6" ]
 
 [node name="RigidBody" parent="tiles/3_3" instance=ExtResource( 7 )]
 
+[node name="Label3D23" type="Spatial" parent="tiles/3_3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building10" type="MeshInstance" parent="tiles/3_3"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="3_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -4.5373, 0, -8.48135 )
 texture = ExtResource( 5 )
@@ -634,6 +1188,30 @@ script = ExtResource( 6 )
 adjacencies = [ "3_1", "3_5", "Peaje_2_3" ]
 
 [node name="RigidBody" parent="tiles/3_4" instance=ExtResource( 7 )]
+
+[node name="Label3D24" type="Spatial" parent="tiles/3_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building9" type="MeshInstance" parent="tiles/3_4"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="3_5" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -3.5, 0, -11.5 )
@@ -643,6 +1221,30 @@ adjacencies = [ "Palo_3", "3_4" ]
 
 [node name="RigidBody" parent="tiles/3_5" instance=ExtResource( 7 )]
 
+[node name="Label3D25" type="Spatial" parent="tiles/3_5"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building8" type="MeshInstance" parent="tiles/3_5"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="3_6" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 2.5, 0, -11.5 )
 texture = ExtResource( 5 )
@@ -650,6 +1252,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Palo_3", "3_3" ]
 
 [node name="RigidBody" parent="tiles/3_6" instance=ExtResource( 7 )]
+
+[node name="Label3D26" type="Spatial" parent="tiles/3_6"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building7" type="MeshInstance" parent="tiles/3_6"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="4_1" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, -2.5 )
@@ -659,6 +1285,30 @@ adjacencies = [ "Central_Conexion_4", "4_4" ]
 
 [node name="RigidBody" parent="tiles/4_1" instance=ExtResource( 7 )]
 
+[node name="Label3D27" type="Spatial" parent="tiles/4_1"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building6" type="MeshInstance" parent="tiles/4_1"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="4_2" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, 1.5 )
 texture = ExtResource( 5 )
@@ -666,6 +1316,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_4", "4_3" ]
 
 [node name="RigidBody" parent="tiles/4_2" instance=ExtResource( 7 )]
+
+[node name="Label3D28" type="Spatial" parent="tiles/4_2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building5" type="MeshInstance" parent="tiles/4_2"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="4_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 7.5, 0, 3.5 )
@@ -675,6 +1349,30 @@ adjacencies = [ "Peaje_1_4", "4_2", "4_6" ]
 
 [node name="RigidBody" parent="tiles/4_3" instance=ExtResource( 7 )]
 
+[node name="Label3D29" type="Spatial" parent="tiles/4_3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building4" type="MeshInstance" parent="tiles/4_3"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="4_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 7.5, 0, -4.5 )
 texture = ExtResource( 5 )
@@ -682,6 +1380,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Peaje_3_4", "4_1", "4_5" ]
 
 [node name="RigidBody" parent="tiles/4_4" instance=ExtResource( 7 )]
+
+[node name="Label3D30" type="Spatial" parent="tiles/4_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building3" type="MeshInstance" parent="tiles/4_4"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="4_5" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 10.5, 0, -3.5 )
@@ -691,6 +1413,30 @@ adjacencies = [ "4_4", "Palo_4" ]
 
 [node name="RigidBody" parent="tiles/4_5" instance=ExtResource( 7 )]
 
+[node name="Label3D31" type="Spatial" parent="tiles/4_5"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building2" type="MeshInstance" parent="tiles/4_5"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+
 [node name="4_6" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 10.5, 0, 2.5 )
 texture = ExtResource( 5 )
@@ -698,6 +1444,30 @@ script = ExtResource( 6 )
 adjacencies = [ "Palo_4", "4_3" ]
 
 [node name="RigidBody" parent="tiles/4_6" instance=ExtResource( 7 )]
+
+[node name="Label3D32" type="Spatial" parent="tiles/4_6"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
+[node name="building" type="MeshInstance" parent="tiles/4_6"]
+transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
+mesh = ExtResource( 25 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
 
 [node name="Palo_1" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -0.5, 0, 11.5 )
@@ -749,6 +1519,13 @@ type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_1_2" instance=ExtResource( 7 )]
 
+[node name="Label3D33" type="Spatial" parent="tiles/Peaje_1_2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
 [node name="Peaje_2_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, -6.5 )
 modulate = Color( 0, 1, 0.203922, 1 )
@@ -758,6 +1535,13 @@ adjacencies = [ "2_3", "3_4" ]
 type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_2_3" instance=ExtResource( 7 )]
+
+[node name="Label3D34" type="Spatial" parent="tiles/Peaje_2_3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
 
 [node name="Peaje_3_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, -6.5 )
@@ -769,6 +1553,13 @@ type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_3_4" instance=ExtResource( 7 )]
 
+[node name="Label3D35" type="Spatial" parent="tiles/Peaje_3_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25835e-07, 0, -3.25835e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
+
 [node name="Peaje_1_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, 5.5 )
 modulate = Color( 0, 1, 0.203922, 1 )
@@ -778,6 +1569,13 @@ adjacencies = [ "4_3", "1_4" ]
 type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_1_4" instance=ExtResource( 7 )]
+
+[node name="Label3D36" type="Spatial" parent="tiles/Peaje_1_4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25835e-07, 0, -3.25835e-07, -1, 0, 2.5, -1 )
+script = ExtResource( 24 )
+text = "3000"
+text_scale = 0.018
+color = Color( 0.411765, 0.576471, 0.686275, 1 )
 
 [node name="TempUI" type="Control" parent="."]
 margin_left = 594.344
@@ -1137,6 +1935,92 @@ text = "Pagar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Scores" type="VBoxContainer" parent="TempUI"]
+margin_left = -590.0
+margin_top = 370.0
+margin_right = 688.0
+margin_bottom = 428.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TempUI/Scores"]
+margin_right = 1278.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TempUI/Scores/HBoxContainer"]
+margin_right = 81.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "Jugador 1"
+
+[node name="Label2" type="Label" parent="TempUI/Scores/HBoxContainer"]
+margin_left = 85.0
+margin_right = 170.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "Jugador 2"
+
+[node name="Label3" type="Label" parent="TempUI/Scores/HBoxContainer"]
+margin_left = 174.0
+margin_right = 259.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "Jugador 3"
+
+[node name="Label4" type="Label" parent="TempUI/Scores/HBoxContainer"]
+margin_left = 263.0
+margin_right = 349.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "Jugador 4"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TempUI/Scores"]
+margin_top = 25.0
+margin_right = 1278.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TempUI/Scores/HBoxContainer2"]
+margin_right = 77.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "0000000"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="TempUI/Scores/HBoxContainer2"]
+margin_left = 81.0
+margin_right = 158.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "0000000"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="TempUI/Scores/HBoxContainer2"]
+margin_left = 162.0
+margin_right = 239.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "0000000"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="TempUI/Scores/HBoxContainer2"]
+margin_left = 243.0
+margin_right = 320.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "0000000"
+align = 1
+valign = 1
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]
