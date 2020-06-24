@@ -5,6 +5,15 @@ export(Array, String) var adjacencies = []
 enum Type {BANK, BUILD, SUIT}
 export(Type) var type = Type.BUILD
 
+var Name: String = self.get_name()
+#var Position: String #O como se quiera expresar
+var District: int
+var Price: int = 1600
+var Value: int = 50
+var Investment_Left: int
+var free : bool = true
+var Owner: String
+
 func getAdjacencies():
 	return adjacencies
 

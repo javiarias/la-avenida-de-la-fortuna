@@ -1,35 +1,13 @@
 extends Spatial
 
-class Square:
-	var Name: String
-	var Position: int #O como se quiera expresar
-	var District: int
-	var Price: int
-	var Value: int
-	var Investment_Left: int
-	var free : bool = true
-	var Owner: Player
-
-#Clases extra
-class Player:
-	var Name: String
-	var Cash: int
-	var Position: Square #Para ver donde está, casilla, o int y tener codigo interno?
-	var Score: int
-	var properties = [] #Esto tendria que ser array solo de squares, pero asi vale
-	var stocks = [0,0,0,0,0]
-	
-
-
-
 #Variables
 var rolled = false
 var dice = 0
 var players = ["Player1"] #Array
 var turn = 0
-
 var UIPath = "./TempUI/"
 
+var investment = 100
 #var propiertiesP1 = [] #Cada casilla es una propiedad
 #var propiertiesP2 = [] #Cada casilla es una propiedad
 #var propiertiesP3 = [] #Cada casilla es una propiedad
@@ -57,7 +35,28 @@ func _process(delta):
 #Funciones adicionales
 
 func moveEnded():
-	pass
+	var player = get_node("Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var node = get_node("tiles/" + player.currentNode)
+	
+	if (node.free): #Comprar
+		get_node(UIPath + "FreeBuildingButtons").visible = true #UI visible e invisible
+		get_node(UIPath + "FreeBuildingButtons/Label").text = "Esta casilla está libre, ¿quieres comprarla?"
+		
+		if (player.Cash < node.Price):
+			get_node(UIPath + "FreeBuildingButtons/Comprar").set_disabled(true)
+		
+
+	elif (node.Owner == player.Name): #Casilla propia
+		get_node(UIPath + "OwnBuildingButtons").visible = true #UI visible e invisible
+		get_node(UIPath + "OwnBuildingButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
+		
+
+	else:	#Casilla ajena
+		get_node(UIPath + "TakenBuildingButtons").visible = true #UI visible e invisible
+		get_node(UIPath + "TakenBuildingButtons/Label").text = "Esta casilla es de otro jugador, te toca pagar"
+		
+		if (player.Cash < node.Value):
+					get_node(UIPath + "TakenBuildingButtons/Pagar").set_disabled(true)
 
 #Dado
 func roll_dice():
@@ -171,37 +170,17 @@ func updateScoresVisual():
 	
 	#Comprobar condicion de victoria aqui?
 	
-	score1.set_text(Player.Cash + Player.Score) #Player1
-	score2.set_text(Player.Cash + Player.Score) #Player2
-	score3.set_text(Player.Cash + Player.Score) #Player3
-	score4.set_text(Player.Cash + Player.Score) #Player4
+	#score1.set_text(Player.Cash + Player.Score) #Player1
+	#score2.set_text(Player.Cash + Player.Score) #Player2
+	#score3.set_text(Player.Cash + Player.Score) #Player3
+	#score4.set_text(Player.Cash + Player.Score) #Player4
 	
 
-func updateScoreInternal (player : Player):
+func updateScoreInternal ():
 	#Matesmaticas
 	
 	updateScoresVisual()
 	pass
-
-func buySquare_Board(player : Player, square : Square):
-	if (square.free()):
-		if (player.Cash > square.Value):
-			player.properties.push_back(square)
-			player.Cash - square.Value
-			square.Owner = player
-			square.free = false
-			updateScoreInternal(player)
-
-	else: #Expropiese
-		if (player.Cash > square.Value * 5):
-			square.Owner.properties.erase(square.Owner.properties.bsearch((square))) #Confio en que esto es así
-			player.properties.push_back(square)
-			player.Cash = player.Cash - square.Value * 5
-			square.Owner.Cash = square.Owner.Cash + square.Value * 5
-			square.Owner = player
-			updateScoreInternal(player)
-	
-	#Algo mas?
 
 func canEndMovement():
 	get_node(UIPath + "moveButtons").visible = true
@@ -238,10 +217,76 @@ func rollButton_pressed():
 
 
 func acceptMove_pressed():
-	moveEnded()
 	get_node(UIPath + "moveButtons").visible = false
-
+	
+	#PlayerInfo.Position.Name = PlayerInfo.currentNode
+	moveEnded()
 
 func cancelMove_pressed():
 	get_node("./" + players[turn]).reverse()
 	get_node(UIPath + "moveButtons").visible = false
+
+func buyFreeBuilding_pressed():
+	var player = get_node("Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var node = get_node("tiles/" + player.currentNode)
+	
+	#if (player.Cash => node.Price): A priori no hace falta la comprobacion porque si no el boton está desactivado
+	player.Cash = player.Cash - node.Price
+	node.free = false
+	node.Owner = player.Name
+	
+	#Algo mas?
+	get_node(UIPath + "FreeBuildingButtons").visible = false
+
+func pass_on_Building_pressed():
+	#Se reutiliza para todos los casos, asi que pongo en false la visibilidad de la UI y tirando
+	get_node(UIPath + "FreeBuildingButtons").visible = false
+	get_node(UIPath + "OwnBuildingButtons").visible = false
+	#Siguiente turno stuff
+	pass
+
+func invest_on_Building():
+	get_node(UIPath + "OwnBuildingButtons").visible = false
+	get_node(UIPath + "InvestButtons").visible = true
+
+func add_Investment():
+	var player = get_node("Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	
+	if (investment <= player.Cash - 50):
+		investment = investment + 50
+	else:
+		get_node(UIPath + "InvestButtons/Mas").set_disabled(true)
+
+func reduce_Investment():
+	if (investment >= 0):
+		investment = investment - 50
+	else:
+		get_node(UIPath + "InvestButtons/Menos").set_disabled(true)
+
+
+func confirm_Investment():
+	var player = get_node("Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var node = get_node("tiles/" + player.currentNode)
+	
+	player.Cash = player.Cash - investment
+	node.Investment_Left = node.Investment_Left - investment
+	investment = 100 #Reset de valor
+	get_node(UIPath + "InvestButtons").visible = false
+
+func cancel_Investment():
+	investment = 100 #Reset de valor
+	get_node(UIPath + "OwnBuildingButtons").visible = true
+	get_node(UIPath + "InvestButtons").visible = false
+
+func pay_Building():
+	var player_pay = get_node("Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var node = get_node("tiles/" + player_pay.currentNode)
+	var player_earn = get_node(node.owner) #Aqui
+	
+	player_pay.Cash = player_pay.Cash - node.Value
+	player_earn.Cash = player_earn.Cash + node.Value
+	
+	get_node(UIPath + "TakenBuildingButtons").visible = false #UI visible e invisible
+
+func bankrupt():
+	pass #que hacemos aqui
