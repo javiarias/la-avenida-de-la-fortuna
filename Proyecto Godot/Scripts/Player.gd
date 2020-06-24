@@ -14,7 +14,6 @@ var stocks = [0,0,0,0,0]
 var canEndMovement = false
 var pos
 
-var gameManager
 var node
 
 func cellClicked(name):
@@ -73,7 +72,7 @@ func reverse():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	gameManager = get_tree().get_root().get_child(0)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

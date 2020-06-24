@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Resources/dices.png" type="Texture" id=1]
 [ext_resource path="res://Resources/FlechaDerHover.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Scripts/IngameScript.gd" type="Script" id=4]
+[ext_resource path="res://Resources/player1.tres" type="Material" id=4]
 [ext_resource path="res://Resources/box.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/node.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/RigidBody.tscn" type="PackedScene" id=7]
@@ -14,11 +14,20 @@
 [ext_resource path="res://Resources/FlechaIzqNorm.png" type="Texture" id=12]
 [ext_resource path="res://Resources/FlechaDerNorm.png" type="Texture" id=13]
 [ext_resource path="res://Resources/FlechaDerClick.png" type="Texture" id=14]
+[ext_resource path="res://Resources/new_styleboxflat.tres" type="StyleBox" id=15]
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=16]
+[ext_resource path="res://Resources/FlechaDerDisabled.png" type="Texture" id=17]
+[ext_resource path="res://Resources/FlechaIzqDisabled.png" type="Texture" id=18]
+[ext_resource path="res://Resources/FlechaIzqClick.png" type="Texture" id=19]
+[ext_resource path="res://Resources/player2.tres" type="Material" id=20]
+[ext_resource path="res://Resources/player3.tres" type="Material" id=21]
+[ext_resource path="res://Resources/player4.tres" type="Material" id=22]
+[ext_resource path="res://Scenes/startGame.gd" type="Script" id=23]
 
 [sub_resource type="CubeMesh" id=1]
 
 [node name="Spatial" type="Spatial"]
-script = ExtResource( 4 )
+script = ExtResource( 23 )
 
 [node name="Dice" type="Sprite3D" parent="."]
 transform = Transform( 5, 0, 0, 0, -8.14603e-07, -5, 0, 5, -8.14603e-07, 13.011, 4.01, 0 )
@@ -240,12 +249,13 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 22, 
 
 [node name="Player1" type="Spatial" parent="."]
 transform = Transform( 2.2506, 0, 0, 0, 2.2506, 0, 0, 0, 2.2506, -0.5, 0.342852, -0.5 )
+visible = false
 script = ExtResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Player1"]
 transform = Transform( 0.11363, 0, 0, 0, 0.11363, 0, 0, 0, 0.11363, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="Player2" type="Spatial" parent="."]
 transform = Transform( 2.2506, 0, 0, 0, 2.2506, 0, 0, 0, 2.2506, -0.5, 0.342852, -0.5 )
@@ -255,7 +265,7 @@ script = ExtResource( 8 )
 [node name="MeshInstance" type="MeshInstance" parent="Player2"]
 transform = Transform( 0.11363, 0, 0, 0, 0.11363, 0, 0, 0, 0.11363, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 20 )
 
 [node name="Player3" type="Spatial" parent="."]
 transform = Transform( 2.2506, 0, 0, 0, 2.2506, 0, 0, 0, 2.2506, -0.5, 0.342852, -0.5 )
@@ -265,7 +275,7 @@ script = ExtResource( 8 )
 [node name="MeshInstance" type="MeshInstance" parent="Player3"]
 transform = Transform( 0.11363, 0, 0, 0, 0.11363, 0, 0, 0, 0.11363, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 21 )
 
 [node name="Player4" type="Spatial" parent="."]
 transform = Transform( 2.2506, 0, 0, 0, 2.2506, 0, 0, 0, 2.2506, -0.5, 0.342852, -0.5 )
@@ -275,7 +285,7 @@ script = ExtResource( 8 )
 [node name="MeshInstance" type="MeshInstance" parent="Player4"]
 transform = Transform( 0.11363, 0, 0, 0, 0.11363, 0, 0, 0, 0.11363, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 22 )
 
 [node name="connections" type="Spatial" parent="."]
 
@@ -695,6 +705,7 @@ modulate = Color( 1, 0.278431, 0.952941, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "1_6", "1_5" ]
+type = 2
 
 [node name="RigidBody" parent="tiles/Palo_1" instance=ExtResource( 7 )]
 
@@ -704,6 +715,7 @@ modulate = Color( 1, 0.278431, 0.952941, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_6", "2_5" ]
+type = 2
 
 [node name="RigidBody" parent="tiles/Palo_2" instance=ExtResource( 7 )]
 
@@ -713,6 +725,7 @@ modulate = Color( 1, 0.278431, 0.952941, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_5", "3_6" ]
+type = 2
 
 [node name="RigidBody" parent="tiles/Palo_3" instance=ExtResource( 7 )]
 
@@ -722,6 +735,7 @@ modulate = Color( 1, 0.278431, 0.952941, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_5", "4_6" ]
+type = 2
 
 [node name="RigidBody" parent="tiles/Palo_4" instance=ExtResource( 7 )]
 
@@ -772,93 +786,128 @@ __meta__ = {
 
 [node name="rollButton" type="Button" parent="TempUI"]
 visible = false
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = -84.0666
-margin_top = 15.9045
-margin_right = -33.9066
-margin_bottom = 35.0225
+anchor_left = -3.37144
+anchor_top = -1.40198
+anchor_right = 5.13734
+anchor_bottom = 7.49418
+margin_right = -370.958
+margin_bottom = -150.701
 rect_scale = Vector2( 5.04917, 5.04917 )
+custom_fonts/font = ExtResource( 3 )
 text = "DADO"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="moveButtons" type="Control" parent="TempUI"]
+[node name="moveButtons" type="HBoxContainer" parent="TempUI"]
 visible = false
-margin_left = -84.0666
-margin_top = 15.9045
-margin_right = -44.0666
-margin_bottom = 55.9045
+anchor_left = -4.57861
+anchor_top = 0.761905
+anchor_right = 6.88435
+anchor_bottom = 5.0
+custom_constants/separation = 40
+alignment = 1
 __meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="acceptMove" type="Button" parent="TempUI/moveButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = 168.129
-margin_right = 225.289
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "ACCEPT"
-__meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="cancelMove" type="Button" parent="TempUI/moveButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = -193.964
-margin_right = -134.804
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "CANCEL"
+margin_right = 289.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+text = "Cancelar"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="acceptMove" type="Button" parent="TempUI/moveButtons"]
+margin_left = 329.0
+margin_right = 619.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+text = "Aceptar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FreeBuildingButtons" type="Control" parent="TempUI"]
 visible = false
-margin_left = -84.0666
-margin_top = 15.9045
-margin_right = -44.0666
-margin_bottom = 55.9045
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Comprar" type="Button" parent="TempUI/FreeBuildingButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = 168.129
-margin_right = 225.289
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "COMPRAR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NoComprar" type="Button" parent="TempUI/FreeBuildingButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = -193.964
-margin_right = -134.804
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "PASAR"
+margin_left = -592.0
+margin_top = -290.0
+margin_right = 687.0
+margin_bottom = 428.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="TempUI/FreeBuildingButtons"]
-margin_left = -31.0
-margin_top = -146.0
-margin_right = 361.0
-margin_bottom = -21.0
+margin_left = 454.742
+margin_top = 106.375
+margin_right = 856.742
+margin_bottom = 147.375
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = ExtResource( 3 )
 text = "AAAAAAAAAAAAAAAAAAA"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="TempUI/FreeBuildingButtons"]
+margin_left = 563.933
+margin_top = 185.125
+margin_right = 754.933
+margin_bottom = 269.125
+custom_styles/normal = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
+text = "100"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TempUI/FreeBuildingButtons"]
+margin_left = 356.044
+margin_top = 304.493
+margin_right = 970.044
+margin_bottom = 397.493
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoComprar" type="Button" parent="TempUI/FreeBuildingButtons/HBoxContainer"]
+margin_right = 292.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 20
+text = "No comprar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Comprar" type="Button" parent="TempUI/FreeBuildingButtons/HBoxContainer"]
+margin_left = 322.0
+margin_right = 614.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 20
+text = "Comprar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OwnBuildingButtons" type="Control" parent="TempUI"]
 visible = false
@@ -866,103 +915,150 @@ margin_left = -84.0666
 margin_top = 15.9045
 margin_right = -44.0666
 margin_bottom = 55.9045
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Invertir" type="Button" parent="TempUI/OwnBuildingButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = 168.129
-margin_right = 225.289
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "ACCEPT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="No Invertir" type="Button" parent="TempUI/OwnBuildingButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = -193.964
-margin_right = -134.804
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "CANCEL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="TempUI/OwnBuildingButtons"]
-margin_left = -31.0
-margin_top = -146.0
-margin_right = 361.0
-margin_bottom = -21.0
+margin_left = -59.8089
+margin_top = -137.0
+margin_right = 332.191
+margin_bottom = -82.0
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = ExtResource( 3 )
 text = "AAAAAAAAAAAAAAAAAAA"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TempUI/OwnBuildingButtons"]
+margin_left = -164.0
+margin_right = 457.0
+margin_bottom = 93.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoInvertir" type="Button" parent="TempUI/OwnBuildingButtons/HBoxContainer"]
+margin_right = 295.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 30
+text = "No invertir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Invertir" type="Button" parent="TempUI/OwnBuildingButtons/HBoxContainer"]
+margin_left = 325.0
+margin_right = 621.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 30
+text = "Invertir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InvestButtons" type="Control" parent="TempUI"]
+visible = false
 margin_left = -84.0666
 margin_top = 15.9045
 margin_right = -44.0666
 margin_bottom = 55.9045
+
+[node name="Label" type="Label" parent="TempUI/InvestButtons"]
+margin_left = 56.0
+margin_top = -77.1462
+margin_right = 247.0
+margin_bottom = 6.85376
+custom_styles/normal = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
+text = "100"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TempUI/InvestButtons"]
-margin_left = 79.4319
-margin_top = 19.0238
-margin_right = 223.432
-margin_bottom = 77.0238
+[node name="Label2" type="Label" parent="TempUI/InvestButtons"]
+margin_left = -127.0
+margin_top = -243.15
+margin_right = 429.0
+margin_bottom = -185.15
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = ExtResource( 3 )
-text = "100"
+text = "¿Cuánto quieres invertir?"
 align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Menos" type="TextureButton" parent="TempUI/InvestButtons"]
-margin_left = -214.531
-margin_top = 21.97
-margin_right = -151.531
-margin_bottom = 76.97
+margin_left = -60.0
+margin_top = -65.922
+margin_right = 4.0
+margin_bottom = -1.922
 texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 11 )
+texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Mas" type="TextureButton" parent="TempUI/InvestButtons"]
-margin_left = 343.766
-margin_top = 12.9236
-margin_right = 406.766
-margin_bottom = 67.9236
+margin_left = 303.01
+margin_top = -65.922
+margin_right = 367.01
+margin_bottom = -1.922
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 14 )
 texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Invertir" type="Button" parent="TempUI/InvestButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = 246.963
-margin_top = 148.621
-margin_right = 304.123
-margin_bottom = 167.739
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "ACCEPT"
+[node name="HBoxContainer" type="HBoxContainer" parent="TempUI/InvestButtons"]
+margin_left = -164.0
+margin_top = 103.134
+margin_right = 462.0
+margin_bottom = 195.134
+custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="No Invertir" type="Button" parent="TempUI/InvestButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = -252.12
-margin_top = 149.913
-margin_right = -192.96
-margin_bottom = 169.031
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "CANCEL"
+[node name="No Invertir" type="Button" parent="TempUI/InvestButtons/HBoxContainer"]
+margin_right = 298.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 30
+text = "Cancelar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Invertir" type="Button" parent="TempUI/InvestButtons/HBoxContainer"]
+margin_left = 328.0
+margin_right = 626.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 30
+text = "Invertir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -973,41 +1069,56 @@ margin_left = -84.0666
 margin_top = 15.9045
 margin_right = -44.0666
 margin_bottom = 55.9045
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pagar" type="Button" parent="TempUI/TakenBuildingButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = 168.129
-margin_right = 225.289
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "ACCEPT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bancarrota" type="Button" parent="TempUI/TakenBuildingButtons"]
-anchor_right = 0.046
-anchor_bottom = 0.042
-margin_left = -193.964
-margin_right = -134.804
-margin_bottom = 19.118
-rect_scale = Vector2( 5.04917, 5.04917 )
-text = "CANCEL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="TempUI/TakenBuildingButtons"]
 margin_left = -31.0
-margin_top = -146.0
+margin_top = -176.147
 margin_right = 361.0
-margin_bottom = -21.0
+margin_bottom = -51.1468
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = ExtResource( 3 )
 text = "AAAAAAAAAAAAAAAAAAA"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TempUI/TakenBuildingButtons"]
+margin_left = -164.0
+margin_right = 462.0
+margin_bottom = 92.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bancarrota" type="Button" parent="TempUI/TakenBuildingButtons/HBoxContainer"]
+margin_right = 298.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 30
+disabled = true
+text = "Bancarrota"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pagar" type="Button" parent="TempUI/TakenBuildingButtons/HBoxContainer"]
+margin_left = 328.0
+margin_right = 626.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 16 )
+custom_constants/hseparation = 30
+text = "Pagar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]
@@ -1021,11 +1132,9 @@ text = "AAAAAAAAAAAAAAAAAAA"
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Puntuaciones Globales" to="Control" method="global_Score"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Condiciones de Victoria" to="Control" method="win_Condition"]
 [connection signal="pressed" from="TempUI/rollButton" to="." method="rollButton_pressed"]
-[connection signal="pressed" from="TempUI/moveButtons/acceptMove" to="." method="acceptMove_pressed"]
 [connection signal="pressed" from="TempUI/moveButtons/cancelMove" to="." method="cancelMove_pressed"]
-[connection signal="pressed" from="TempUI/FreeBuildingButtons/Comprar" to="." method="buyFreeBuilding_pressed"]
-[connection signal="pressed" from="TempUI/FreeBuildingButtons/NoComprar" to="." method="pass_on_Building_pressed"]
-[connection signal="pressed" from="TempUI/OwnBuildingButtons/Invertir" to="." method="invest_on_Building"]
-[connection signal="pressed" from="TempUI/OwnBuildingButtons/No Invertir" to="." method="pass_on_Building_pressed"]
-[connection signal="pressed" from="TempUI/TakenBuildingButtons/Pagar" to="." method="pay_Building"]
-[connection signal="pressed" from="TempUI/TakenBuildingButtons/Bancarrota" to="." method="bankrupt"]
+[connection signal="pressed" from="TempUI/moveButtons/acceptMove" to="." method="acceptMove_pressed"]
+[connection signal="pressed" from="TempUI/FreeBuildingButtons/HBoxContainer/NoComprar" to="." method="pass_on_Building_pressed"]
+[connection signal="pressed" from="TempUI/FreeBuildingButtons/HBoxContainer/Comprar" to="." method="buyFreeBuilding_pressed"]
+[connection signal="pressed" from="TempUI/OwnBuildingButtons/HBoxContainer/NoInvertir" to="." method="invest_on_Building"]
+[connection signal="pressed" from="TempUI/OwnBuildingButtons/HBoxContainer/Invertir" to="." method="pass_on_Building_pressed"]

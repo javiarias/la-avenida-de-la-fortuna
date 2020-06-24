@@ -1,0 +1,190 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Resources/FlechaDerNorm.png" type="Texture" id=2]
+[ext_resource path="res://Resources/FlechaDerHover.png" type="Texture" id=3]
+[ext_resource path="res://Resources/FlechaDerDisabled.png" type="Texture" id=4]
+[ext_resource path="res://Resources/FlechaIzqDisabled.png" type="Texture" id=5]
+[ext_resource path="res://Resources/FlechaIzqNorm.png" type="Texture" id=6]
+[ext_resource path="res://Resources/FlechaDerClick.png" type="Texture" id=7]
+[ext_resource path="res://Resources/FlechaIzqClick.png" type="Texture" id=8]
+[ext_resource path="res://Resources/FlechaIzqHover.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/LocalLobby.gd" type="Script" id=11]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 310.92
+margin_top = 537.097
+margin_right = 996.92
+margin_bottom = 659.097
+custom_constants/separation = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="HBoxContainer"]
+margin_right = 293.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Cancelar"
+
+[node name="Continue" type="Button" parent="HBoxContainer"]
+margin_left = 393.0
+margin_right = 686.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Continuar"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_left = 444.0
+margin_top = 414.095
+margin_right = 844.0
+margin_bottom = 518.095
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="TextureButton" parent="HBoxContainer2"]
+margin_right = 130.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_left = 135.0
+margin_right = 265.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="right" type="TextureButton" parent="HBoxContainer2"]
+margin_left = 270.0
+margin_right = 400.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_left = 23.0
+margin_top = 30.0
+margin_right = 1257.0
+margin_bottom = 396.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1" type="ColorRect" parent="HBoxContainer3"]
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer3/Player1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2" type="ColorRect" parent="HBoxContainer3"]
+visible = false
+margin_left = 627.0
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.0784314, 1, 0, 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer3/Player2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player3" type="ColorRect" parent="HBoxContainer3"]
+visible = false
+margin_left = 836.0
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0.0392157, 1, 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer3/Player3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player4" type="ColorRect" parent="HBoxContainer3"]
+visible = false
+margin_left = 939.0
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.992157, 0, 1, 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer3/Player4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HBoxContainer/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="HBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="HBoxContainer2/left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="HBoxContainer2/right" to="." method="_on_right_pressed"]
