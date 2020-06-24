@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/dices.png" type="Texture" id=1]
 [ext_resource path="res://Resources/FlechaDerHover.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/node.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/RigidBody.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
+[ext_resource path="res://Resources/line.png" type="Texture" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -577,6 +578,150 @@ script = ExtResource( 8 )
 transform = Transform( 0.11363, 0, 0, 0, 0.11363, 0, 0, 0, 0.11363, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
+
+[node name="connections" type="Spatial" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="connections"]
+transform = Transform( -8.0926, -0.707107, 3.09086e-08, 0, 4.37114e-08, 1, 8.0926, -0.707107, 3.09086e-08, -0.5, -0.01, -0.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="connections"]
+transform = Transform( -8.0926, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -8.0926, -0.707107, 3.09086e-08, -0.5, -0.01, -0.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="connections"]
+transform = Transform( -30.5218, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -30.5218, -0.707107, 3.09086e-08, 1.5, -0.01, -2.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D4" type="Sprite3D" parent="connections"]
+transform = Transform( -30.5218, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -30.5218, -0.707107, 3.09086e-08, -2.5, -0.01, 1.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D6" type="Sprite3D" parent="connections"]
+transform = Transform( 30.5218, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -30.5218, 0.707107, -3.09086e-08, 1.5, -0.01, 1.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D5" type="Sprite3D" parent="connections"]
+transform = Transform( 30.5218, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -30.5218, 0.707107, -3.09086e-08, -2.5, -0.01, -2.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D10" type="Sprite3D" parent="connections"]
+transform = Transform( -11.1958, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -11.1958, -0.707107, 3.09086e-08, 5.5, -0.01, -6.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D9" type="Sprite3D" parent="connections"]
+transform = Transform( -9.69153, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -9.69153, -0.707107, 3.09086e-08, -6.5, -0.01, 5.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="connections"]
+transform = Transform( 7.68348, 0.707106, -3.09086e-08, 0, 4.37114e-08, 1, -7.68347, 0.707107, -3.09086e-08, -6.5, -0.01, -6.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Spatial" type="Spatial" parent="connections"]
+transform = Transform( 11.3326, 0.707106, -3.09086e-08, 0, 4.37114e-08, 1, -11.3326, 0.707107, -3.09086e-08, 5.5, -0.01, 5.5 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="connections/Spatial"]
+transform = Transform( 0.50582, 0.0263695, -1.15265e-09, -3.78019, 0.906308, 4.09541e-09, 1.65238e-07, 4.09541e-09, 1, -0.28337, 0.798822, -3.44589e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D12" type="Sprite3D" parent="connections/Spatial"]
+transform = Transform( 0.235868, 0.0565497, -9.21311e-09, -8.10666, 0.422618, -2.51419e-08, 3.54353e-07, 1.44447e-07, 1, -0.568431, -4.30587, -1.26567e-06 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="connections/Spatial"]
+transform = Transform( 0.524452, -0.0213406, 9.32826e-10, 3.05927, 0.939693, 2.63612e-09, -1.33725e-07, 2.6361e-09, 1, -0.439706, 0.706916, -2.8871e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D13" type="Sprite3D" parent="connections/Spatial"]
+transform = Transform( -0.190885, 0.0586327, -9.55249e-09, -8.40527, -0.34202, 9.94336e-08, 3.67406e-07, 1.77871e-07, 1, -0.574501, -1.45453, -9.06177e-07 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Spatial2" type="Spatial" parent="connections"]
+transform = Transform( 11.3326, -0.707107, 3.09086e-08, 0, 4.37114e-08, 1, 11.3326, 0.707106, -3.09086e-08, -6.36022, -0.01, 5.5 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="connections/Spatial2"]
+transform = Transform( 0.50582, 0.0263695, -1.15265e-09, -3.78019, 0.906308, 4.09541e-09, 1.65238e-07, 4.09541e-09, 1, -0.28337, 0.798822, -3.44589e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D12" type="Sprite3D" parent="connections/Spatial2"]
+transform = Transform( 0.235868, 0.0565497, -9.21311e-09, -8.10666, 0.422618, -2.51419e-08, 3.54353e-07, 1.44447e-07, 1, -0.568431, -4.30587, -1.26567e-06 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="connections/Spatial2"]
+transform = Transform( 0.524452, -0.0213406, 9.32826e-10, 3.05927, 0.939693, 2.63612e-09, -1.33725e-07, 2.6361e-09, 1, -0.439706, 0.706916, -2.8871e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D13" type="Sprite3D" parent="connections/Spatial2"]
+transform = Transform( -0.190885, 0.0586327, -9.55249e-09, -8.40527, -0.34202, 9.94336e-08, 3.67406e-07, 1.77871e-07, 1, -0.574501, -1.45453, -9.06177e-07 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Spatial4" type="Spatial" parent="connections"]
+transform = Transform( -11.3326, -0.707107, 3.09086e-08, 0, 4.37114e-08, 1, 11.3326, -0.707107, 3.09086e-08, -6.36021, -0.01, -6.5 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="connections/Spatial4"]
+transform = Transform( 0.50582, 0.0263695, -1.15265e-09, -3.78019, 0.906308, 4.09541e-09, 1.65238e-07, 4.09541e-09, 1, -0.28337, 0.798822, -3.44589e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D12" type="Sprite3D" parent="connections/Spatial4"]
+transform = Transform( 0.235868, 0.0565497, -9.21311e-09, -8.10666, 0.422618, -2.51419e-08, 3.54353e-07, 1.44447e-07, 1, -0.568431, -4.30587, -1.26567e-06 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="connections/Spatial4"]
+transform = Transform( 0.524452, -0.0213406, 9.32826e-10, 3.05927, 0.939693, 2.63612e-09, -1.33725e-07, 2.6361e-09, 1, -0.439706, 0.706916, -2.8871e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D13" type="Sprite3D" parent="connections/Spatial4"]
+transform = Transform( -0.190885, 0.0586327, -9.55249e-09, -8.40527, -0.34202, 9.94336e-08, 3.67406e-07, 1.77871e-07, 1, -0.574501, -1.45453, -9.06177e-07 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Spatial3" type="Spatial" parent="connections"]
+transform = Transform( -11.3326, 0.707107, -3.09086e-08, 0, 4.37114e-08, 1, -11.3326, -0.707106, 3.09086e-08, 5.5, -0.01, -6.5 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="connections/Spatial3"]
+transform = Transform( 0.50582, 0.0263695, -1.15265e-09, -3.78019, 0.906308, 4.09541e-09, 1.65238e-07, 4.09541e-09, 1, -0.28337, 0.798822, -3.44589e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D12" type="Sprite3D" parent="connections/Spatial3"]
+transform = Transform( 0.235868, 0.0565497, -9.21311e-09, -8.10666, 0.422618, -2.51419e-08, 3.54353e-07, 1.44447e-07, 1, -0.568431, -4.30587, -1.26567e-06 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="connections/Spatial3"]
+transform = Transform( 0.524452, -0.0213406, 9.32826e-10, 3.05927, 0.939693, 2.63612e-09, -1.33725e-07, 2.6361e-09, 1, -0.439706, 0.706916, -2.8871e-08 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D13" type="Sprite3D" parent="connections/Spatial3"]
+transform = Transform( -0.190885, 0.0586327, -9.55249e-09, -8.40527, -0.34202, 9.94336e-08, 3.67406e-07, 1.77871e-07, 1, -0.574501, -1.45453, -9.06177e-07 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3D11" type="Sprite3D" parent="connections"]
+transform = Transform( 11.3326, 0.707106, -3.09086e-08, 0, 4.37114e-08, 1, -11.3326, 0.707107, -3.09086e-08, 5.5, -0.01, 5.5 )
+modulate = Color( 1, 0.937255, 0, 1 )
+texture = ExtResource( 9 )
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]
