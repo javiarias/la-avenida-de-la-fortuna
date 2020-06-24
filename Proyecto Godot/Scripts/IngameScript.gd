@@ -2,59 +2,80 @@ extends Spatial
 
 var online = false
 var gameStarted = false
-
-#Variables
 var rolled = false
 var dice = 0
 var players = [] #Array
 var turn = 0
 var basePath = "/root/Spatial/"
 var UIPath = "/root/Spatial/TempUI/"
-
 var playerAmount = 4
-
 var investment = 100
-#var propiertiesP1 = [] #Cada casilla es una propiedad
-#var propiertiesP2 = [] #Cada casilla es una propiedad
-#var propiertiesP3 = [] #Cada casilla es una propiedad
-#var propiertiesP4 = [] #Cada casilla es una propiedad
-#var playerProperties = [propiertiesP1, propiertiesP2, propiertiesP3, propiertiesP4] #todas las propiedades
-
-#var stocksP1 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
-#var stocksP2 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
-#var stocksP3 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
-#var stocksP4 = [0,0,0,0,0] #Cada casilla es un distrito, [Central,1,2,3,4]
-#var playerStocks = [stocksP1, stocksP2, stocksP3, stocksP4] #Cada casilla es un distrito, [Central,1,2,3,4]
-
+var paused = false
 
 # El init/create
 func _ready():
 	pass
 
-
 func gameStart():
 	gameStarted = true
-	for i in range(1, playerAmount):
+	for i in range(1, playerAmount+1):
 		players.append("Player" + str(i))
 		get_tree().get_root().get_node(basePath + "Player" + str(i)).visible = true
 
-
-#Enganchar botones con funciones
-
-# El update
 func _process(delta):
 	if gameStarted:
+		turn()
+
+func getPaused():
+	return paused
+
+func setPaused(value):
+	paused = value
+
+func getPlayerAmount():
+	return playerAmount
+
+func getTurn():
+	return turn
+
+func setTurn(value):
+	turn = value
+
+func setRolled(value):
+	rolled = value
+
+func turn():
+	if not paused:
 		if not rolled and get_node(UIPath + "rollButton").visible == false:
 			get_node(UIPath + "rollButton").visible = true
 			get_node(basePath + "Dice").rolling = true
+			
+	pass
 
-#Funciones adicionales
+func endTurn():
+	gameManager.setRolled(false)
+	get_node(UIPath + "rollButton").visible == true
+	get_node(basePath + "Dice").visible = true
+	
+	if (gameManager.getTurn() < gameManager.getPlayerAmount() - 1):
+		gameManager.setTurn(gameManager.getTurn() + 1)
+	else:
+		gameManager.setTurn(0)
 
 func moveEnded():
 	var player = get_node(basePath + players[turn]) #Aqui igual hay que cambiar que jugador se coge en funcion del turno
 	var node = get_node(basePath + "tiles/" + player.currentNode)
 	
-	if (node.free): #Comprar
+	if (node.isToll()):
+		endTurn()
+	
+	elif (node.isBank()):
+		endTurn()
+	
+	elif (node.isSuit()):
+		endTurn()
+	
+	elif (node.free and node.isBuild()): #Comprar casilla
 		get_node(UIPath + "FreeBuildingButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "FreeBuildingButtons/Label").text = "Esta casilla está libre, ¿quieres comprarla?"
 		
@@ -66,7 +87,7 @@ func moveEnded():
 		get_node(UIPath + "OwnBuildingButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "OwnBuildingButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
 		
-
+		
 	else:	#Casilla ajena
 		get_node(UIPath + "TakenBuildingButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "TakenBuildingButtons/Label").text = "Esta casilla es de otro jugador, te toca pagar"

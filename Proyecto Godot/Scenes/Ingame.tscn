@@ -6,7 +6,7 @@
 [ext_resource path="res://Resources/player1.tres" type="Material" id=4]
 [ext_resource path="res://Resources/box.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/node.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/RigidBody.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/RigidBody.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
 [ext_resource path="res://Resources/line.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/randomizedTexture.gd" type="Script" id=10]
@@ -22,7 +22,7 @@
 [ext_resource path="res://Resources/player2.tres" type="Material" id=20]
 [ext_resource path="res://Resources/player3.tres" type="Material" id=21]
 [ext_resource path="res://Resources/player4.tres" type="Material" id=22]
-[ext_resource path="res://Scenes/startGame.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/startGame.gd" type="Script" id=23]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -745,6 +745,7 @@ modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "1_3", "2_4" ]
+type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_1_2" instance=ExtResource( 7 )]
 
@@ -754,6 +755,7 @@ modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_3", "3_4" ]
+type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_2_3" instance=ExtResource( 7 )]
 
@@ -763,6 +765,7 @@ modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_3", "4_4" ]
+type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_3_4" instance=ExtResource( 7 )]
 
@@ -772,6 +775,7 @@ modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_3", "1_4" ]
+type = 3
 
 [node name="RigidBody" parent="tiles/Peaje_1_4" instance=ExtResource( 7 )]
 
@@ -795,6 +799,20 @@ margin_bottom = -150.701
 rect_scale = Vector2( 5.04917, 5.04917 )
 custom_fonts/font = ExtResource( 3 )
 text = "DADO"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Pause" type="Button" parent="TempUI"]
+anchor_left = -10.9074
+anchor_top = -13.7143
+anchor_right = -5.578
+anchor_bottom = -9.146
+margin_right = -252.788
+margin_bottom = -79.934
+rect_scale = Vector2( 5.04917, 5.04917 )
+custom_fonts/font = ExtResource( 3 )
+text = "PAUSE"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -1132,6 +1150,7 @@ __meta__ = {
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Puntuaciones Globales" to="Control" method="global_Score"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Otros/Condiciones de Victoria" to="Control" method="win_Condition"]
 [connection signal="pressed" from="TempUI/rollButton" to="." method="rollButton_pressed"]
+[connection signal="pressed" from="TempUI/Pause" to="." method="pauseGame"]
 [connection signal="pressed" from="TempUI/moveButtons/cancelMove" to="." method="cancelMove_pressed"]
 [connection signal="pressed" from="TempUI/moveButtons/acceptMove" to="." method="acceptMove_pressed"]
 [connection signal="pressed" from="TempUI/FreeBuildingButtons/HBoxContainer/NoComprar" to="." method="pass_on_Building_pressed"]

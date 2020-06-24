@@ -14,6 +14,13 @@ func rollButton_pressed():
 	gameManager.roll_dice()
 	get_node(UIPath + "rollButton").visible = false
 
+func pauseGame():
+	if (gameManager.getPaused()):
+		$TempUI/Pause.text = "Pause"
+		gameManager.setPaused(false)
+	else:
+		$TempUI/Pause.text = "Resume"
+		gameManager.setPaused(true)
 
 func acceptMove_pressed():
 	get_node(UIPath + "moveButtons").visible = false
@@ -24,6 +31,7 @@ func acceptMove_pressed():
 func cancelMove_pressed():
 	get_node(basePath + gameManager.players[gameManager.turn]).reverse()
 	get_node(UIPath + "moveButtons").visible = false
+
 
 func buyFreeBuilding_pressed():
 	var player = get_node(basePath + "Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
@@ -36,13 +44,14 @@ func buyFreeBuilding_pressed():
 	
 	#Algo mas?
 	get_node(UIPath + "FreeBuildingButtons").visible = false
+	gameManager.endTurn()
 
 func pass_on_Building_pressed():
 	#Se reutiliza para todos los casos, asi que pongo en false la visibilidad de la UI y tirando
 	get_node(UIPath + "FreeBuildingButtons").visible = false
 	get_node(UIPath + "OwnBuildingButtons").visible = false
-	#Siguiente turno stuff
-	pass
+	
+	gameManager.endTurn()
 
 func invest_on_Building():
 	get_node(UIPath + "OwnBuildingButtons").visible = false
@@ -71,6 +80,7 @@ func confirm_Investment():
 	node.Investment_Left = node.Investment_Left - gameManager.investment
 	gameManager.investment = 100 #Reset de valor
 	get_node(UIPath + "InvestButtons").visible = false
+	gameManager.endTurn()
 
 func cancel_Investment():
 	gameManager.investment = 100 #Reset de valor
@@ -86,6 +96,7 @@ func pay_Building():
 	player_earn.Cash = player_earn.Cash + node.Value
 	
 	get_node(UIPath + "TakenBuildingButtons").visible = false #UI visible e invisible
+	gameManager.endTurn()
 
 func bankrupt():
 	pass #que hacemos aqui
