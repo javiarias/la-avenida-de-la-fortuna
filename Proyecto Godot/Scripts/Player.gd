@@ -10,11 +10,15 @@ var Name: String = "EEE"
 var Cash: int = 1500
 var Score: int = 0
 var properties = []
+var suits = [false, false, false, false]
 var stocks = [0,0,0,0,0]
 var canEndMovement = false
 var pos
 
 var node
+
+func getScore():
+	return Score
 
 func cellClicked(name):
 	if moves > 0:
@@ -74,6 +78,14 @@ func reverse():
 func _ready():
 	pass
 
+func calculateScore():
+	var propValue = 0
+	
+	for i in properties:
+		var property = i.Price + i.Investment_Total/3
+		propValue = propValue + property
+		
+	Score = Cash + propValue
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

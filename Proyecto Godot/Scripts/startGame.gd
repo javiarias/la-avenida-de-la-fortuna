@@ -47,12 +47,21 @@ func buyFreeBuilding_pressed():
 	var player = get_node(basePath + "Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
 	var node = get_node(basePath + "tiles/" + player.currentNode)
 	
-	player.Cash = player.Cash - node.Price
-	node.free = false
-	node.Owner = player.Name
-	node.get_child((1)).set_text(String(node.Value))
-	node.get_child((2)).visible = true
-	player.properties.push_back(node)
+	if (node.free):
+		player.Cash = player.Cash - node.Price
+		node.free = false
+		node.Owner = player.Name
+		node.get_child((1)).set_text(String(node.Value))
+		node.get_child((2)).visible = true
+		player.properties.push_back(node)
+	
+	else:
+		player.Cash = player.Cash - node.Price * 5
+		node.Owner.Cash = node.Owner.Cash - node.Price * 5
+		node.Owner.properties.erase(node)
+		node.Owner = player.Name
+		player.properties.push_back(node)
+		
 	#Algo mas?
 	get_node(UIPath + "FreeBuildingButtons").visible = false
 	gameManager.endTurn()
@@ -60,7 +69,7 @@ func buyFreeBuilding_pressed():
 func pass_on_Building_pressed():
 	#Se reutiliza para todos los casos, asi que pongo en false la visibilidad de la UI y tirando
 	get_node(UIPath + "FreeBuildingButtons").visible = false
-	get_node(UIPath + "OwnBuildingButtons").visible = false
+	#get_node(UIPath + "OwnBuildingButtons").visible = false
 	
 	gameManager.endTurn()
 
@@ -82,9 +91,38 @@ func reduce_Investment():
 	else:
 		get_node(UIPath + "InvestButtons/Menos").set_disabled(true)
 
-
+func suitConfirm():
+	var player = get_node(basePath + gameManager.players[gameManager.getTurn()]) 
+	
+	if (player.currentNode == "Palo_1"):
+		player.suits[0] = true
+		
+	elif (player.currentNode == "Palo_2"):
+		player.suits[1] = true
+		
+	elif (player.currentNode == "Palo_3"):
+		player.suits[2] = true
+		
+	elif (player.currentNode == "Palo_4"):
+		player.suits[3] = true
+	
+	get_node(UIPath + "SuitButtons").visible = false #UI visible e invisible
+	gameManager.endTurn()
+	
+func BankSuit():
+	var player = get_node(basePath + gameManager.players[gameManager.getTurn()]) 
+	
+	if (player.suits[0] and player.suits[1] and player.suits[2] and player.suits[3]):
+		player.Cash = player.Cash + 1500
+	
+	else:
+		pass
+	
+	get_node(UIPath + "BankButtons").visible = false #UI visible e invisible
+	gameManager.endTurn()
+	
 func confirm_Investment():
-	var player = get_node(basePath + "Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var player = get_node(basePath + gameManager.players[gameManager.getTurn()]) 
 	var node = get_node(basePath + "tiles/" + player.currentNode)
 	
 	player.Cash = player.Cash - gameManager.investment
@@ -107,7 +145,21 @@ func pay_Building():
 	player_earn.Cash = player_earn.Cash + node.Value
 	
 	get_node(UIPath + "TakenBuildingButtons").visible = false #UI visible e invisible
-	gameManager.endTurn()
+	
+	if (player_pay.Cash >= node.Price):
+		get_node(UIPath + "FreeBuildingButtons").visible = true #UI visible e invisible
+		get_node(UIPath + "FreeBuildingButtons/Label").text = "Esta casilla es de otro jugador, ¿quieres comprarla a 5 veces su precio?"
+	else:
+		gameManager.endTurn()
 
 func bankrupt():
-	pass #que hacemos aqui
+	var p = get_node(basePath + gameManager.players[gameManager.getTurn()])
+	
+	for i in p.properties:
+		i.free = true
+		i.Owner = null
+	
+	gameManager.players.erase(gameManager.players[gameManager.getTurn()])
+	#gameManager.playerAmount = gameManager.playerAmount - 1
+	
+	#Quitar de players o algo?
