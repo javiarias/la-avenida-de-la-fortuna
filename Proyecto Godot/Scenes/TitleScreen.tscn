@@ -67,28 +67,28 @@ __meta__ = {
 [node name="Local" parent="Menu/CenterContainer/Buttons" instance=ExtResource( 7 )]
 margin_right = 450.0
 mouse_default_cursor_shape = 2
-scene_to_load = "res://Scenes/LocalLobby.tscn"
+script = null
 
 [node name="Host" parent="Menu/CenterContainer/Buttons" instance=ExtResource( 3 )]
 margin_top = 77.0
 margin_right = 450.0
 margin_bottom = 137.0
 mouse_default_cursor_shape = 2
-scene_to_load = "res://Scenes/HostScene.tscn"
+script = null
 
 [node name="Join" parent="Menu/CenterContainer/Buttons" instance=ExtResource( 5 )]
 margin_top = 154.0
 margin_right = 450.0
 margin_bottom = 214.0
 mouse_default_cursor_shape = 2
-scene_to_load = "res://Scenes/Continue.tscn"
+script = null
 
 [node name="Exit" parent="Menu/CenterContainer/Buttons" instance=ExtResource( 4 )]
 margin_top = 231.0
 margin_right = 450.0
 margin_bottom = 291.0
 mouse_default_cursor_shape = 2
-scene_to_load = ""
+script = null
 
 [node name="MarginContainer2" type="MarginContainer" parent="Menu"]
 margin_top = 665.0
@@ -116,4 +116,8 @@ __meta__ = {
 }
 
 [node name="FadeIn" parent="." instance=ExtResource( 2 )]
+[connection signal="pressed" from="Menu/CenterContainer/Buttons/Local" to="." method="_on_Local_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer/Buttons/Host" to="." method="_on_Host_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer/Buttons/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer/Buttons/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

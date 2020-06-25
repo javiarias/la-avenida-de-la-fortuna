@@ -7,7 +7,7 @@ export(Type) var type = Type.BUILD
 export(int) var Value
 export(int) var Price
 
-var Name: String = self.get_name()
+var nick: String = self.get_name()
 #var Position: String #O como se quiera expresar
 var District: int
 #var Price: int = 1600
