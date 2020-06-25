@@ -12,7 +12,8 @@ var Name: String = self.get_name()
 var District: int
 #var Price: int = 1600
 #var Value: int = 50
-var Investment_Left: int
+var Investment_Left: int = 0
+var Investment_Total: int = 1000
 var free : bool = true
 var Owner: String
 

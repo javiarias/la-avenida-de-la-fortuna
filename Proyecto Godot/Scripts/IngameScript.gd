@@ -46,7 +46,7 @@ func setRolled(value):
 
 func checkWin():
 	for i in range(0, playerAmount):
-		if (get_node(players[i]).Score >= scoreWin):
+		if (get_node(basePath + players[i]).getScore() >= scoreWin):
 			return true
 	
 	return false
@@ -60,6 +60,7 @@ func turn():
 	pass
 
 func endTurn():
+	get_node(basePath + players[turn]).calculateScore()
 	gameManager.setRolled(false)
 	get_node(UIPath + "rollButton").visible == true
 	get_node(basePath + "Dice").visible = true
@@ -77,10 +78,16 @@ func moveEnded():
 		endTurn()
 	
 	elif (node.isBank()):
-		endTurn()
-	
+		get_node(UIPath + "BankButtons").visible = true #UI visible e invisible
+		
+		if (player.suits[0] and player.suits[1] and player.suits[2] and player.suits[3]):
+			get_node(UIPath + "BankButtons/Label").text = "Tienes todos los palos, enhorabuena. Toma tu merecido salario"
+		
+		else:
+			get_node(UIPath + "BankButtons/Label").text = "No tienes todos los palos, vuelve más tarde."
+		
 	elif (node.isSuit()):
-		endTurn()
+		get_node(UIPath + "SuitButtons").visible = true #UI visible e invisible
 	
 	elif (node.free and node.isBuild()): #Comprar casilla
 		get_node(UIPath + "FreeBuildingButtons").visible = true #UI visible e invisible
@@ -91,11 +98,11 @@ func moveEnded():
 		
 
 	elif (node.Owner == player.Name): #Casilla propia
-		get_node(UIPath + "OwnBuildingButtons").visible = true #UI visible e invisible
-		get_node(UIPath + "OwnBuildingButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
+		get_node(UIPath + "InvestButtons").visible = true #UI visible e invisible
+		get_node(UIPath + "InvestButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
 		
 		
-	else:	#Casilla ajena
+	else:	#Casilla ajena, despues puede haber expropiese
 		get_node(UIPath + "TakenBuildingButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "TakenBuildingButtons/Label").text = "Esta casilla es de otro jugador, te toca pagar"
 		
