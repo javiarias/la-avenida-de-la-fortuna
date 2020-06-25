@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=1]
+
+[node name="HBoxContainer3" type="HBoxContainer"]
+margin_left = 23.0
+margin_top = 30.0
+margin_right = 1257.0
+margin_bottom = 396.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1" type="ColorRect" parent="."]
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Player1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2" type="ColorRect" parent="."]
+visible = false
+margin_left = 627.0
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.0784314, 1, 0, 1 )
+
+[node name="Label" type="Label" parent="Player2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player3" type="ColorRect" parent="."]
+visible = false
+margin_left = 836.0
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0.0392157, 1, 1 )
+
+[node name="Label" type="Label" parent="Player3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player4" type="ColorRect" parent="."]
+visible = false
+margin_left = 939.0
+margin_right = 1234.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.992157, 0, 1, 1 )
+
+[node name="Label" type="Label" parent="Player4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYER 4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

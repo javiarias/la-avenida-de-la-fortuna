@@ -20,7 +20,6 @@ func _ready():
 func gameStart():
 	gameStarted = true
 	for i in range(1, playerAmount+1):
-		players.append("Player" + str(i))
 		get_tree().get_root().get_node(basePath + "Player" + str(i)).visible = true
 
 func _process(delta):

@@ -1,0 +1,155 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/HostScene.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 201.0
+margin_top = 304.0
+margin_right = 1047.0
+margin_bottom = 366.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_right = 154.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+max_length = 3
+expand_to_text_length = true
+placeholder_text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 156.0
+margin_right = 172.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "."
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer"]
+margin_left = 174.0
+margin_right = 328.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+max_length = 3
+expand_to_text_length = true
+placeholder_text = "-"
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+margin_left = 330.0
+margin_right = 346.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "."
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer"]
+margin_left = 348.0
+margin_right = 502.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+max_length = 3
+expand_to_text_length = true
+placeholder_text = "-"
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+margin_left = 504.0
+margin_right = 520.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "."
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer"]
+margin_left = 522.0
+margin_right = 676.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+max_length = 3
+expand_to_text_length = true
+placeholder_text = "-"
+
+[node name="Label4" type="Label" parent="HBoxContainer"]
+margin_left = 678.0
+margin_right = 702.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "::"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit5" type="LineEdit" parent="HBoxContainer"]
+margin_left = 704.0
+margin_right = 858.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+max_length = 4
+expand_to_text_length = true
+placeholder_text = "-"
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="text_changed"]
+[connection signal="text_entered" from="HBoxContainer/LineEdit" to="." method="text_changed"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit2" to="." method="text_changed2"]
+[connection signal="text_entered" from="HBoxContainer/LineEdit2" to="." method="text_changed2"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit3" to="." method="text_changed3"]
+[connection signal="text_entered" from="HBoxContainer/LineEdit3" to="." method="text_changed3"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit4" to="." method="text_changed4"]
+[connection signal="text_entered" from="HBoxContainer/LineEdit4" to="." method="text_changed4"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit5" to="." method="text_changedPort"]
+[connection signal="text_entered" from="HBoxContainer/LineEdit5" to="." method="text_changedPort"]

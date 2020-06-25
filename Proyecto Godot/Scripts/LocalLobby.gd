@@ -9,7 +9,10 @@ func _ready():
 
 
 func _on_Continue_pressed():
-	get_tree().change_scene("res://Scenes/Ingame.tscn")
+	if(gameManager.playerAmount == 1):
+		get_tree().change_scene("res://Scenes/Ingame.tscn")
+	else:
+		get_tree().change_scene("res://Scenes/diceOrder.tscn")
 
 
 func _on_Cancel_pressed():

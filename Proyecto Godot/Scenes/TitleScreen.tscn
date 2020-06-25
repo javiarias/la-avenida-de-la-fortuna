@@ -74,7 +74,7 @@ margin_top = 77.0
 margin_right = 450.0
 margin_bottom = 137.0
 mouse_default_cursor_shape = 2
-scene_to_load = "res://Scenes/NewGame.tscn"
+scene_to_load = "res://Scenes/HostScene.tscn"
 
 [node name="Join" parent="Menu/CenterContainer/Buttons" instance=ExtResource( 5 )]
 margin_top = 154.0
