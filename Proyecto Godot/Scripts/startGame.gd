@@ -47,12 +47,12 @@ func buyFreeBuilding_pressed():
 	var player = get_node(basePath + "Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
 	var node = get_node(basePath + "tiles/" + player.currentNode)
 	
-	#if (player.Cash => node.Price): A priori no hace falta la comprobacion porque si no el boton está desactivado
 	player.Cash = player.Cash - node.Price
 	node.free = false
 	node.Owner = player.Name
 	node.get_child((1)).set_text(String(node.Value))
 	node.get_child((2)).visible = true
+	player.properties.push_back(node)
 	#Algo mas?
 	get_node(UIPath + "FreeBuildingButtons").visible = false
 	gameManager.endTurn()

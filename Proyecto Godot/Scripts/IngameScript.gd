@@ -11,6 +11,7 @@ var UIPath = "/root/Spatial/TempUI/"
 var playerAmount = 4
 var investment = 100
 var paused = false
+var scoreWin = 15000
 
 # El init/create
 func _ready():
@@ -23,7 +24,7 @@ func gameStart():
 		get_tree().get_root().get_node(basePath + "Player" + str(i)).visible = true
 
 func _process(delta):
-	if gameStarted:
+	if gameStarted and not checkWin():
 		turn()
 
 func getPaused():
@@ -43,6 +44,13 @@ func setTurn(value):
 
 func setRolled(value):
 	rolled = value
+
+func checkWin():
+	for i in range(0, playerAmount):
+		if (get_node(players[i]).Score >= scoreWin):
+			return true
+	
+	return false
 
 func turn():
 	if not paused:

@@ -8,8 +8,8 @@ var myTurn = true
 var movement = []
 var Name: String = "EEE"
 var Cash: int = 1500
-var Score: int
-var properties = [] #Esto tendria que ser array solo de squares, pero asi vale
+var Score: int = 0
+var properties = []
 var stocks = [0,0,0,0,0]
 var canEndMovement = false
 var pos
