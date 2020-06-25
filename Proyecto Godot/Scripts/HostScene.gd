@@ -1,11 +1,11 @@
 extends Control
 
 
-var one = ""
-var two = ""
-var three = ""
-var four = ""
-var port = ""
+var one = "127"
+var two = "0"
+var three = "0"
+var four = "1"
+var port = "7890"
 var nick = ""
 
 # Called when the node enters the scene tree for the first time.
