@@ -18,7 +18,7 @@ public:
 	//tipos de mensaje INTERNOS. Los tres primeros son genéricos, el resto sirven para identificar mensajes específicos de servidor-cliente
     enum Type { INT, FLOAT, STR, LOGIN, LOGOUT, HANDSHAKE, VERIFIED, FAILED, READY, FULL, NAMES, ERROR};
 
-	enum GameEnum { IGNORE, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
+	enum GameEnum { IGNORE, SHUTDOWN, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
 
 
     static const uint8_t MAX_STR = 200;
@@ -85,6 +85,8 @@ public:
      */
     void do_messages();
 
+	void waitForLogout();
+
 private:
 
 	//struct que define un jugador
@@ -119,6 +121,8 @@ private:
 	int getPlayerByID(int id);
 	void tryStart();
 
+	void shutdown();
+
 
 	//bool para indicar si se ha empezado la partida
 	bool gameStarted = false;
@@ -140,6 +144,9 @@ private:
 
 	//lista de ids que se están usando, para evitar repetir
 	std::vector<int> ids_in_use;
+
+	bool logoutInProgress = false;
+	bool logoutFinished = false;
 };
 
 // -----------------------------------------------------------------------------
@@ -185,6 +192,10 @@ public:
      *  recibe mensajes del servidor
      */
     void recv_thread();
+
+	bool getMessage(Message& m);
+
+	int getID();
 
 private:
 

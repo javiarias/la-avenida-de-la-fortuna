@@ -127,122 +127,141 @@ void Server::do_messages()
 
 		//std::cout << getPlayerByID(m.id);
 		//std::cout << " sends: TYPE = " << m.type << " ENUM = " << m.game_enum << " CONTENT = " << m.intMsg << " " << m.floatMsg << " " << m.strMsg << '\n';
-		
-		if (!gameStarted)
-		{
-			switch (m.type)
-			{
-			case Message::LOGIN:
 
-				clients.push_back(sock);
-				handshake(sock, m);
-				break;
-			case Message::LOGOUT:
-				
-				logout(sock);
-				break;
-			case Message::HANDSHAKE:
-				verify(m, sock);
-				break;
-			case Message::NAMES:
-				if(getPlayerByID(m.id) > 0)
-				{
-					//si se piden los nombres, se reenvían los nombres de todos los jugadores menos el emisor del mensaje
-					for (Player p : players)
-					{
-						if (p.id != m.id) {
-							Message msg = Message(p.id, m.id, Message::GameEnum::NAME, p.n);
-							//std::cout << "sending name: " << p.n << " " << p.id << "\n";
-							send(msg);
-						}
-					}
-				}
-				break;
-			case Message::READY:
-				if(getPlayerByID(m.id) > 0)
-				{
-					send(m);
-					players[getPlayerByID(m.id) - 1].ready = true;
-					tryStart();
-				}
-				break;
+		//queremos que los logout SIEMPRE se procesen
+		if (m.type == Message::LOGOUT)
+		{
+			logout(sock);
+			if (gameStarted)
+			{
+				logoutInProgress = true;
+				shutdown();
 			}
 		}
 		else
 		{
-			if (!ordered)
+
+			if (!gameStarted)
 			{
-				//si aún no se ha establecido el orden, se capturan solo los mensajes de tipo ROLL
-				if (m.game_enum == Message::GameEnum::ROLL) {
+				switch (m.type)
+				{
+				case Message::LOGIN:
+					clients.push_back(sock);
+					handshake(sock, m);
+					break;
 
-					int i = getPlayerByID(m.id);
-
-					//se recicla la variable ready para comprobar si ha tirado ya los dados
-					if(!(players[i - 1].firstRoll))
+				case Message::HANDSHAKE:
+					verify(m, sock);
+					break;
+				case Message::NAMES:
+					if (getPlayerByID(m.id) > 0)
 					{
-						//std::cout << "roll received!: " << m.intMsg << " from player " << i << '\n';
-						players[i - 1].firstRoll = true;
-						firstRoll.push_back(std::make_pair(m.intMsg, i - 1));
-						turn++;
-						send(m);
-						//std::cout << "turn: " << turn << " size: " << players.size() << '\n';
-					}
-					
-
-
-					//una vez todos los jugadores han lanzado su dado, se establece el orden
-					if (turn >= players.size())
-					{
-
-						turn = 0;
-						ordered = true;
-
-						//ordenar según los resultados de los dados
-						std::sort(firstRoll.begin(), firstRoll.end());
-
-						//vector copia para ir ordenando los jugadores
-						std::vector<Player> players_copy(players);
-
-						//se avisa a todos los jugadores del orden, incluyendo el jugador al cual nos referimos en el id del mensaje
-						for (int i = 0; i < firstRoll.size(); i++) {
-
-							std::pair<int, int> p = firstRoll[i];
-							Message msg = Message(i, 0, Message::GameEnum::ORDER, players[p.second].n);
-
-							send(msg);
-
-							players_copy[i] = players[p.second];
+						//si se piden los nombres, se reenvían los nombres de todos los jugadores menos el emisor del mensaje
+						for (Player p : players)
+						{
+							if (p.id != m.id) {
+								Message msg = Message(p.id, m.id, Message::GameEnum::NAME, p.n);
+								//std::cout << "sending name: " << p.n << " " << p.id << "\n";
+								send(msg);
+							}
 						}
-
-						//se ordena el vector players
-						players = players_copy;
-
-						//se envía el primer mensaje de start a TODOS, con el número de jugador
-						Message msg = Message(0, Message::GameEnum::TURN_START, turn);
-						send(msg);
 					}
+					break;
+				case Message::READY:
+					if (getPlayerByID(m.id) > 0)
+					{
+						send(m);
+						players[getPlayerByID(m.id) - 1].ready = true;
+						tryStart();
+					}
+					break;
 				}
 			}
 			else
 			{
-				if (m.game_enum == Message::GameEnum::TURN_END)
+				if (!ordered)
 				{
-					if(turn == (getPlayerByID(m.id) - 1))
-					{
-						turn = (turn >= (players.size() - 1)) ? 0 : turn + 1;
-						Message msg = Message(0, Message::GameEnum::TURN_START, turn);
-						send(msg);
+					//si aún no se ha establecido el orden, se capturan solo los mensajes de tipo ROLL
+					if (m.game_enum == Message::GameEnum::ROLL) {
 
-						//std::cout << "turn ended! turn is now: " << turn << "\n";
+						int i = getPlayerByID(m.id);
+
+						//se recicla la variable ready para comprobar si ha tirado ya los dados
+						if (!(players[i - 1].firstRoll))
+						{
+							//std::cout << "roll received!: " << m.intMsg << " from player " << i << '\n';
+							players[i - 1].firstRoll = true;
+							firstRoll.push_back(std::make_pair(m.intMsg, i - 1));
+							turn++;
+							send(m);
+							//std::cout << "turn: " << turn << " size: " << players.size() << '\n';
+						}
+
+
+
+						//una vez todos los jugadores han lanzado su dado, se establece el orden
+						if (turn >= players.size())
+						{
+
+							turn = 0;
+							ordered = true;
+
+							//ordenar según los resultados de los dados
+							std::sort(firstRoll.begin(), firstRoll.end());
+
+							//vector copia para ir ordenando los jugadores
+							std::vector<Player> players_copy(players);
+
+							//se avisa a todos los jugadores del orden, incluyendo el jugador al cual nos referimos en el id del mensaje
+							for (int i = 0; i < firstRoll.size(); i++) {
+
+								std::pair<int, int> p = firstRoll[i];
+								Message msg = Message(i, 0, Message::GameEnum::ORDER, players[p.second].n);
+
+								send(msg);
+
+								players_copy[i] = players[p.second];
+							}
+
+							//se ordena el vector players
+							players = players_copy;
+
+							//se envía el primer mensaje de start a TODOS, con el número de jugador
+							Message msg = Message(0, Message::GameEnum::TURN_START, turn);
+							send(msg);
+						}
 					}
 				}
-				//si no es un mensaje de que ha acabado el turno, se reenvía
 				else
-					send(m);
+				{
+					if (m.game_enum == Message::GameEnum::TURN_END)
+					{
+						if (turn == (getPlayerByID(m.id) - 1))
+						{
+							turn = (turn >= (players.size() - 1)) ? 0 : turn + 1;
+							Message msg = Message(0, Message::GameEnum::TURN_START, turn);
+							send(msg);
+
+							//std::cout << "turn ended! turn is now: " << turn << "\n";
+						}
+					}
+					//si no es un mensaje de que ha acabado el turno, se reenvía
+					else
+						send(m);
+				}
 			}
 		}
-
     }
+}
+
+void Server::waitForLogout()
+{
+	//simplemente para asegurarnos de que no se cierra el servidor sin avisar a todos
+
+	while (!logoutFinished)
+	{
+		continue;
+	}
 }
 
 int Server::decode(int msg)
@@ -407,6 +426,16 @@ void Server::tryStart()
 	}
 	//else
 		//std::cout << "game couldn't start\n";
+}
+
+void Server::shutdown()
+{
+	Message m = Message(0, Message::GameEnum::SHUTDOWN, "shutdown");
+	m.type = Message::ERROR;
+
+	send(m);
+
+	logoutFinished = true;
 }
 
 bool Server::idExists(int id)
@@ -597,15 +626,10 @@ void Client::recv_thread()
 		{
 			login();
 		}
-		else if (msg.game_enum == Message::GameEnum::ORDER)
-		{
-			if(msg.id == id)
-				playerNum = msg.intMsg;
-		}
 		
 		//solo queremos que el jugador "reciba" (o séase, que tenga acceso mediante la cola) mensajes si ha sido verificado (incluyendo el mensaje de verificación, que dice el número de jugador)
 		//pero queremos avisar al jugador aunque no esté "connected" de algunos tipos de mensaje (errores, partida llena, o recibir los nombres de otros jugadores)
-		else if (connected || msg.type == Message::FULL || msg.game_enum == Message::NAME || msg.type == Message::ERROR)
+		else if (connected || msg.type == Message::FULL || msg.game_enum == Message::NAME || msg.type == Message::ERROR || msg.type == Message::ORDER || msg.type == Message::VERIFIED)
 		{
 
 			//se mete el mensaje a la cola, y si se pasa del límite se elimina el primero (FIFO)
@@ -615,6 +639,22 @@ void Client::recv_thread()
 				recv_queue.pop();
 		}
     }
+}
+
+bool Client::getMessage(Message& m)
+{
+	if (recv_queue.size() > 0)
+	{
+		m = recv_queue.front();	recv_queue.pop();
+		return true;
+	}
+	else
+		return false;
+}
+
+int Client::getID()
+{
+	return playerNum;
 }
 
 void Client::handshake(const Message& m)
