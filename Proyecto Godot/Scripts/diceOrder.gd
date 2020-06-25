@@ -3,11 +3,13 @@ extends Control
 
 var rolled = 0
 var rolls = []
-var nicks = ["Player 1", "Player 2", "Player 3", "Player 4"]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not gameManager.online:
+		gameManager.nicks = ["Player 1", "Player 2", "Player 3", "Player 4"]
+	
 	for i in range(1, gameManager.playerAmount + 1):
 		get_node("playerList/Player" + str(i)).visible = true
 		get_node("Dado" + str(i)).visible = true
@@ -43,6 +45,7 @@ func _on_Button_pressed():
 func _on_roll_pressed():
 	if rolled >= gameManager.playerAmount:
 		rolls.sort_custom(Sorter, "sort_rolls")
+		gameManager.nicks.clear()
 		for p in rolls:
 			gameManager.players.append("Player" + str(p[0]))
 			gameManager.nicks.append(p[2])
@@ -54,7 +57,7 @@ func _on_roll_pressed():
 	get_node("Dado" + str(rolled)).rolling = false
 	var dice = randi() % 6 + 1
 	get_node("Dado" + str(rolled)).frame = dice - 1
-	rolls.append([rolled, dice, nicks[rolled]])
+	rolls.append([rolled, dice, gameManager.nicks[rolled - 1]])
 	
 	if rolled == gameManager.playerAmount:
 		get_node("buttons/roll").text = "Jugar"

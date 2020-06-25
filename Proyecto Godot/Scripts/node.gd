@@ -50,17 +50,17 @@ func isBank():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var text = get_child(1)
-	if (text != null):
-		if (self.type == Type.BUILD):
-			text.set_text(String(Price))
-		elif (self.type == Type.TOLL):
-			text.set_text(String(Value))
-			
-	var model = get_child((2))
-	if (model != null):
-		model.visible = false
-	pass # Replace with function body.
+	if get_child_count() > 2:
+		var text = get_child(1)
+		if (text != null):
+			if (self.type == Type.BUILD):
+				text.set_text(String(Price))
+			elif (self.type == Type.TOLL):
+				text.set_text(String(Value))
+				
+		var model = get_child(2)
+		if (model != null):
+			model.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

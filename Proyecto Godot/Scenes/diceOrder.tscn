@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/lobbyPlayerList.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/diceOrder.gd" type="Script" id=2]
 [ext_resource path="res://Resources/dices.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/randomizedTexture2D.gd" type="Script" id=4]
 [ext_resource path="res://Resources/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_30.tres" type="DynamicFont" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -77,5 +78,16 @@ margin_bottom = 87.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Tirar dado"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 264.638
+margin_top = 549.633
+margin_right = 992.638
+margin_bottom = 606.633
+custom_fonts/font = ExtResource( 6 )
+text = "El primero con un Score de 15000 o más gana
+También gana el último que quede si todos entran en bancarrota"
+align = 1
+valign = 1
 [connection signal="pressed" from="buttons/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="buttons/roll" to="." method="_on_roll_pressed"]

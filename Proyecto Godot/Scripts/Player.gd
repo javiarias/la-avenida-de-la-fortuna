@@ -14,6 +14,7 @@ var suits = [false, false, false, false]
 var stocks = [0,0,0,0,0]
 var canEndMovement = false
 var pos
+export var color: Color = Color(0, 0, 0, 1)
 
 var node
 
@@ -54,10 +55,11 @@ func newRoll(rolled):
 
 
 func _input(event):
-	if not canEndMovement:
-		if event is InputEventMouseButton:
-			if event.pressed and event.button_index == 2:
-				reverse()
+	if not gameManager.paused:
+		if not canEndMovement:
+			if event is InputEventMouseButton:
+				if event.pressed and event.button_index == 2:
+					reverse()
 
 
 func reverse():

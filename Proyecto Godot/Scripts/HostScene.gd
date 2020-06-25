@@ -84,11 +84,21 @@ func _on_confirm_pressed():
 	if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
 		get_node("HBoxContainer2/confirm").disabled = true
 		get_node("HBoxContainer2/back").disabled = true
+		get_node("HBoxContainer/LineEdit").editable = false
+		get_node("LineEdit6").editable = false
+		for i in range(2, 6):
+			get_node("HBoxContainer/LineEdit" + str(i)).editable = false
+		
 		get_node("loading").visible = true
 	
 func _on_cancel_pressed():
 	get_node("HBoxContainer2/confirm").disabled = false
 	get_node("HBoxContainer2/back").disabled = false
+	get_node("HBoxContainer/LineEdit").editable = true
+	get_node("LineEdit6").editable = true
+	for i in range(2, 6):
+		get_node("HBoxContainer/LineEdit" + str(i)).editable = true
+			
 	get_node("loading").visible = false
 
 

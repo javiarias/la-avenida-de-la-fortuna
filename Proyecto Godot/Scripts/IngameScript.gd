@@ -6,7 +6,7 @@ var gameStarted = false
 var rolled = false
 var dice = 0
 var players = [] #Array
-var nicks = []
+var nicks = ["Player 1", "Player 2", "Player 3", "Player 4"]
 var turn = 0
 var basePath = "/root/Spatial/"
 var UIPath = "/root/Spatial/TempUI/"
@@ -23,25 +23,19 @@ func gameStart():
 	gameStarted = true
 	for i in range(1, playerAmount+1):
 		get_node(basePath + "Player" + str(i)).visible = true
-		get_node(basePath + "Player" + str(i)).nick = nicks[i]
+		get_node(basePath + "Player" + str(i)).nick = nicks[i - 1]
+		
+		get_node(UIPath + "Scores").get_child(i-1).visible = true
+		var color : Color = get_node(basePath + players[i-1]).color
+		get_node(UIPath + "Scores").get_child(i-1).get_child(0).add_color_override("font_color", color)
+		
+		get_node(UIPath + "Scores").get_child(i-1).get_child(0).text = nicks[i - 1]
+		get_node(UIPath + "Scores").get_child(i-1).get_child(1).get_child(1).text = str(get_node(basePath + "Player" + str(i)).Cash)
+		get_node(UIPath + "Scores").get_child(i-1).get_child(2).get_child(1).text = str(get_node(basePath + "Player" + str(i)).Score)
+
 
 func _process(delta):
 	if gameStarted and not checkWin():
-		var color : Color
-		
-		if (players[turn] == "Player1"):
-			color = Color(1,0,0,1)
-		
-		elif (players[turn] == "Player2"):
-			color = Color(0.07,1,0,1)
-		
-		elif (players[turn] == "Player3"):
-			color = Color(0,0.04,1,1)
-		
-		elif (players[turn] == "Player4"):
-			color = Color(0.99,0,1,1)
-		
-		get_node(UIPath + "Scores/HBoxContainer").get_child(turn).add_color_override("font_color", color)
 		turn()
 
 func getPaused():
@@ -49,6 +43,20 @@ func getPaused():
 
 func setPaused(value):
 	paused = value
+	get_node(basePath + "Dice").paused = value
+	get_node(UIPath + "exit").visible = value
+	get_node(UIPath + "rollButton").disabled = value
+	
+	for c in get_node(UIPath).get_children():
+		for ch in c.get_children():
+			if ch is TextureButton or ch is Button:
+				ch.disabled = value
+			elif ch is HBoxContainer or ch == VBoxContainer:
+				for chi in ch.get_children():					
+					if chi == TextureButton or chi == Button:
+						chi.disabled = value
+	
+
 
 func getPlayerAmount():
 	return playerAmount
@@ -79,33 +87,21 @@ func endTurn():
 	var player = get_node(basePath + players[turn])
 	player.calculateScore()
 	
-	#FALTA VER EL ORDEN DE LOS JUGADORES PARA VER CUAL CAMBIAR
-	var num
-	
-	if (players[turn] == "Player1"):
-		num = 0
-		
-	elif (players[turn] == "Player2"):
-		num = 1
-		
-	elif (players[turn] == "Player3"):
-		num = 2
-		
-	elif (players[turn] == "Player4"):
-		num = 3
-	
-	get_node(UIPath + "Scores/HBoxContainer2").get_child(num).text = String(player.Score)
+	get_node(UIPath + "Scores").get_child(turn).get_child(1).get_child(1).text = String(player.Cash)
+	get_node(UIPath + "Scores").get_child(turn).get_child(2).get_child(1).text = String(player.Score)
 	
 	gameManager.setRolled(false)
 	get_node(UIPath + "rollButton").visible == true
 	get_node(basePath + "Dice").visible = true
 	
-	get_node(UIPath + "Scores/HBoxContainer").get_child(turn).add_color_override("font_color", Color(1,1,1,1))
+	get_node(UIPath + "Scores").get_child(turn).modulate.a = 0.3
 			
 	if (gameManager.getTurn() < gameManager.getPlayerAmount() - 1):
 		gameManager.setTurn(gameManager.getTurn() + 1)
 	else:
 		gameManager.setTurn(0)
+	
+	get_node(UIPath + "Scores").get_child(turn).modulate.a = 1
 
 func moveEnded():
 	var player = get_node(basePath + players[turn]) #Aqui igual hay que cambiar que jugador se coge en funcion del turno
@@ -272,7 +268,30 @@ func updateScoreInternal ():
 
 func canEndMovement():
 	get_node(UIPath + "moveButtons").visible = true
+
+
+func exitGame():
+	if online:
+		pass
 	
+	players.clear()
+	nicks.clear()
+	
+	online = false
+	host = false
+	gameStarted = false
+	rolled = false
+	dice = 0
+	players = [] #Array
+	nicks = []
+	turn = 0
+	playerAmount = 4
+	investment = 100
+	paused = false
+	scoreWin = 15000
+	
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+
 #???
 
 ############

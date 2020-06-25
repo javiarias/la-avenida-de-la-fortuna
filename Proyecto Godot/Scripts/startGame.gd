@@ -16,10 +16,10 @@ func rollButton_pressed():
 
 func pauseGame():
 	if (gameManager.getPaused()):
-		$TempUI/Pause.text = "Pause"
+		$TempUI/Pause.text = "Pausar"
 		gameManager.setPaused(false)
 	else:
-		$TempUI/Pause.text = "Resume"
+		$TempUI/Pause.text = "Resumir"
 		gameManager.setPaused(true)
 
 func acceptMove_pressed():
@@ -44,7 +44,7 @@ func cancelMove_pressed():
 
 
 func buyFreeBuilding_pressed():
-	var player = get_node(basePath + "Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var player = get_node(basePath + gameManager.players[gameManager.turn]) #Aqui igual hay que cambiar que jugador se coge en funcion del turno
 	var node = get_node(basePath + "tiles/" + player.currentNode)
 	
 	if (node.free):
@@ -96,15 +96,19 @@ func suitConfirm():
 	
 	if (player.currentNode == "Palo_1"):
 		player.suits[0] = true
+		get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/spade").modulate = Color(1, 1, 1, 1)
 		
 	elif (player.currentNode == "Palo_2"):
 		player.suits[1] = true
+		get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/clover").modulate = Color(1, 1, 1, 1)
 		
 	elif (player.currentNode == "Palo_3"):
 		player.suits[2] = true
+		get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/diamond").modulate = Color(1, 1, 1, 1)
 		
 	elif (player.currentNode == "Palo_4"):
 		player.suits[3] = true
+		get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/heart").modulate = Color(1, 1, 1, 1)
 	
 	get_node(UIPath + "SuitButtons").visible = false #UI visible e invisible
 	gameManager.endTurn()
@@ -117,6 +121,12 @@ func BankSuit():
 	
 	else:
 		pass
+		
+	
+	get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/spade").modulate = Color(0.2, 0.2, 0.2, 0.5)
+	get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/clover").modulate = Color(0.2, 0.2, 0.2, 0.5)
+	get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/diamond").modulate = Color(0.2, 0.2, 0.2, 0.5)
+	get_node(UIPath + "Scores/").get_child(gameManager.turn).get_node("suits/heart").modulate = Color(0.2, 0.2, 0.2, 0.5)
 	
 	get_node(UIPath + "BankButtons").visible = false #UI visible e invisible
 	gameManager.endTurn()
@@ -163,3 +173,7 @@ func bankrupt():
 	#gameManager.playerAmount = gameManager.playerAmount - 1
 	
 	#Quitar de players o algo?
+
+
+func exit_pressed():
+	gameManager.exitGame()

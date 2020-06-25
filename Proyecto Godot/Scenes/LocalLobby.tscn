@@ -77,7 +77,7 @@ margin_bottom = 103.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "1"
+text = "2"
 align = 1
 valign = 1
 

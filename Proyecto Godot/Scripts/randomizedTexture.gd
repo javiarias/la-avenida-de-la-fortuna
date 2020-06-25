@@ -4,9 +4,10 @@ var time = 0.1
 var temp = 0
 
 var rolling = false
+var paused = false
 
 func _process(delta):
-	if rolling:
+	if not paused and rolling:
 		temp += delta
 		if temp >= time:
 			temp = 0
