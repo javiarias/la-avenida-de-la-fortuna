@@ -1980,6 +1980,7 @@ __meta__ = {
 margin_right = 81.0
 margin_bottom = 21.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Jugador 1"
 
 [node name="Label2" type="Label" parent="TempUI/Scores/HBoxContainer"]
@@ -1987,6 +1988,7 @@ margin_left = 85.0
 margin_right = 170.0
 margin_bottom = 21.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Jugador 2"
 
 [node name="Label3" type="Label" parent="TempUI/Scores/HBoxContainer"]
@@ -1994,6 +1996,7 @@ margin_left = 174.0
 margin_right = 259.0
 margin_bottom = 21.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Jugador 3"
 
 [node name="Label4" type="Label" parent="TempUI/Scores/HBoxContainer"]
@@ -2001,6 +2004,7 @@ margin_left = 263.0
 margin_right = 349.0
 margin_bottom = 21.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Jugador 4"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TempUI/Scores"]
@@ -2045,6 +2049,9 @@ custom_fonts/font = ExtResource( 3 )
 text = "0000000"
 align = 1
 valign = 1
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61254, 0 )
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Tirar Dado" to="Control" method="roll_dice"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Ver Tablero" to="Control" method="look_board"]
 [connection signal="pressed" from="Control/GUI/VBoxContainer/HBoxContainer/Botones Default/Gestionar Acciones" to="Control" method="manage_stocks"]

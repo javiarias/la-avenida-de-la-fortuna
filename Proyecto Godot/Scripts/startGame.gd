@@ -25,17 +25,17 @@ func pauseGame():
 func acceptMove_pressed():
 	get_node(UIPath + "moveButtons").visible = false
 	
-	#para que no se queden los dos en la misma casilla
+	#para que no se queden los dos en la misma casilla	
 	var j = gameManager.getTurn()
 	for i in gameManager.players:
 		if (i != gameManager.players[j]):
 			if (get_node(i).currentNode == get_node(gameManager.players[j]).currentNode):
-				var pos = get_node(i).global_transform.origin
-				global_transform.origin = Vector3(pos.x - 1, global_transform.origin.y, pos.z)
-					
-				var pos2 = get_node(gameManager.players[j]).global_transform.origin
-				global_transform.origin = Vector3(pos2.x + 1, global_transform.origin.y, pos2.z)					
-					
+				
+				var ip = get_node(i)
+				ip.set_translation(ip.get_translation() + Vector3(0.5,0,0))
+				var jp = get_node(gameManager.players[j])
+				jp.set_translation(jp.get_translation() - Vector3(0.5,0,0))
+				
 	gameManager.moveEnded()
 
 func cancelMove_pressed():

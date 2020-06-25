@@ -24,6 +24,21 @@ func gameStart():
 
 func _process(delta):
 	if gameStarted and not checkWin():
+		var color : Color
+		
+		if (players[turn] == "Player1"):
+			color = Color(1,0,0,1)
+		
+		elif (players[turn] == "Player2"):
+			color = Color(0.07,1,0,1)
+		
+		elif (players[turn] == "Player3"):
+			color = Color(0,0.04,1,1)
+		
+		elif (players[turn] == "Player4"):
+			color = Color(0.99,0,1,1)
+		
+		get_node(UIPath + "Scores/HBoxContainer").get_child(turn).add_color_override("font_color", color)
 		turn()
 
 func getPaused():
@@ -46,7 +61,7 @@ func setRolled(value):
 
 func checkWin():
 	for i in range(0, playerAmount):
-		if (get_node(basePath + players[i]).getScore() >= scoreWin):
+		if (get_node(basePath + players[i]).getScore() >= scoreWin or players.size() == 1): #O puntuacion minima, o bancarrota
 			return true
 	
 	return false
@@ -56,15 +71,34 @@ func turn():
 		if not rolled and get_node(UIPath + "rollButton").visible == false:
 			get_node(UIPath + "rollButton").visible = true
 			get_node(basePath + "Dice").rolling = true
-			
-	pass
 
 func endTurn():
-	get_node(basePath + players[turn]).calculateScore()
+	var player = get_node(basePath + players[turn])
+	player.calculateScore()
+	
+	#FALTA VER EL ORDEN DE LOS JUGADORES PARA VER CUAL CAMBIAR
+	var num
+	
+	if (players[turn] == "Player1"):
+		num = 0
+		
+	elif (players[turn] == "Player2"):
+		num = 1
+		
+	elif (players[turn] == "Player3"):
+		num = 2
+		
+	elif (players[turn] == "Player4"):
+		num = 3
+	
+	get_node(UIPath + "Scores/HBoxContainer2").get_child(num).text = String(player.Score)
+	
 	gameManager.setRolled(false)
 	get_node(UIPath + "rollButton").visible == true
 	get_node(basePath + "Dice").visible = true
 	
+	get_node(UIPath + "Scores/HBoxContainer").get_child(turn).add_color_override("font_color", Color(1,1,1,1))
+			
 	if (gameManager.getTurn() < gameManager.getPlayerAmount() - 1):
 		gameManager.setTurn(gameManager.getTurn() + 1)
 	else:
@@ -97,7 +131,7 @@ func moveEnded():
 			get_node(UIPath + "FreeBuildingButtons/HBoxContainer/Comprar").set_disabled(true)
 		
 
-	elif (node.Owner == player.Name): #Casilla propia
+	elif (node.Owner == player.nick): #Casilla propia
 		get_node(UIPath + "InvestButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "InvestButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
 		

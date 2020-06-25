@@ -6,7 +6,7 @@ var moves = 0
 var roll = 0
 var myTurn = true
 var movement = []
-var Name: String = "EEE"
+var Name: String
 var Cash: int = 1500
 var Score: int = 0
 var properties = []
