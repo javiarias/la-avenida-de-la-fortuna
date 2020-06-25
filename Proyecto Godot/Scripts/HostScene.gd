@@ -90,6 +90,13 @@ func _on_confirm_pressed():
 			get_node("HBoxContainer/LineEdit" + str(i)).editable = false
 		
 		get_node("loading").visible = true
+		
+		#try to get connection
+		#if succeeds, load lobby scene
+		gameManager.nicks.append(nick);
+		gameManager.me = nick
+		get_tree().change_scene("res://Scenes/OnlineLobby.tscn")
+		
 	
 func _on_cancel_pressed():
 	get_node("HBoxContainer2/confirm").disabled = false

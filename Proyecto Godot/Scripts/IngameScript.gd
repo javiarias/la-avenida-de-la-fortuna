@@ -6,7 +6,8 @@ var gameStarted = false
 var rolled = false
 var dice = 0
 var players = [] #Array
-var nicks = ["Player 1", "Player 2", "Player 3", "Player 4"]
+var nicks = []
+var me
 var turn = 0
 var basePath = "/root/Spatial/"
 var UIPath = "/root/Spatial/TempUI/"
@@ -32,7 +33,23 @@ func gameStart():
 		get_node(UIPath + "Scores").get_child(i-1).get_child(0).text = nicks[i - 1]
 		get_node(UIPath + "Scores").get_child(i-1).get_child(1).get_child(1).text = str(get_node(basePath + "Player" + str(i)).Cash)
 		get_node(UIPath + "Scores").get_child(i-1).get_child(2).get_child(1).text = str(get_node(basePath + "Player" + str(i)).Score)
+	pass
 
+func startTurn(nick):
+	turn += 1
+	if players[turn] != nick:
+		var aux = 0
+		for p in players:
+			if p != nick:
+				aux += 1
+			else:
+				return
+				
+		var interm = players[turn]
+		players[turn] = players[aux]
+		players[aux] = interm
+		
+		gameStart()
 
 func _process(delta):
 	if gameStarted and not checkWin():
@@ -46,6 +63,9 @@ func setPaused(value):
 	get_node(basePath + "Dice").paused = value
 	get_node(UIPath + "exit").visible = value
 	get_node(UIPath + "rollButton").disabled = value
+	
+	
+	get_node(UIPath + "PauseLabel").visible = value
 	
 	for c in get_node(UIPath).get_children():
 		for ch in c.get_children():
@@ -79,19 +99,16 @@ func checkWin():
 
 func turn():
 	if not paused:
-		if not rolled and get_node(UIPath + "rollButton").visible == false:
-			get_node(UIPath + "rollButton").visible = true
-			get_node(basePath + "Dice").rolling = true
+		if not online or (online and players[turn] == me):
+			if not rolled and get_node(UIPath + "rollButton").visible == false:
+				get_node(UIPath + "rollButton").visible = true
+				get_node(basePath + "Dice").rolling = true				
 
 func endTurn():
-	var player = get_node(basePath + players[turn])
-	player.calculateScore()
-	
-	get_node(UIPath + "Scores").get_child(turn).get_child(1).get_child(1).text = String(player.Cash)
-	get_node(UIPath + "Scores").get_child(turn).get_child(2).get_child(1).text = String(player.Score)
+	updateUI()
 	
 	gameManager.setRolled(false)
-	get_node(UIPath + "rollButton").visible == true
+	get_node(UIPath + "rollButton").visible == false
 	get_node(basePath + "Dice").visible = true
 	
 	get_node(UIPath + "Scores").get_child(turn).modulate.a = 0.3
@@ -101,7 +118,11 @@ func endTurn():
 	else:
 		gameManager.setTurn(0)
 	
-	get_node(UIPath + "Scores").get_child(turn).modulate.a = 1
+	get_node(UIPath + "Scores").get_child(turn).modulate.a = 1	
+	
+	if online:
+		#avisar servidor de turn end
+		pass
 
 func moveEnded():
 	var player = get_node(basePath + players[turn]) #Aqui igual hay que cambiar que jugador se coge en funcion del turno
@@ -125,14 +146,16 @@ func moveEnded():
 	elif (node.free and node.isBuild()): #Comprar casilla
 		get_node(UIPath + "FreeBuildingButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "FreeBuildingButtons/Label").text = "Esta casilla está libre, ¿quieres comprarla?"
+		get_node(UIPath + "FreeBuildingButtons/Label2").text = str(node.Price)
 		
 		if (player.Cash < node.Price):
 			get_node(UIPath + "FreeBuildingButtons/HBoxContainer/Comprar").set_disabled(true)
 		
 
-	elif (node.Owner == player.nick): #Casilla propia
+	elif (node.Owner == player.nick and node.canInvest(10)): #Casilla propia
 		get_node(UIPath + "InvestButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "InvestButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
+		get_node(UIPath + "InvestButtons/Label2").text = "10"
 		
 		
 	else:	#Casilla ajena, despues puede haber expropiese
@@ -140,7 +163,8 @@ func moveEnded():
 		get_node(UIPath + "TakenBuildingButtons/Label").text = "Esta casilla es de otro jugador, te toca pagar"
 		
 		if (player.Cash < node.Value):
-					get_node(UIPath + "TakenBuildingButtons/HBoxContainer/Pagar").set_disabled(true)
+			get_node(UIPath + "TakenBuildingButtons/HBoxContainer/Pagar").set_disabled(true)
+			get_node(UIPath + "TakenBuildingButtons/HBoxContainer/Bancarrota").set_disabled(false)
 
 #Dado
 func roll_dice():
@@ -148,7 +172,7 @@ func roll_dice():
 		return
 	
 	get_node(basePath + "Dice").rolling = false
-	dice = randi() % 6 + 1
+	dice = 1#randi() % 6 + 1
 	get_node(basePath + "Dice").frame = dice - 1
 	#$DiceButton.disabled = true
 	rolled = true
@@ -246,26 +270,6 @@ func win_Condition():
 func options():
 	pass
 
-func updateScoresVisual():
-	var score1 = get_node("Label J1")
-	var score2 = get_node("Label J2")
-	var score3 = get_node("Label J3")
-	var score4 = get_node("Label J4")
-	
-	#Comprobar condicion de victoria aqui?
-	
-	#score1.set_text(Player.Cash + Player.Score) #Player1
-	#score2.set_text(Player.Cash + Player.Score) #Player2
-	#score3.set_text(Player.Cash + Player.Score) #Player3
-	#score4.set_text(Player.Cash + Player.Score) #Player4
-	
-
-func updateScoreInternal ():
-	#Matesmaticas
-	
-	updateScoresVisual()
-	pass
-
 func canEndMovement():
 	get_node(UIPath + "moveButtons").visible = true
 
@@ -291,6 +295,20 @@ func exitGame():
 	scoreWin = 15000
 	
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+
+func getOrderFromNick(nick):
+	return nicks.find(nick)
+
+func updateUI():	
+	var i = 0
+	for p in players:
+		var player = get_node(basePath + p)
+		player.calculateScore()
+		
+		get_node(UIPath + "Scores").get_child(i).get_child(1).get_child(1).text = String(player.Cash)
+		get_node(UIPath + "Scores").get_child(i).get_child(2).get_child(1).text = String(player.Score)
+		
+		i += 1
 
 #???
 

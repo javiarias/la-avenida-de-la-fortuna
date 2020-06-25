@@ -44,21 +44,24 @@ func cancelMove_pressed():
 
 
 func buyFreeBuilding_pressed():
-	var player = get_node(basePath + gameManager.players[gameManager.turn]) #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var player = get_node(basePath + gameManager.players[gameManager.turn])
 	var node = get_node(basePath + "tiles/" + player.currentNode)
+	node.modulate = player.color;
 	
 	if (node.free):
 		player.Cash = player.Cash - node.Price
 		node.free = false
 		node.Owner = player.nick
+		node.Value = node.Price / 2
 		node.get_child((1)).set_text(String(node.Value))
 		node.get_child((2)).visible = true
 		player.properties.push_back(node)
 	
 	else:
+		var owner = get_node(basePath + "Player" + str(gameManager.getOrderFromNick(node.Owner)))
 		player.Cash = player.Cash - node.Price * 5
-		node.Owner.Cash = node.Owner.Cash - node.Price * 5
-		node.Owner.properties.erase(node)
+		owner.Cash = owner.Cash + node.Price * 5
+		owner.properties.erase(node)
 		node.Owner = player.nick
 		player.properties.push_back(node)
 		
@@ -147,18 +150,21 @@ func cancel_Investment():
 	get_node(UIPath + "InvestButtons").visible = false
 
 func pay_Building():
-	var player_pay = get_node(basePath + "Player1") #Aqui igual hay que cambiar que jugador se coge en funcion del turno
+	var player_pay = get_node(basePath + gameManager.players[gameManager.turn])
 	var node = get_node(basePath + "tiles/" + player_pay.currentNode)
-	var player_earn = get_node(basePath + node.owner) #Aqui
+	var player_earn = get_node(basePath + "Player" + str(gameManager.getOrderFromNick(node.Owner) + 1))
 	
 	player_pay.Cash = player_pay.Cash - node.Value
 	player_earn.Cash = player_earn.Cash + node.Value
 	
 	get_node(UIPath + "TakenBuildingButtons").visible = false #UI visible e invisible
 	
-	if (player_pay.Cash >= node.Price):
+	gameManager.updateUI()
+	
+	if (player_pay.Cash >= node.Price * 5):
 		get_node(UIPath + "FreeBuildingButtons").visible = true #UI visible e invisible
-		get_node(UIPath + "FreeBuildingButtons/Label").text = "Esta casilla es de otro jugador, ¿quieres comprarla a 5 veces su precio?"
+		get_node(UIPath + "FreeBuildingButtons/Label").text = "Esta casilla es de otro jugador, ¿quieres comprarla por 5 veces su valor?"
+		get_node(UIPath + "FreeBuildingButtons/Label2").text = str(node.Price * 5)
 	else:
 		gameManager.endTurn()
 
@@ -173,7 +179,58 @@ func bankrupt():
 	#gameManager.playerAmount = gameManager.playerAmount - 1
 	
 	#Quitar de players o algo?
+	get_node(UIPath + "TakenBuildingButtons").visible = false
+	gameManager.endTurn()
 
 
 func exit_pressed():
 	gameManager.exitGame()
+
+
+func Menos_pressed():
+	var txt = int(get_node(UIPath + "InvestButtons/Label2").text)
+	if txt >= 10:
+		get_node(UIPath + "InvestButtons/Label2").text = str(txt - 10)
+		txt -= 10
+	
+	if txt < 10:
+		get_node(UIPath + "InvestButtons/Menos").disabled = true
+	elif get_node(UIPath + "InvestButtons/Mas").disabled and txt <= 490:
+		get_node(UIPath + "InvestButtons/Mas").disabled = false
+		
+	if txt > get_node(basePath + gameManager.players[gameManager.turn]).Cash:
+		get_node(UIPath + "InvestButtons/HBoxContainer/Invertir").disabled = true
+	else:
+		get_node(UIPath + "InvestButtons/HBoxContainer/Invertir").disabled = false
+
+
+func Mas_pressed():
+	var txt = int(get_node(UIPath + "InvestButtons/Label2").text)
+	var node = get_node(basePath + "tiles/" + get_node(basePath + gameManager.players[gameManager.turn]).currentNode)
+	if txt <= 490:
+		get_node(UIPath + "InvestButtons/Label2").text = str(txt + 10)
+		txt += 10
+	
+	if txt > 490 or not node.canInvest(txt + 10):
+		get_node(UIPath + "InvestButtons/Mas").disabled = true
+	elif get_node(UIPath + "InvestButtons/Menos").disabled and txt >= 10:
+		get_node(UIPath + "InvestButtons/Menos").disabled = false	
+	
+	if txt > get_node(basePath + gameManager.players[gameManager.turn]).Cash  or not node.canInvest(txt):
+		get_node(UIPath + "InvestButtons/HBoxContainer/Invertir").disabled = true
+	else:
+		get_node(UIPath + "InvestButtons/HBoxContainer/Invertir").disabled = false
+
+
+func No_Invertir_pressed():
+	get_node(UIPath + "InvestButtons").visible = false
+	gameManager.endTurn()
+
+
+func Invertir_pressed():
+	var txt = int(get_node(UIPath + "InvestButtons/Label2").text)
+	get_node(basePath + "tiles/" + get_node(basePath + gameManager.players[gameManager.turn]).currentNode).invest(txt)
+	get_node(basePath + gameManager.players[gameManager.turn]).Cash -= txt
+	get_node(UIPath + "InvestButtons").visible = false
+	gameManager.endTurn()
+	

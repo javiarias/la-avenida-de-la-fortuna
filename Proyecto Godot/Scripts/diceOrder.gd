@@ -19,7 +19,7 @@ func _ready():
 	
 	for i in range(1, gameManager.playerAmount + 1):
 		var sizeAux = size
-				
+		
 		if gameManager.playerAmount == 3:
 			if i == 2:
 				sizeAux = 0
@@ -43,24 +43,45 @@ func _on_Button_pressed():
 	get_tree().change_scene("res://Scenes/LocalLobby.tscn")
 
 func _on_roll_pressed():
+	if not gameManager.online:
+		if rolled >= gameManager.playerAmount:
+			rolls.sort_custom(Sorter, "sort_rolls")
+			gameManager.nicks.clear()
+			for p in rolls:
+				gameManager.players.append("Player" + str(p[0]))
+				gameManager.nicks.append(p[2])
+			get_tree().change_scene("res://Scenes/Ingame.tscn")
+			return
+		
+		rolled += 1
+		
+		get_node("Dado" + str(rolled)).rolling = false
+		var dice = randi() % 6 + 1
+		get_node("Dado" + str(rolled)).frame = dice - 1
+		rolls.append([rolled, dice, gameManager.nicks[rolled - 1]])
+		
+		if rolled == gameManager.playerAmount:
+			get_node("buttons/roll").text = "Jugar"
+			
+	else:
+		rolled += 1
+		get_node("Dado1").rolling = false
+		var dice = randi() % 6 + 1
+		get_node("Dado1").frame = dice - 1
+		get_node("buttons/roll").disabled = true
+		
+		#enviar mensaje de dado
+		
+
+func onlineRolled(player, roll):
+	rolled += 1
+		
+	get_node("Dado" + str(player)).rolling = false
+	get_node("Dado" + str(player)).frame = roll - 1
+	
 	if rolled >= gameManager.playerAmount:
-		rolls.sort_custom(Sorter, "sort_rolls")
-		gameManager.nicks.clear()
-		for p in rolls:
-			gameManager.players.append("Player" + str(p[0]))
-			gameManager.nicks.append(p[2])
 		get_tree().change_scene("res://Scenes/Ingame.tscn")
 		return
-	
-	rolled += 1
-	
-	get_node("Dado" + str(rolled)).rolling = false
-	var dice = randi() % 6 + 1
-	get_node("Dado" + str(rolled)).frame = dice - 1
-	rolls.append([rolled, dice, gameManager.nicks[rolled - 1]])
-	
-	if rolled == gameManager.playerAmount:
-		get_node("buttons/roll").text = "Jugar"
 
 
 class Sorter:

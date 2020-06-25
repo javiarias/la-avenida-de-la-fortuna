@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Resources/dices.png" type="Texture" id=1]
 [ext_resource path="res://Resources/FlechaDerHover.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=24]
 [ext_resource path="res://Resources/building.obj" type="ArrayMesh" id=25]
 [ext_resource path="res://Resources/playerScore.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_30.tres" type="DynamicFont" id=27]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -455,6 +456,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "Central_Conexion_4", "Banco" ]
+Price = 500
 
 [node name="RigidBody" parent="tiles/Central_1" instance=ExtResource( 7 )]
 
@@ -494,6 +496,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "Central_Conexion_2", "Banco" ]
+Price = 500
 
 [node name="RigidBody" parent="tiles/Central_2" instance=ExtResource( 7 )]
 
@@ -533,6 +536,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "Central_Conexion_3", "Banco" ]
+Price = 500
 
 [node name="RigidBody" parent="tiles/Central_3" instance=ExtResource( 7 )]
 
@@ -572,6 +576,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "Central_Conexion_4", "Banco" ]
+Price = 500
 
 [node name="RigidBody" parent="tiles/Central_4" instance=ExtResource( 7 )]
 
@@ -611,6 +616,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "1_1", "1_2", "Central_1", "Central_2" ]
+Price = 600
 
 [node name="RigidBody" parent="tiles/Central_Conexion_1" instance=ExtResource( 7 )]
 
@@ -650,6 +656,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_1", "2_2", "Central_2", "Central_3" ]
+Price = 600
 
 [node name="RigidBody" parent="tiles/Central_Conexion_2" instance=ExtResource( 7 )]
 
@@ -689,6 +696,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_1", "3_2", "Central_3", "Central_4" ]
+Price = 600
 
 [node name="RigidBody" parent="tiles/Central_Conexion_3" instance=ExtResource( 7 )]
 
@@ -728,6 +736,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_1", "4_2", "Central_4", "Central_1" ]
+Price = 600
 
 [node name="RigidBody" parent="tiles/Central_Conexion_4" instance=ExtResource( 7 )]
 
@@ -767,6 +776,7 @@ transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "1_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/1_1" instance=ExtResource( 7 )]
 
@@ -806,6 +816,7 @@ transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_1", "1_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/1_2" instance=ExtResource( 7 )]
 
@@ -845,6 +856,7 @@ transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_2", "1_2", "1_6" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/1_3" instance=ExtResource( 7 )]
 
@@ -884,6 +896,7 @@ transform = Transform( 0.15, 0, 0, 0, -2.44381e-08, -0.15, 0, 0.15, -2.44381e-08
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_4", "1_1", "1_5" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/1_4" instance=ExtResource( 7 )]
 
@@ -923,6 +936,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_1", "1_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/1_5" instance=ExtResource( 7 )]
 
@@ -962,6 +976,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_1", "1_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/1_6" instance=ExtResource( 7 )]
 
@@ -1001,6 +1016,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "2_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/2_1" instance=ExtResource( 7 )]
 
@@ -1040,6 +1056,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_2", "2_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/2_2" instance=ExtResource( 7 )]
 
@@ -1079,6 +1096,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_2_3", "2_2", "2_6" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/2_3" instance=ExtResource( 7 )]
 
@@ -1118,6 +1136,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_2", "2_5", "2_1" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/2_4" instance=ExtResource( 7 )]
 
@@ -1157,6 +1176,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_2", "2_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/2_5" instance=ExtResource( 7 )]
 
@@ -1196,6 +1216,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "2_3", "Palo_2" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/2_6" instance=ExtResource( 7 )]
 
@@ -1235,6 +1256,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "3_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/3_1" instance=ExtResource( 7 )]
 
@@ -1274,6 +1296,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_3", "3_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/3_2" instance=ExtResource( 7 )]
 
@@ -1313,6 +1336,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_3_4", "3_2", "3_6" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/3_3" instance=ExtResource( 7 )]
 
@@ -1352,6 +1376,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "3_1", "3_5", "Peaje_2_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/3_4" instance=ExtResource( 7 )]
 
@@ -1391,6 +1416,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_3", "3_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/3_5" instance=ExtResource( 7 )]
 
@@ -1430,6 +1456,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_3", "3_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/3_6" instance=ExtResource( 7 )]
 
@@ -1469,6 +1496,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_4", "4_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/4_1" instance=ExtResource( 7 )]
 
@@ -1508,6 +1536,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Central_Conexion_4", "4_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/4_2" instance=ExtResource( 7 )]
 
@@ -1547,6 +1576,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_1_4", "4_2", "4_6" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/4_3" instance=ExtResource( 7 )]
 
@@ -1586,6 +1616,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Peaje_3_4", "4_1", "4_5" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/4_4" instance=ExtResource( 7 )]
 
@@ -1625,6 +1656,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "4_4", "Palo_4" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/4_5" instance=ExtResource( 7 )]
 
@@ -1664,6 +1696,7 @@ transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 adjacencies = [ "Palo_4", "4_3" ]
+Price = 300
 
 [node name="RigidBody" parent="tiles/4_6" instance=ExtResource( 7 )]
 
@@ -1927,7 +1960,7 @@ margin_right = 754.933
 margin_bottom = 269.125
 custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = ExtResource( 16 )
-text = "100"
+text = "10"
 align = 1
 valign = 1
 autowrap = true
@@ -1978,13 +2011,13 @@ margin_right = -44.0666
 margin_bottom = 55.9045
 
 [node name="Label" type="Label" parent="TempUI/InvestButtons"]
-margin_left = 56.0
-margin_top = -77.1462
-margin_right = 247.0
-margin_bottom = 6.85376
+margin_left = -127.0
+margin_top = -243.15
+margin_right = 429.0
+margin_bottom = -185.15
 custom_styles/normal = ExtResource( 15 )
-custom_fonts/font = ExtResource( 16 )
-text = "100"
+custom_fonts/font = ExtResource( 27 )
+text = "¿Cuánto quieres invertir?"
 align = 1
 valign = 1
 autowrap = true
@@ -1993,13 +2026,13 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="TempUI/InvestButtons"]
-margin_left = -127.0
-margin_top = -243.15
-margin_right = 429.0
-margin_bottom = -185.15
+margin_left = 56.0
+margin_top = -77.1462
+margin_right = 247.0
+margin_bottom = 6.85376
 custom_styles/normal = ExtResource( 15 )
-custom_fonts/font = ExtResource( 3 )
-text = "¿Cuánto quieres invertir?"
+custom_fonts/font = ExtResource( 16 )
+text = "100"
 align = 1
 valign = 1
 autowrap = true
@@ -2251,9 +2284,9 @@ __meta__ = {
 }
 
 [node name="Pause" type="Button" parent="TempUI"]
-anchor_left = 8.39249
+anchor_left = 7.67623
 anchor_top = -13.7143
-anchor_right = 12.3402
+anchor_right = 11.8462
 anchor_bottom = -9.14599
 margin_right = -142.176
 margin_bottom = -68.9343
@@ -2265,10 +2298,11 @@ __meta__ = {
 }
 
 [node name="exit" type="Button" parent="TempUI"]
-anchor_left = 8.39249
-anchor_top = -8.51439
-anchor_right = 12.3402
-anchor_bottom = -3.94608
+visible = false
+anchor_left = 7.68518
+anchor_top = -8.52381
+anchor_right = 11.8551
+anchor_bottom = -3.95551
 margin_right = -142.176
 margin_bottom = -68.9343
 rect_scale = Vector2( 3.10031, 3.10031 )
@@ -2297,6 +2331,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61254, 0 )
 [connection signal="pressed" from="TempUI/moveButtons/acceptMove" to="." method="acceptMove_pressed"]
 [connection signal="pressed" from="TempUI/FreeBuildingButtons/HBoxContainer/NoComprar" to="." method="pass_on_Building_pressed"]
 [connection signal="pressed" from="TempUI/FreeBuildingButtons/HBoxContainer/Comprar" to="." method="buyFreeBuilding_pressed"]
+[connection signal="pressed" from="TempUI/InvestButtons/Menos" to="." method="Menos_pressed"]
+[connection signal="pressed" from="TempUI/InvestButtons/Mas" to="." method="Mas_pressed"]
+[connection signal="pressed" from="TempUI/InvestButtons/HBoxContainer/No Invertir" to="." method="No_Invertir_pressed"]
+[connection signal="pressed" from="TempUI/InvestButtons/HBoxContainer/Invertir" to="." method="Invertir_pressed"]
+[connection signal="pressed" from="TempUI/TakenBuildingButtons/HBoxContainer/Bancarrota" to="." method="bankrupt"]
+[connection signal="pressed" from="TempUI/TakenBuildingButtons/HBoxContainer/Pagar" to="." method="pay_Building"]
 [connection signal="pressed" from="TempUI/SuitButtons/Suit" to="." method="suitConfirm"]
 [connection signal="pressed" from="TempUI/BankButtons/Confirm" to="." method="BankSuit"]
 [connection signal="pressed" from="TempUI/Pause" to="." method="pauseGame"]

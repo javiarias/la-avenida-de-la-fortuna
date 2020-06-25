@@ -227,7 +227,7 @@ void Server::do_messages()
 							players = players_copy;
 
 							//se envía el primer mensaje de start a TODOS, con el número de jugador
-							Message msg = Message(0, Message::GameEnum::TURN_START, turn);
+							Message msg = Message(0, Message::GameEnum::TURN_START, players[turn].n);
 							send(msg);
 						}
 					}
@@ -239,7 +239,7 @@ void Server::do_messages()
 						if (turn == (getPlayerByID(m.id) - 1))
 						{
 							turn = (turn >= (players.size() - 1)) ? 0 : turn + 1;
-							Message msg = Message(0, Message::GameEnum::TURN_START, turn);
+							Message msg = Message(0, Message::GameEnum::TURN_START, players[turn].n);
 							send(msg);
 
 							//std::cout << "turn ended! turn is now: " << turn << "\n";

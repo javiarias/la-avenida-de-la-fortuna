@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/OnlineLobby.gd" type="Script" id=2]
+[ext_resource path="res://Resources/lobbyPlayerList.tscn" type="PackedScene" id=10]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 310.92
+margin_top = 537.097
+margin_right = 996.92
+margin_bottom = 659.097
+custom_constants/separation = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="HBoxContainer"]
+margin_right = 293.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Cancelar"
+
+[node name="Continue" type="Button" parent="HBoxContainer"]
+margin_left = 393.0
+margin_right = 686.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Listo"
+
+[node name="HBoxContainer3" parent="." instance=ExtResource( 10 )]
+[connection signal="pressed" from="HBoxContainer/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="HBoxContainer/Continue" to="." method="_on_Continue_pressed"]

@@ -12,7 +12,7 @@ var nick: String = self.get_name()
 var District: int
 #var Price: int = 1600
 #var Value: int = 50
-var Investment_Left: int = 0
+var Investment_Left: int = 1000
 var Investment_Total: int = 1000
 var free : bool = true
 var Owner: String
@@ -62,6 +62,13 @@ func _ready():
 		if (model != null):
 			model.visible = false
 
+func canInvest(val):
+	return val <= Investment_Left
+
+func invest(val):
+	Value += val
+	Investment_Left -= Value
+	get_child(1).set_text(str(Value))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
