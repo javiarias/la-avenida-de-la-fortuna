@@ -1,10 +1,12 @@
 extends Spatial
 
 var online = false
+var host = false
 var gameStarted = false
 var rolled = false
 var dice = 0
 var players = [] #Array
+var nicks = []
 var turn = 0
 var basePath = "/root/Spatial/"
 var UIPath = "/root/Spatial/TempUI/"
@@ -20,7 +22,8 @@ func _ready():
 func gameStart():
 	gameStarted = true
 	for i in range(1, playerAmount+1):
-		get_tree().get_root().get_node(basePath + "Player" + str(i)).visible = true
+		get_node(basePath + "Player" + str(i)).visible = true
+		get_node(basePath + "Player" + str(i)).nick = nicks[i]
 
 func _process(delta):
 	if gameStarted and not checkWin():
@@ -97,7 +100,7 @@ func moveEnded():
 			get_node(UIPath + "FreeBuildingButtons/HBoxContainer/Comprar").set_disabled(true)
 		
 
-	elif (node.Owner == player.Name): #Casilla propia
+	elif (node.Owner == player.nick): #Casilla propia
 		get_node(UIPath + "InvestButtons").visible = true #UI visible e invisible
 		get_node(UIPath + "InvestButtons/Label").text = "Esta casilla es tuya, ¿quieres invertir en ella?"
 		

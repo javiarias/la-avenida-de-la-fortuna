@@ -6,11 +6,14 @@ var two = ""
 var three = ""
 var four = ""
 var port = ""
+var nick = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	if not gameManager.host:
+		get_node("Label2").text = "Cliente"
+		get_node("loading/Label").text = "\nConectando..."
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -19,46 +22,82 @@ func _ready():
 
 func text_changed(new_text):
 	if new_text.is_valid_integer() and int(new_text) <= 255 and int(new_text) >= 0:
-		port = new_text
+		one = new_text
 		get_node("HBoxContainer/LineEdit").add_color_override("font_color", Color(1,1,1,1))
+		
+		if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+			get_node("HBoxContainer2/confirm").disabled = false
 	else:
 		get_node("HBoxContainer/LineEdit").add_color_override("font_color", Color(1,0,0,1))		
-		port = ""
+		one = ""
 
 
 func text_changed2(new_text):
 	if new_text.is_valid_integer() and int(new_text) <= 255 and int(new_text) >= 0:
-		port = new_text
+		two = new_text
 		get_node("HBoxContainer/LineEdit2").add_color_override("font_color", Color(1,1,1,1))
+		
+		if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+			get_node("HBoxContainer2/confirm").disabled = false
 	else:
 		get_node("HBoxContainer/LineEdit2").add_color_override("font_color", Color(1,0,0,1))		
-		port = ""
+		two = ""
 
 
 func text_changed3(new_text):
 	if new_text.is_valid_integer() and int(new_text) <= 255 and int(new_text) >= 0:
-		port = new_text
+		three = new_text
 		get_node("HBoxContainer/LineEdit3").add_color_override("font_color", Color(1,1,1,1))
+		
+		if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+			get_node("HBoxContainer2/confirm").disabled = false
 	else:
 		get_node("HBoxContainer/LineEdit3").add_color_override("font_color", Color(1,0,0,1))		
-		port = ""
+		three = ""
 
 
 func text_changed4(new_text):
 	if new_text.is_valid_integer() and int(new_text) <= 255 and int(new_text) >= 0:
-		port = new_text
+		four = new_text
 		get_node("HBoxContainer/LineEdit4").add_color_override("font_color", Color(1,1,1,1))
+		
+		if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+			get_node("HBoxContainer2/confirm").disabled = false
 	else:
 		get_node("HBoxContainer/LineEdit4").add_color_override("font_color", Color(1,0,0,1))		
-		port = ""
+		four = ""
 
 
 func text_changedPort(new_text):
 	if new_text.is_valid_integer():
 		port = new_text
 		get_node("HBoxContainer/LineEdit5").add_color_override("font_color", Color(1,1,1,1))
+		
+		if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+			get_node("HBoxContainer2/confirm").disabled = false
 	else:
 		get_node("HBoxContainer/LineEdit5").add_color_override("font_color", Color(1,0,0,1))		
 		port = ""
 
 
+func _on_confirm_pressed():	
+	if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+		get_node("HBoxContainer2/confirm").disabled = true
+		get_node("HBoxContainer2/back").disabled = true
+		get_node("loading").visible = true
+	
+func _on_cancel_pressed():
+	get_node("HBoxContainer2/confirm").disabled = false
+	get_node("HBoxContainer2/back").disabled = false
+	get_node("loading").visible = false
+
+
+func _on_back_pressed():
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+
+
+func nickChanged(new_text):
+	nick = new_text
+			
+	if one != "" and two != "" and three != "" and four != "" and port != "" and nick != "":
+		get_node("HBoxContainer2/confirm").disabled = false

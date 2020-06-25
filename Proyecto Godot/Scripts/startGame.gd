@@ -50,7 +50,7 @@ func buyFreeBuilding_pressed():
 	if (node.free):
 		player.Cash = player.Cash - node.Price
 		node.free = false
-		node.Owner = player.Name
+		node.Owner = player.nick
 		node.get_child((1)).set_text(String(node.Value))
 		node.get_child((2)).visible = true
 		player.properties.push_back(node)
@@ -59,7 +59,7 @@ func buyFreeBuilding_pressed():
 		player.Cash = player.Cash - node.Price * 5
 		node.Owner.Cash = node.Owner.Cash - node.Price * 5
 		node.Owner.properties.erase(node)
-		node.Owner = player.Name
+		node.Owner = player.nick
 		player.properties.push_back(node)
 		
 	#Algo mas?

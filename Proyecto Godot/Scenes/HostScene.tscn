@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/AUX_title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/HostScene.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources/new_styleboxflat.tres" type="StyleBox" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -32,13 +34,14 @@ align = 2
 max_length = 3
 expand_to_text_length = true
 placeholder_text = "-"
+placeholder_alpha = 0.309
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_left = 156.0
-margin_right = 172.0
+margin_right = 168.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -51,8 +54,8 @@ __meta__ = {
 }
 
 [node name="LineEdit2" type="LineEdit" parent="HBoxContainer"]
-margin_left = 174.0
-margin_right = 328.0
+margin_left = 170.0
+margin_right = 324.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -62,10 +65,11 @@ align = 2
 max_length = 3
 expand_to_text_length = true
 placeholder_text = "-"
+placeholder_alpha = 0.309
 
 [node name="Label2" type="Label" parent="HBoxContainer"]
-margin_left = 330.0
-margin_right = 346.0
+margin_left = 326.0
+margin_right = 338.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -78,8 +82,8 @@ __meta__ = {
 }
 
 [node name="LineEdit3" type="LineEdit" parent="HBoxContainer"]
-margin_left = 348.0
-margin_right = 502.0
+margin_left = 340.0
+margin_right = 494.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -89,10 +93,11 @@ align = 2
 max_length = 3
 expand_to_text_length = true
 placeholder_text = "-"
+placeholder_alpha = 0.309
 
 [node name="Label3" type="Label" parent="HBoxContainer"]
-margin_left = 504.0
-margin_right = 520.0
+margin_left = 496.0
+margin_right = 508.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -105,8 +110,8 @@ __meta__ = {
 }
 
 [node name="LineEdit4" type="LineEdit" parent="HBoxContainer"]
-margin_left = 522.0
-margin_right = 676.0
+margin_left = 510.0
+margin_right = 664.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -116,10 +121,11 @@ align = 2
 max_length = 3
 expand_to_text_length = true
 placeholder_text = "-"
+placeholder_alpha = 0.309
 
 [node name="Label4" type="Label" parent="HBoxContainer"]
-margin_left = 678.0
-margin_right = 702.0
+margin_left = 666.0
+margin_right = 690.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -132,8 +138,8 @@ __meta__ = {
 }
 
 [node name="LineEdit5" type="LineEdit" parent="HBoxContainer"]
-margin_left = 704.0
-margin_right = 858.0
+margin_left = 692.0
+margin_right = 846.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -143,6 +149,97 @@ align = 2
 max_length = 4
 expand_to_text_length = true
 placeholder_text = "-"
+placeholder_alpha = 0.309
+
+[node name="LineEdit6" type="LineEdit" parent="."]
+margin_left = 281.0
+margin_top = 451.0
+margin_right = 930.0
+margin_bottom = 513.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+max_length = 20
+placeholder_text = "nick"
+placeholder_alpha = 0.309
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 130.0
+margin_top = 603.0
+margin_right = -129.0
+margin_bottom = -17.0
+custom_constants/separation = 300
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" parent="HBoxContainer2" instance=ExtResource( 3 )]
+margin_right = 360.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Atrás"
+
+[node name="confirm" parent="HBoxContainer2" instance=ExtResource( 3 )]
+margin_left = 660.0
+margin_right = 1021.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "Confirmar"
+
+[node name="loading" type="Control" parent="."]
+visible = false
+margin_top = 1.43195
+margin_right = 1280.0
+margin_bottom = 717.432
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="loading"]
+margin_left = 164.0
+margin_top = 199.0
+margin_right = 1060.0
+margin_bottom = 482.0
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+text = "
+Creando host..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cancel" parent="loading" instance=ExtResource( 3 )]
+margin_left = 505.486
+margin_top = 378.041
+margin_right = 713.486
+margin_bottom = 436.041
+text = "Cancelar"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 327.0
+margin_top = 35.0
+margin_right = 897.0
+margin_bottom = 114.0
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+text = "Host"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="text_changed"]
 [connection signal="text_entered" from="HBoxContainer/LineEdit" to="." method="text_changed"]
 [connection signal="text_changed" from="HBoxContainer/LineEdit2" to="." method="text_changed2"]
@@ -153,3 +250,8 @@ placeholder_text = "-"
 [connection signal="text_entered" from="HBoxContainer/LineEdit4" to="." method="text_changed4"]
 [connection signal="text_changed" from="HBoxContainer/LineEdit5" to="." method="text_changedPort"]
 [connection signal="text_entered" from="HBoxContainer/LineEdit5" to="." method="text_changedPort"]
+[connection signal="text_changed" from="LineEdit6" to="." method="nickChanged"]
+[connection signal="text_entered" from="LineEdit6" to="." method="nickChanged"]
+[connection signal="pressed" from="HBoxContainer2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer2/confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="loading/cancel" to="." method="_on_cancel_pressed"]
