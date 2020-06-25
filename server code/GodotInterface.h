@@ -16,6 +16,7 @@ public:
 
 	bool getMessage();
 
+	//para enviar mensajes
 	void send(const Message::GameEnum& game_enum, const int& m);
 	void send(const Message::GameEnum& game_enum, const float& m);
 	void send(const Message::GameEnum& game_enum, const std::string& m);
@@ -26,7 +27,8 @@ public:
 
 	void ready();
 
-
+	//como godot no tiene parámetros por referencia, y no puedo hacer arrays libres en c++, hay que meter
+	//funciones para "partir" el mensaje y "recomponerlo" ya luego en godot
 	int getMessage_game_enum();
 
 	int getMessage_intMsg();
