@@ -9,7 +9,7 @@ void GodotInterface::_register_methods()
 	register_method("getMessage_Data", &GodotInterface::getMessage_Data);
 	register_method("logout", &GodotInterface::logout);
 	register_method("ready", &GodotInterface::ready);
-	register_method("order", &GodotInterface::order);
+	register_method("roll", &GodotInterface::roll);
 
 	register_method("sendInt", &GodotInterface::sendInt);
 	register_method("sendFloat", &GodotInterface::sendFloat);
@@ -49,12 +49,15 @@ extern "C" void * _server_thread(void *arg)
 
 int GodotInterface::orderToID(int order)
 {
-	return players[order].id;
+	if(order > 0)
+		return players[order - 1].id;
+	else
+		return 0;
 }
 
 int GodotInterface::IDToOrder(int id)
 {
-	int order = -1;
+	int order = 0;
 
 	if(started)
 	{
@@ -210,11 +213,11 @@ void GodotInterface::ready()
 	client.ready();
 }
 
-void GodotInterface::order(int order)
+void GodotInterface::roll(int roll)
 {
-	players[order] = unordered_players[0];
+	players[roll] = unordered_players[0];
 
-	sendInt(Message::ORDER, order);
+	client.send(Message::ROLL, roll);
 }
 
 Array GodotInterface::getMessage_Data()

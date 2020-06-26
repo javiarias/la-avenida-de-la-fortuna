@@ -76,13 +76,14 @@ void Server::do_messages()
 
 						int i = getPlayerByID(m.id);
 
-						//se recicla la variable ready para comprobar si ha tirado ya los dados
+
 						if (!(players[i - 1].firstRoll))
 						{
 							//std::cout << "roll received!: " << m.intMsg << " from player " << i << '\n';
 							players[i - 1].firstRoll = true;
 							firstRoll.push_back(std::make_pair(m.intMsg, i - 1));
 							turn++;
+							m.dest = 0;
 							send(m);
 							//std::cout << "turn: " << turn << " size: " << players.size() << '\n';
 						}

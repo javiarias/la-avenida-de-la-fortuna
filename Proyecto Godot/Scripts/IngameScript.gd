@@ -59,14 +59,19 @@ func doMessages():
 			if aux[1] == GameEnum.NAME:
 				get_node("/root/Control").addPlayer(aux[4])
 				playerAmount += 1
+				nicks.append(aux[4])
 			if aux[1] == GameEnum.LOGGED_OUT:
 				get_node("/root/Control").removePlayer(aux[4])
 				playerAmount -= 1
+				nicks.erase(aux[4])
 			if aux[1] == GameEnum.PLAYER_READY:
 				readyPlayers += 1
 				if readyPlayers >= playerAmount:
 					get_node("/root/Control").canContinue = true
 		
+		elif currentScene == "diceOrder":
+			if aux[1] == GameEnum.ROLL:
+				get_node("/root/Control").onlineRolled(aux[0], aux[4])
 		pass
 	pass
 

@@ -10,9 +10,12 @@ func _ready():
 	gameManager.currentScene = "diceOrder"
 	if not gameManager.online:
 		gameManager.nicks = ["Player 1", "Player 2", "Player 3", "Player 4"]
+	else:
+		get_node("buttons/Button").visible = false
 	
 	for i in range(1, gameManager.playerAmount + 1):
 		get_node("playerList/Player" + str(i)).visible = true
+		get_node("playerList/Player" + str(i) + "/Label").text = gameManager.nicks[i - 1]
 		get_node("Dado" + str(i)).visible = true
 		
 	var node = get_node("playerList/Player" + str(gameManager.playerAmount))
@@ -70,8 +73,11 @@ func _on_roll_pressed():
 		var dice = randi() % 6 + 1
 		get_node("Dado1").frame = dice - 1
 		get_node("buttons/roll").disabled = true
+		gameManager.cpp.roll(dice)
 		
-		#enviar mensaje de dado
+		if rolled >= gameManager.playerAmount:
+			get_tree().change_scene("res://Scenes/Ingame.tscn")
+			return
 		
 
 func onlineRolled(player, roll):

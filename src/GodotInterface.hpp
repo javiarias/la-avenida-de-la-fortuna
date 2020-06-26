@@ -42,7 +42,7 @@ namespace godot
 
 		void ready();
 
-		void order(int order);
+		void roll(int roll);
 
 		//para enviar mensajes
 		void sendInt(const int& game_enum, const int& m);

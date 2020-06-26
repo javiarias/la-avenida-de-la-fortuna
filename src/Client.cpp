@@ -115,7 +115,7 @@ void Client::recv_thread()
 		
 		//solo queremos que el jugador "reciba" (o séase, que tenga acceso mediante la cola) mensajes si ha sido verificado (incluyendo el mensaje de verificación, que dice el número de jugador)
 		//pero queremos avisar al jugador aunque no esté "connected" de algunos tipos de mensaje (errores, partida llena, o recibir los nombres de otros jugadores)
-		else if (connected || msg.type == Message::FULL || msg.game_enum == Message::NAME || msg.type == Message::ERROR || msg.game_enum == Message::GameEnum::ORDER || msg.type == Message::VERIFIED)
+		if (connected || msg.type == Message::FULL || msg.game_enum == Message::NAME || msg.type == Message::ERROR || msg.type == Message::VERIFIED)
 		{
 
 			//se mete el mensaje a la cola, y si se pasa del límite se elimina el primero (FIFO)
