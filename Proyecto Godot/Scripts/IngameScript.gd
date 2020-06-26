@@ -15,6 +15,7 @@ var playerAmount = 4
 var investment = 100
 var paused = false
 var scoreWin = 15000
+var winner : String
 
 # El init/create
 func _ready():
@@ -52,8 +53,13 @@ func startTurn(nick):
 		gameStart()
 
 func _process(delta):
-	if gameStarted and not checkWin():
-		turn()
+	if gameStarted:
+		if not checkWin():
+			turn()
+		else:
+			get_node(basePath).visible = false
+			get_node(UIPath + "WinState").visible = true
+			get_node(UIPath + "WinState/Label").text = ("VICTORIA DE " + winner)
 
 func getPaused():
 	return paused
@@ -92,7 +98,12 @@ func setRolled(value):
 
 func checkWin():
 	for i in range(0, playerAmount):
-		if (get_node(basePath + players[i]).getScore() >= scoreWin or players.size() == 1): #O puntuacion minima, o bancarrota
+		if (get_node(basePath + players[i]).getScore() >= scoreWin):
+			winner = get_node(basePath + players[i]).nick
+			return true
+		
+		elif (players.size() == 1): #O puntuacion minima, o bancarrota
+			winner = nicks[0]
 			return true
 	
 	return false

@@ -157,6 +157,8 @@ func pay_Building():
 	player_pay.Cash = player_pay.Cash - node.Value
 	player_earn.Cash = player_earn.Cash + node.Value
 	
+	
+	
 	get_node(UIPath + "TakenBuildingButtons").visible = false #UI visible e invisible
 	
 	gameManager.updateUI()
@@ -175,10 +177,11 @@ func bankrupt():
 		i.free = true
 		i.Owner = null
 	
+	gameManager.nicks.erase(gameManager.players[gameManager.getTurn()])
 	gameManager.players.erase(gameManager.players[gameManager.getTurn()])
+
 	#gameManager.playerAmount = gameManager.playerAmount - 1
 	
-	#Quitar de players o algo?
 	get_node(UIPath + "TakenBuildingButtons").visible = false
 	gameManager.endTurn()
 
@@ -234,3 +237,6 @@ func Invertir_pressed():
 	get_node(UIPath + "InvestButtons").visible = false
 	gameManager.endTurn()
 	
+
+func _on_MainMenu_pressed():
+	gameManager.exitGame()

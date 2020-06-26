@@ -39,3 +39,10 @@ func _on_Join_pressed():
 	gameManager.host = false
 	gameManager.online = true
 	scene_path_to_load = "res://Scenes/HostScene.tscn"
+
+
+func _on_Rules_pressed():
+	$FadeIn.show()
+	$FadeIn.fade_in()
+	scene_path_to_load = "res://Scenes/RulesScreen.tscn"
+	
