@@ -11,16 +11,17 @@ var me
 var turn = 0
 var basePath = "/root/Spatial/"
 var UIPath = "/root/Spatial/TempUI/"
-var playerAmount = 4
+var playerAmount = 1
 var investment = 100
 var paused = false
 var winner : String
 var scoreWin = 15000
+var readyPlayers = 0
 
 var cpp
 var currentScene
 
-enum GameEnum { IGNORE, SHUTDOWN, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
+enum GameEnum { IGNORE, SHUTDOWN, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END, LOGGED_OUT };
 
 # El init/create
 func _ready():
@@ -40,18 +41,31 @@ func _process(delta):
 		
 	if online:
 		doMessages()
+		
+func logout():
+	cpp.logout()
+	cpp = load("res://bin/gdtest.gdns").new()
 
 func doMessages():
 	if cpp.getMessage():
-		#0 = origen
+		#0 = origen. 0 : nadie, 1-4 : jugadores
 		#1 = gameEnum
 		#2 = int
 		#3 = float
 		#4 = string
 		var aux = cpp.getMessage_Data()
 		
-		if currentScene == "OnlineLobby" and aux[1] == GameEnum.NAME:
-			get_node("/root/Control").addPlayer(aux[4])
+		if currentScene == "OnlineLobby":
+			if aux[1] == GameEnum.NAME:
+				get_node("/root/Control").addPlayer(aux[4])
+				playerAmount += 1
+			if aux[1] == GameEnum.LOGGED_OUT:
+				get_node("/root/Control").removePlayer(aux[4])
+				playerAmount -= 1
+			if aux[1] == GameEnum.PLAYER_READY:
+				readyPlayers += 1
+				if readyPlayers >= playerAmount:
+					get_node("/root/Control").canContinue = true
 		
 		pass
 	pass
@@ -332,6 +346,8 @@ func exitGame():
 	paused = false
 	scoreWin = 15000
 	
+	currentScene = "TitleScreen"
+	logout()
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
 
 func getOrderFromNick(nick):

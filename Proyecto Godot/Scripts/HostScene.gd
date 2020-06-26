@@ -10,6 +10,7 @@ var nick = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	gameManager.currentScene = "HostScene"
 	if not gameManager.host:
 		get_node("Label2").text = "Cliente"
 		get_node("loading/Label").text = "\nConectando..."

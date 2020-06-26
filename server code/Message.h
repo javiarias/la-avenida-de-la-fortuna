@@ -18,7 +18,7 @@ public:
 	//tipos de mensaje INTERNOS. Los tres primeros son genéricos, el resto sirven para identificar mensajes específicos de servidor-cliente
     enum Type { INT, FLOAT, STR, LOGIN, LOGOUT, HANDSHAKE, VERIFIED, FAILED, READY, FULL, NAMES, ERROR};
 
-	enum GameEnum { IGNORE, SHUTDOWN, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
+	enum GameEnum { IGNORE, SHUTDOWN, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END, LOGGED_OUT };
 
 
     static const uint8_t MAX_STR = 200;

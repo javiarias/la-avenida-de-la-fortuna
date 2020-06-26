@@ -5,6 +5,7 @@ var UIPath = "./TempUI/"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	gameManager.currentScene = "LocalLobby"
 	gameManager.playerAmount = 2
 	get_node("HBoxContainer3/Player1").visible = true
 	get_node("HBoxContainer3/Player2").visible = true

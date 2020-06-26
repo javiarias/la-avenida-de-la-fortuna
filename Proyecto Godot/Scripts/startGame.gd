@@ -6,6 +6,7 @@ var basePath = "./"
 
 func _ready():
 	gameManager.gameStart()
+	gameManager.currentScene = "Ingame"
 
 func _on_Button_pressed():
 	pass # Replace with function body.

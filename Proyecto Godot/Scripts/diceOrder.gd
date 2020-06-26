@@ -7,6 +7,7 @@ var rolls = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	gameManager.currentScene = "diceOrder"
 	if not gameManager.online:
 		gameManager.nicks = ["Player 1", "Player 2", "Player 3", "Player 4"]
 	

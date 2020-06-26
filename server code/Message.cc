@@ -525,7 +525,7 @@ void Client::login()
 
 void Client::logout()
 {
-	Message em(id, Message::IGNORE, 0);
+	Message em(id, Message::LOGGED_OUT, 0);
 	em.type = Message::LOGOUT;
 
 	send_queue.push(em);
@@ -535,7 +535,7 @@ void Client::ready()
 {
 	//std::cout << "ready: " << id << '\n';
 
-	Message em(id, Message::IGNORE, nick);
+	Message em(id, Message::PLAYER_READY, nick);
 	em.type = Message::READY;
 
 	send_queue.push(em);

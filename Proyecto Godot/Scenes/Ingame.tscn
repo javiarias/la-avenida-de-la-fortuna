@@ -466,7 +466,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building32" type="MeshInstance" parent="tiles/Central_1"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -499,7 +506,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building31" type="MeshInstance" parent="tiles/Central_2"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -532,7 +546,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building30" type="MeshInstance" parent="tiles/Central_3"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -565,7 +586,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building29" type="MeshInstance" parent="tiles/Central_4"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -598,7 +626,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building28" type="MeshInstance" parent="tiles/Central_Conexion_1"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -631,7 +666,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building27" type="MeshInstance" parent="tiles/Central_Conexion_2"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -664,7 +706,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building26" type="MeshInstance" parent="tiles/Central_Conexion_3"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -697,7 +746,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.2584e-07, 0, -3.2584e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building25" type="MeshInstance" parent="tiles/Central_Conexion_4"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91412e-08, -1.08614e-07, 2.91412e-08, -0.666667, 4.74765e-15, -0.5, -2.5, -1 )
@@ -730,7 +786,14 @@ transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building24" type="MeshInstance" parent="tiles/1_1"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
@@ -763,7 +826,14 @@ transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building23" type="MeshInstance" parent="tiles/1_2"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
@@ -796,7 +866,14 @@ transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building22" type="MeshInstance" parent="tiles/1_3"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
@@ -829,7 +906,14 @@ transform = Transform( 1, 0, 0, 0, -1, 2.0663e-07, 0, -2.0663e-07, -1, 0, 2.5, -
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building21" type="MeshInstance" parent="tiles/1_4"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -1.08614e-07, -1.08614e-07, 1.08614e-07, -0.666667, 1.76954e-14, -0.5, -2.5, -1 )
@@ -862,7 +946,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25839e-07, 0, -3.25839e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building20" type="MeshInstance" parent="tiles/1_5"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -895,7 +986,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25839e-07, 0, -3.25839e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building19" type="MeshInstance" parent="tiles/1_6"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -928,7 +1026,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building18" type="MeshInstance" parent="tiles/2_1"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -961,7 +1066,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building17" type="MeshInstance" parent="tiles/2_2"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -994,7 +1106,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building16" type="MeshInstance" parent="tiles/2_3"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1027,7 +1146,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building15" type="MeshInstance" parent="tiles/2_4"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1060,7 +1186,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building14" type="MeshInstance" parent="tiles/2_5"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1093,7 +1226,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25838e-07, 0, -3.25838e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building13" type="MeshInstance" parent="tiles/2_6"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1126,7 +1266,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building12" type="MeshInstance" parent="tiles/3_1"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1159,7 +1306,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building11" type="MeshInstance" parent="tiles/3_2"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1192,7 +1346,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building10" type="MeshInstance" parent="tiles/3_3"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1225,7 +1386,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building9" type="MeshInstance" parent="tiles/3_4"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1258,7 +1426,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building8" type="MeshInstance" parent="tiles/3_5"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1291,7 +1466,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building7" type="MeshInstance" parent="tiles/3_6"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1324,7 +1506,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25837e-07, 0, -3.25837e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building6" type="MeshInstance" parent="tiles/4_1"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1357,7 +1546,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building5" type="MeshInstance" parent="tiles/4_2"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1390,7 +1586,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building4" type="MeshInstance" parent="tiles/4_3"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1423,7 +1626,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building3" type="MeshInstance" parent="tiles/4_4"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1456,7 +1666,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building2" type="MeshInstance" parent="tiles/4_5"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1489,7 +1706,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="building" type="MeshInstance" parent="tiles/4_6"]
 transform = Transform( -1.08614e-07, 0, 0.666667, -0.666667, -2.91409e-08, -1.08614e-07, 2.91409e-08, -0.666667, 4.74766e-15, -0.5, -2.5, -1 )
@@ -1563,7 +1787,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Peaje_2_3" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, -6.5, 0, -6.5 )
@@ -1580,7 +1811,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25836e-07, 0, -3.25836e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Peaje_3_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, -6.5 )
@@ -1597,7 +1835,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25835e-07, 0, -3.25835e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="Peaje_1_4" type="Sprite3D" parent="tiles"]
 transform = Transform( 0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 5.5, 0, 5.5 )
@@ -1614,7 +1859,14 @@ transform = Transform( 1, 0, 0, 0, -1, 3.25835e-07, 0, -3.25835e-07, -1, 0, 2.5,
 script = ExtResource( 24 )
 text = "3000"
 text_scale = 0.018
+extrude = 0.0
+font = null
+align = 0
 color = Color( 0.411765, 0.576471, 0.686275, 1 )
+metallic = 0.0
+roughness = 0.5
+max_steps = 256
+step_size = 1.0
 
 [node name="TempUI" type="Control" parent="."]
 margin_left = 594.344

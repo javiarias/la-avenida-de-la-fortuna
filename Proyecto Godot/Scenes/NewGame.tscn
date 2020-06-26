@@ -6,9 +6,7 @@
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 445.0
-margin_top = 290.0
 margin_right = 834.0
-margin_bottom = 429.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 389.0

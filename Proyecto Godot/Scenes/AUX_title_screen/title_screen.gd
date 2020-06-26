@@ -3,6 +3,7 @@ extends Control
 var scene_path_to_load
 
 func _ready():
+	gameManager.currentScene = "TitleScreen"
 	$Menu/CenterContainer/Buttons/Local.grab_focus()
 
 func _on_Button_pressed(scene_to_load):	
