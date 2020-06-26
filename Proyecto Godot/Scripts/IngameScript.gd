@@ -14,12 +14,48 @@ var UIPath = "/root/Spatial/TempUI/"
 var playerAmount = 4
 var investment = 100
 var paused = false
-var scoreWin = 15000
 var winner : String
+var scoreWin = 15000
+
+var cpp
+var currentScene
+
+enum GameEnum { IGNORE, SHUTDOWN, REPEATED_NAME, LOGGED, GAME_FULL, NAME, PLAYER_READY, GAME_START, ORDER, ROLL, TURN_START, TURN_END };
 
 # El init/create
 func _ready():
+	cpp = load("res://bin/gdtest.gdns").new()
 	pass
+	
+	
+func _process(delta):
+	
+	if gameStarted:
+		if not checkWin():
+			turn()
+		else:
+			get_node(basePath).visible = false
+			get_node(UIPath + "WinState").visible = true
+			get_node(UIPath + "WinState/Label").text = ("VICTORIA DE " + winner)
+		
+	if online:
+		doMessages()
+
+func doMessages():
+	if cpp.getMessage():
+		#0 = origen
+		#1 = gameEnum
+		#2 = int
+		#3 = float
+		#4 = string
+		var aux = cpp.getMessage_Data()
+		
+		if currentScene == "OnlineLobby" and aux[1] == GameEnum.NAME:
+			get_node("/root/Control").addPlayer(aux[4])
+		
+		pass
+	pass
+
 
 func gameStart():
 	gameStarted = true
@@ -51,15 +87,6 @@ func startTurn(nick):
 		players[aux] = interm
 		
 		gameStart()
-
-func _process(delta):
-	if gameStarted:
-		if not checkWin():
-			turn()
-		else:
-			get_node(basePath).visible = false
-			get_node(UIPath + "WinState").visible = true
-			get_node(UIPath + "WinState/Label").text = ("VICTORIA DE " + winner)
 
 func getPaused():
 	return paused

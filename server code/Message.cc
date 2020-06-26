@@ -125,8 +125,8 @@ void Server::do_messages()
 
 		Message m(msg);
 
-		//std::cout << getPlayerByID(m.id);
-		//std::cout << " sends: TYPE = " << m.type << " ENUM = " << m.game_enum << " CONTENT = " << m.intMsg << " " << m.floatMsg << " " << m.strMsg << '\n';
+		std::cout << getPlayerByID(m.id);
+		std::cout << " sends: TYPE = " << m.type << " ENUM = " << m.game_enum << " CONTENT = " << m.intMsg << " " << m.floatMsg << " " << m.strMsg << '\n';
 
 		//queremos que los logout SIEMPRE se procesen
 		if (m.type == Message::LOGOUT)
@@ -333,20 +333,20 @@ void Server::verify(const Message& m, Socket* s)
 			msg = Message(check, Message::GameEnum::LOGGED, (int)players.size());
 			msg.type = Message::VERIFIED;
 
-			//std::cout << "verified!\n";
+			std::cout << "verified!\n";
 
 			if (players.size() >= 4)
 			{
 				msg.type = Message::FULL;
 				msg.game_enum = Message::GameEnum::GAME_FULL;
-				//std::cout << "game full\n";
+				std::cout << "game full\n";
 			}
 		}
 		else {
 			msg = Message(0, Message::IGNORE, "verification failed");
 			msg.type = Message::FAILED;
 
-			//std::cout << "verification failed\n";
+			std::cout << "verification failed\n";
 		}
 
 		socket.send(msg, *s);
@@ -359,7 +359,7 @@ void Server::verify(const Message& m, Socket* s)
 
 			players.push_back(p);
 
-			//std::cout << "Player added: " << p.id << " " << p.n << " Total players: " << players.size() << '\n';
+			std::cout << "Player added: " << p.id << " " << p.n << " Total players: " << players.size() << '\n';
 
 			unverified.erase(*s);
 
@@ -601,8 +601,8 @@ void Client::recv_thread()
         
         socket.recv(msg);
 
-		//std::cout << msg.id;
-		//std::cout << " sends: TYPE = " << msg.type << " ENUM = " << msg.game_enum << " CONTENT = " << msg.intMsg << " " << msg.floatMsg << " " << msg.strMsg << '\n';
+		std::cout << msg.id;
+		std::cout << " sends: TYPE = " << msg.type << " ENUM = " << msg.game_enum << " CONTENT = " << msg.intMsg << " " << msg.floatMsg << " " << msg.strMsg << '\n';
 
 		//casos especiales para los mensajes
 		//handshake, verified (que "conecta" al jugador y ya le deja recibir todos los mensajes), failed (en caso de haber algún error de verificación, se reintenta)
@@ -666,11 +666,9 @@ void Client::handshake(const Message& m)
 	Message em(id, Message::IGNORE, encode(id));
 	em.type = Message::HANDSHAKE;
 	
-	/*
 	std::cout << "handshake in: " << m.intMsg << '\n';
 	std::cout << "id = " << id << '\n';
 	std::cout << "handshake out: " << em.intMsg << '\n';
-	*/
 
 	socket.send(em, socket);
 }

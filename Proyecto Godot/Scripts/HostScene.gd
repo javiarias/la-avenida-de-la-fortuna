@@ -93,6 +93,12 @@ func _on_confirm_pressed():
 		
 		#try to get connection
 		#if succeeds, load lobby scene
+		var serv = one + "." + two + "." + three + "." + four
+		gameManager.cpp.start(serv, port, nick, gameManager.host)
+		
+		gameManager.online = true;
+		
+		
 		gameManager.nicks.append(nick);
 		gameManager.me = nick
 		get_tree().change_scene("res://Scenes/OnlineLobby.tscn")
